@@ -1,0 +1,52 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
+i {
+  width: 20px;
+  height: 20px;
+  margin: 0;
+}
+span {
+  margin: 0 24px 0 14px;
+}
+.main {
+  display: flex;
+  width: 457px;
+  height: 138px;
+  margin: 4px;
+}
+.ProfilePicture {
+  background-image: url("images/moshProfile.jpeg");
+  height: 130px;
+  width: 130px;
+  background-size: cover;
+  margin: 0px;
+}
+.Details {
+  margin: 0 0 0 14px;
+}
+.react {
+  display: flex;
+  justify-content: space-around;
+  font-family: "Roboto", sans-serif;
+  font-size: 15px;
+  color: #858991;
+  font-weight: 500;
+}
+.name {
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+  font-size: 20px;
+  margin: 0 0 14px 0;
+  color: #000;
+}
+.comment {
+  font-family: "Roboto", sans-serif;
+  font-size: 20px;
+  margin: 0 0 24px 0;
+  color: #000;
+  font-weight: 400;
+}
