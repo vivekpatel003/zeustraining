@@ -1,0 +1,17 @@
+@mixin flexCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+@mixin Displaytype($type) {
+  display: $type;
+}
+@mixin flex($horizontal, $vertical) {
+  display: flex;
+  justify-content: $horizontal;
+  align-items: $vertical;
+}
+@mixin flexRotate {
+  flex-direction: column;
+}

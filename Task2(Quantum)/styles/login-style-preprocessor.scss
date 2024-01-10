@@ -1,0 +1,196 @@
+@import "./login-variables";
+@import "./login-mixin";
+
+
+@font-face {
+    font-family: Quicksand;
+    src: url("../Quicksand-VariableFont_wght.ttf");
+ }
+
+
+ body{
+    background-color: $bodyBack;
+    opacity: 1;
+    @include flex(space-between,default);
+    @include flexRotate();
+    font-family: $fonts;
+}
+
+// .header>img{
+//     max-width: 20%;
+//     height: 10%;
+// }
+
+.header{
+    /* text-align: center; */
+    background-image: url("../images/headerpatternimage.png");
+    background-size: cover;
+    border-bottom:4px solid $headerBorder;
+    background-color:$headeBackGround;
+    margin-top: 0;
+    /* mix-blend-mode: overlay; */
+    /* opacity:0.8; */
+    img{
+        max-width: 20%;
+        height: 10%;
+    }
+}
+
+.logo-img{
+    margin-left:20px;
+}
+
+.login-box{
+    margin:10% auto 10% auto;
+    background-color:$formBack;
+    border-top:4px solid $headerBorder ;
+    height: 70%;
+   @include flex(default,default);
+   @include flexRotate();
+    width: 30%;
+}
+
+@media only screen and (max-width:480px) {
+    .header,.login-box,.footer{
+        width: 100%;
+    }
+    .footer{
+        margin-bottom: 0px;
+    }
+}
+@media only screen and (min-width: 500px) and (max-width: 1000px)and (orientation: landscape){
+.login-box{
+    width: 60%;
+} 
+}
+@media(min-height:800px)
+{
+.footer{
+    margin-bottom: 0px;
+}
+.login-box{
+    margin: 40% auto 40% auto;
+}
+}
+
+
+// form > div{
+//     margin: 15px;
+// }
+
+.heading{
+    @include flex(center,default);
+    h3{
+        font: normal normal medium 24px/28px ;
+        margin-right: auto; 
+    }
+    img{
+        margin-right:auto ;
+    }
+}
+
+form{
+    @include flex(space-around,default);
+    @include flexRotate();
+    font:  normal normal medium 16px/20px;
+    margin: 5%;
+    div{
+        margin: 15px;
+    }
+}
+
+button{
+    width:40%;
+    @include Displaytype(block);
+    margin:0 auto 0 auto; 
+    padding: 2%;
+    background-color: $buttonColor;
+    border: none;
+    border-radius: 3px;
+}
+
+// .heading > img{
+//     margin-right:auto ;
+// }
+
+// .heading > h3{
+//     font: normal normal medium 24px/28px ;
+//     margin-right: auto;
+// }
+
+input[type='radio'],input[type='checkbox']
+{
+    accent-color: $inputColor;
+}
+input[type='password']
+{
+    background-image: url("../images/preview.svg");
+    background-position:right ;
+    background-repeat: no-repeat;
+}
+.intx{
+    width: 100%;
+    border:none;
+    min-height: 5px;
+    max-height: 30px;
+    border-bottom:1px solid $inputBorder;
+    font: normal normal medium 16px/20px ;
+}  
+.forgot{
+    margin:0;
+    /* margin-left: auto; */
+    text-transform: uppercase;
+    text-align: right;
+    color: $inputColor;
+    font: normal normal medium 14px/18px ;
+}
+.prev{
+    @include Displaytype(inline);
+}
+
+.footer{
+    @include flex(default,center);
+    @include flexRotate();
+    margin-bottom: 0px;
+}
+.upper-footer{
+    font: normal normal medium 14px/18px ;
+    text-align: center;
+    color: $inputColor;
+    p{
+       @include Displaytype(inline);
+        margin-right: 10px;
+    }
+}
+.contactus{
+    border-left:1px solid $cntctus;
+    padding-left:10px;
+}
+.about{
+    padding-right:10px;
+}
+.footer-logo{
+    border-right:1px solid $cntctus;
+    padding-right: 10px;
+    margin-right: 10px;
+}
+// .upper-footer > p{ 
+//     display: inline;
+//     margin-right: 10px
+// }
+// .lower-footer > p
+// {
+//     margin-left:10px;
+// } 
+.lower-footer{
+    font: normal normal bold 12px/16px Quicksand;
+    color: $footColor;
+    margin: 15px 0 0 0 0;
+    @include flex(center,default);
+    width: 100%;
+    padding: 10px;
+    background-color: $footBack;
+    p{
+        margin-left:10px;
+    }
+}

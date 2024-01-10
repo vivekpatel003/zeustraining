@@ -1,0 +1,335 @@
+@import "./login-variables";
+@import "./login-mixin";
+@font-face {
+    font-family: Quicksand;
+    src: url("../Quicksand-VariableFont_wght.ttf");
+ }
+ body{
+    font-family: $fonts;
+    background-color: $bodyBack;
+ }
+
+ /* header styling */
+ .header>img{
+    max-width: 20%;
+    height: 10%;
+}
+
+.hamp{
+    visibility: collapse;
+}
+.dashboard{
+    color: $formBack;
+    border: none;
+    border-bottom: 4px solid $formBack;
+    padding:14px ;
+}
+.header{
+    /* text-align: center; */
+    background-image: url("../images/headerpatternimage.png");
+    background-size: cover;
+    background-color: $headeBackGround;
+    margin-top: 0;
+    @include Displaytype(flex);
+    font: normal normal medium 14px/14px ;
+    text-transform:uppercase ;
+    color: $buttonColor;
+}
+
+.navbar-logo{
+   @include flex(space-between,default);
+}
+.navbar-logo > img{
+    margin-right: 20px;
+}
+.header > .navbar > ul > li{
+   @include Displaytype(inline);
+   margin-right: 20px;
+}
+.logo-img{
+    margin:5px 10px 5px 20px;
+}
+.navbar{
+   @include Displaytype(flex);
+    margin-left:auto;
+}
+
+
+/* Mid division styling */
+.Mid-div{
+    @include Displaytype(grid);
+    grid-Template-columns: 1fr 1fr;
+    margin:2% 8%;
+    // /* grid-Template-rows: auto auto auto; */
+}
+
+/* second division  */
+.Second-div{
+    grid-column: 1 /span 2;
+    grid-row:1/span 1 ;
+    @include Displaytype(grid);
+    grid-template-columns:1fr 1fr;
+    text-align: center;
+    background-color: $secBack;
+}
+.Course > p,.Classes > p{
+    @include Displaytype(inline);
+}
+.Course{
+    border:none;
+    border-bottom: 4px solid $courseCol;
+}
+.Course,.Classes{
+    grid-column: 1/span 1;
+     @include flex(center,default);
+} 
+.Classes{
+    grid-column: 2/span 1;
+
+}
+.Course > img,.Classes > img{
+    margin-right: 10px;
+}    
+b{
+    margin-right: 5px;
+}
+
+/* Third division styling */
+.third-div{
+    grid-column: 1 /span 2;
+    grid-row:2/span 1 ;
+    @include Displaytype(grid);
+    /* justify-content: space-between; */
+    grid-template-columns:1fr 1fr;
+    font: normal normal medium 12px/14px;
+    border: none;
+    border-bottom: 1px solid $footColor;
+    padding: 1%;
+}
+.third-second{
+    text-align: right;
+    @include flex(end,center);
+}
+.third-second > select{
+    margin-right: 2%;
+}
+select,.third-second > img{
+    height: 24px;
+}
+select{
+    width: 30%;
+    border: none;
+    border-bottom:1px solid $footColor ;
+    font: normal normal medium 16px/20px;
+    background-color: $bodyBack;
+}
+
+/* Forth Division Styling */
+.fourth-div{
+    grid-column:1/span2;
+    @include Displaytype(grid);
+    grid-template-columns: 1fr 1fr;
+    margin-top: 2%;
+}
+.One,.Two,.Three,.Four{
+    background-color: $formBack;
+    @include Displaytype(flex);
+    @include flexRotate();
+    font: normal normal medium 12px/16px ;
+    margin: 2%;
+}
+.One{
+    grid-column: 1 /span 1; 
+}
+.Two{
+    grid-column: 2 /span 1; 
+}
+.Three{
+    grid-column: 1 /span 1;   
+}
+.Four{
+    grid-column: 2 /span 1;
+}
+.One-main,.Two-main,.Three-main,.Four-main{
+    @include flex(start,start);
+    margin:0;
+    padding: 5%;
+}
+.One-details, .Two-details, .Three-details, .Four-details{
+    @include flexRotate();
+    @include flex(default,start);
+    flex-wrap: wrap;
+    width: 60%;
+    height: 100%;
+}
+.One-img,.Two-img,.Three-img,.Four-img{
+    margin-right: 10%;
+}
+.One-icons,.Two-icons,.Three-icons,.Four-icons{
+    @include flex(center,default);
+    margin: 0 5%;
+    padding:3% 0 ;
+    border: none;
+    border-top: 1px solid $footColor;
+}
+p{
+    margin-top:10px ;
+    margin-bottom: 5px;
+}
+.head{
+    @include flex(space-between,default);
+}
+.Two > .Two-main > .Two-details >.head{
+    width: 100%;
+}
+strong{
+    margin-right: 5%;
+}
+.dull{
+    opacity: 0.4;
+}
+.sb{
+    border-right: 1px solid $footColor;
+    padding-right:3% ;
+}
+.head > p{
+    width: 70%;
+    font: normal normal medium 16px/20px;
+    font-weight: bold;
+    margin-top:0 ;
+}
+
+.sub,.Grade,.foot{
+    @include Displaytype(flex);
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.One-icons > img,.Two-icons > img,.Three-icons > img,.Four-icons > img{
+    margin-right: 10%;
+}
+.One-details > .head{
+    width: 100%;
+}
+
+#Teacher{
+    width: 100%;
+    background-color: $formBack;
+}
+
+.sub > p,.Grade > p, .foot > p{
+    margin-right:2%;
+}
+.sub > p > span
+{
+    color:$inputColor;
+    @include Displaytype(inline);
+    background-color: $formBack;
+}
+.Grd
+{
+    width: 30%;
+}
+span{
+    @include Displaytype(inline);
+    color: $spanColor;
+    background-color: $spanBack;
+    width: 12%;
+    text-transform: uppercase;
+    padding: 0.5%;
+    
+}
+.Four-main{
+    padding-top: 1%;
+}
+
+@media (max-width:1003px) and (min-width:500px){
+    
+    .fourth-div{
+        grid-template-columns: 1fr;
+    }
+    .One,.Two,.Three,.Four
+    {
+        grid-column: 1/span1;
+    }
+    .navbar > ul{
+        visibility: collapse;
+    }
+    .hamp{
+        visibility: visible;
+    }
+    
+}
+@media (max-width:499px) {
+    .Second-div{
+        grid-template-columns: 1fr;
+    }
+    .third-div{
+        grid-template-columns: 1fr;
+    }
+    .fourth-div{
+        grid-template-columns: 1fr;
+    }
+    .One,.Two,.Three,.Four,.Course,.Classes,.third-second,.third-first
+    {
+        grid-column: 1/span1;
+    }
+    .third-second{
+        justify-content: start;
+    }
+    .One-details,.Two-details,.Three-details,.Four-details{
+        font-size: small;
+    }
+    .navbar > ul{
+        visibility: collapse;
+    }
+    .navbar{
+        flex-wrap: wrap;
+    }
+    .hamp{
+        visibility: visible;
+    }
+    span{
+        font-size: small;
+    }
+}
+.footer{
+    @include flex(default,center);
+    @include flexRotate();
+    margin-bottom: 0px;
+}
+
+.upper-footer{
+    font: normal normal medium 14px/18px ;
+    text-align: center;
+    color: $inputColor;
+
+}
+.contactus{
+    border-left:1px solid $cntctus  ;
+    padding-left:10px;
+}
+.about{
+    padding-right:10px;
+}
+.footer-logo{
+    border-right:1px solid $cntctus  ;
+    padding-right: 10px;
+    margin-right: 10px;
+}
+.upper-footer > p{ 
+    @include Displaytype(inline);
+}
+.lower-footer > p
+{
+    margin-left:10px;
+} 
+.lower-footer{
+    font: normal normal bold 12px/16px ;
+    color: $footColor;
+    margin: 15px 0 0 0 0;
+    @include flex(center,default);
+    width: 100%;
+    padding: 10px;
+    background-color: $footBack;
+}
