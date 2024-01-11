@@ -1,8 +1,10 @@
+
 body {
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 0;
+  height: 500px;
 }
 i {
   width: 20px;
@@ -16,16 +18,15 @@ span {
   display: flex;
   width: 457px;
   height: 138px;
-  margin: 4px;
+  justify-content: center;
+  align-items: center;
 }
-.ProfilePicture {
-  background-image: url("images/moshProfile.jpeg");
+img{
   height: 130px;
   width: 130px;
-  background-size: cover;
   margin: 0px;
 }
-.Details {
+.Details-div{
   margin: 0 0 0 14px;
 }
 .react {

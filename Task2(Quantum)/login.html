@@ -23,14 +23,14 @@
           <h3>Log in with Quantum</h3>
         </div>
         <div class="radio">
-          <input type="radio" name="schooltype" value="District" checked />
+          <input type="radio" name="schooltype" value="District" id="District" checked />
           <label for="District">District</label>
-          <input type="radio" name="schooltype" value="Independent school" />
+          <input type="radio" name="schooltype" id="Independentschool" value="Independent school" />
           <label for="Independentschool">Independent school</label><br />
         </div>
         <div class="state-div">
           <label for="stat">State*</label><br />
-          <select class="intx" name="state">
+          <select class="intx" id="stat name="state">
             <option value="Alabama">Alabama</option>
             <option value="California">California</option>
             <option value="Florida">Florida</option>
@@ -40,7 +40,7 @@
 
         <div class="District-div">
           <label for="Dist">District*</label><br />
-          <select class="intx" name="District">
+          <select class="intx" id="Dist" name="District">
             <option value="Alabama School District">
               Alabama School District
             </option>
@@ -69,7 +69,7 @@
           <p class="forgot">forgot password?</p>
         </div>
         <div>
-          <input type="checkbox" name="RememberMe" checked />
+          <input type="checkbox" id="RememberMe" name="RememberMe" checked />
           <label for="RememberMe">Remember Me</label><br />
         </div>
         <button class="submit" value="submit-form">LOGIN</button>
