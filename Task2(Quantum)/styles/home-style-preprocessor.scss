@@ -38,6 +38,7 @@
 
 .navbar-logo{
    @include flex(space-between,default);
+   flex-shrink: 1;
 }
 .navbar-logo > img{
     margin-right: 20px;
@@ -263,6 +264,12 @@ span{
 @media (max-width:499px) {
     .Second-div{
         grid-template-columns: 1fr;
+    }
+    .lower-footer{
+        flex-wrap: wrap;
+    }
+    .navbar-logo{
+        flex-wrap: wrap;
     }
     .third-div{
         grid-template-columns: 1fr;

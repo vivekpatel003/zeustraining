@@ -40,6 +40,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: default;
+  flex-shrink: 1;
 }
 
 .navbar-logo > img {
@@ -303,6 +304,12 @@ span {
 @media (max-width: 499px) {
   .Second-div {
     grid-template-columns: 1fr;
+  }
+  .lower-footer {
+    flex-wrap: wrap;
+  }
+  .navbar-logo {
+    flex-wrap: wrap;
   }
   .third-div {
     grid-template-columns: 1fr;

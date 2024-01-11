@@ -41,7 +41,7 @@
 }
 
 .login-box{
-    margin:10% auto 10% auto;
+    margin:10% auto;
     background-color:$formBack;
     border-top:4px solid $headerBorder ;
     height: 70%;
@@ -50,28 +50,38 @@
     width: 30%;
 }
 
-@media only screen and (max-width:480px) {
+@media only screen and (max-width:300px) {
     .header,.login-box,.footer{
+        width: 100%;
+    }
+    body{
         width: 100%;
     }
     .footer{
         margin-bottom: 0px;
     }
+    .lower-footer{
+        flex-wrap: wrap;
+    }
 }
-@media only screen and (min-width: 500px) and (max-width: 1000px)and (orientation: landscape){
-.login-box{
-    width: 60%;
-} 
+@media (min-width: 301px) and (max-width: 1000px){
+    .login-box{
+        width: 80%;
+        margin: 10%;
+    }
 }
-@media(min-height:800px)
-{
-.footer{
-    margin-bottom: 0px;
-}
-.login-box{
-    margin: 40% auto 40% auto;
-}
-}
+// @media(min-height:800px)
+// {
+// .footer{
+//     margin-bottom: 0px;
+// }
+// .login-box{
+//     margin: 10%
+// }
+// form{
+//     margin: 10%;
+// }
+// }
 
 
 // form > div{

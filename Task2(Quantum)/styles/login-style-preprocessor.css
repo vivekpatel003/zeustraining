@@ -17,7 +17,7 @@ body {
   background-image: url("../images/headerpatternimage.png");
   background-size: cover;
   border-bottom: 4px solid #3AC7EC;
-  background-color: rgba(1, 1, 36, 0.808);
+  background-color: rgb(14, 14, 19);
   margin-top: 0;
   /* mix-blend-mode: overlay; */
   /* opacity:0.8; */
@@ -32,7 +32,7 @@ body {
 }
 
 .login-box {
-  margin: 10% auto 10% auto;
+  margin: 10% auto;
   background-color: #FFFFFF;
   border-top: 4px solid #3AC7EC;
   height: 70%;
@@ -43,25 +43,24 @@ body {
   width: 30%;
 }
 
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 300px) {
   .header, .login-box, .footer {
+    width: 100%;
+  }
+  body {
     width: 100%;
   }
   .footer {
     margin-bottom: 0px;
   }
-}
-@media only screen and (min-width: 500px) and (max-width: 1000px) and (orientation: landscape) {
-  .login-box {
-    width: 60%;
+  .lower-footer {
+    flex-wrap: wrap;
   }
 }
-@media (min-height: 800px) {
-  .footer {
-    margin-bottom: 0px;
-  }
+@media (min-width: 301px) and (max-width: 1000px) {
   .login-box {
-    margin: 40% auto 40% auto;
+    width: 80%;
+    margin: 10%;
   }
 }
 .heading {
