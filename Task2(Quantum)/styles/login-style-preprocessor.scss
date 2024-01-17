@@ -1,5 +1,6 @@
 @import "./login-variables";
 @import "./login-mixin";
+@import "./footer";
 
 
 @font-face {
@@ -14,6 +15,8 @@
     @include flex(space-between,default);
     @include flexRotate();
     font-family: $fonts;
+    box-sizing:border-box;
+    margin: 0;
 }
 
 // .header>img{
@@ -25,49 +28,53 @@
     /* text-align: center; */
     background-image: url("../images/headerpatternimage.png");
     background-size: cover;
-    border-bottom:4px solid $headerBorder;
+    border-bottom:2px solid $headerBorder;
     background-color:$headeBackGround;
     margin-top: 0;
+    width: 100%;
+    height:47px;
     /* mix-blend-mode: overlay; */
     /* opacity:0.8; */
     img{
-        max-width: 20%;
-        height: 10%;
+        width: 135px;
+        height: 26px;
     }
 }
 
 .logo-img{
     margin-left:20px;
+    @include flex(default,center);
+    height: 47px;
 }
 
 .login-box{
-    margin:10% auto;
+    margin: 50px auto 30px auto ;
     background-color:$formBack;
     border-top:4px solid $headerBorder ;
-    height: 70%;
    @include flex(default,default);
    @include flexRotate();
-    width: 30%;
+    width: 488px;
+    height: 584px;
 }
 
-@media only screen and (max-width:300px) {
-    .header,.login-box,.footer{
-        width: 100%;
-    }
-    body{
-        width: 100%;
-    }
-    .footer{
-        margin-bottom: 0px;
-    }
-    .lower-footer{
-        flex-wrap: wrap;
-    }
-}
-@media (min-width: 301px) and (max-width: 1000px){
+// @media only screen and (max-width:300px) {
+//     .header,.login-box,.footer{
+//         width: 100%;
+//     }
+//     body{
+//         width: 100%;
+//     }
+//     .footer{
+//         margin-bottom: 0px;
+//     }
+//     .lower-footer{
+//         flex-wrap: wrap;
+//     }
+// }
+@media (min-width: 500px) and (max-width: 768px){
     .login-box{
-        width: 80%;
-        margin: 10%;
+        width: 488px;
+        margin: 50px 140px 258px 140px;
     }
 }
 // @media(min-height:800px)
@@ -89,31 +96,32 @@
 // }
 
 .heading{
-    @include flex(center,default);
+    margin-top: 20px;
+    @include flex(start,start);
     h3{
         font: normal normal medium 24px/28px ;
         margin-right: auto; 
+        margin-top: 0;
     }
     img{
-        margin-right:auto ;
+        margin-right:77px ;
+        margin-top: 0;
     }
 }
 
 form{
     @include flex(space-around,default);
     @include flexRotate();
-    font:  normal normal medium 16px/20px;
-    margin: 5%;
-    div{
-        margin: 15px;
-    }
+    width: 424px;
+    font:  normal normal medium;
+    margin: 0 32px;
+    font: normal normal medium 16px/20px;
 }
 
 button{
-    width:40%;
+    width:216px;
+    height: 40px;
     @include Displaytype(block);
-    margin:0 auto 0 auto; 
-    padding: 2%;
     background-color: $buttonColor;
     border: none;
     border-radius: 3px;
@@ -131,76 +139,54 @@ button{
 input[type='radio'],input[type='checkbox']
 {
     accent-color: $inputColor;
+    width: 20px;
+    height: 20px;
+    
 }
+
 input[type='password']
 {
     background-image: url("../images/preview.svg");
     background-position:right ;
     background-repeat: no-repeat;
+    background-size: 22px 15px;
 }
 .intx{
-    width: 100%;
+    
+    width: 424px;
+    height: 25px;
     border:none;
-    min-height: 5px;
-    max-height: 30px;
     border-bottom:1px solid $inputBorder;
-    font: normal normal medium 16px/20px ;
+    font:  normal normal medium  ;
+    color: $courseCol;
 }  
+.state-div{
+    margin-top: 23px;
+}
+.District-div{
+    margin-top: 36px;
+}
+.mail,.password{
+    margin-top: 56px;
+    height: 25px;
+}
+.Remember{
+    margin-top: 26px;
+}
 .forgot{
     margin:0;
-    /* margin-left: auto; */
     text-transform: uppercase;
     text-align: right;
     color: $inputColor;
-    font: normal normal medium 14px/18px ;
+    font:  normal normal medium 14px/18px;
+}
+.submit{
+    @include flex(center,center);
+    height:78px;
+    width:100%; 
+    margin-top: 34px;
 }
 .prev{
     @include Displaytype(inline);
 }
 
-.footer{
-    @include flex(default,center);
-    @include flexRotate();
-    margin-bottom: 0px;
-}
-.upper-footer{
-    font: normal normal medium 14px/18px ;
-    text-align: center;
-    color: $inputColor;
-    p{
-       @include Displaytype(inline);
-        margin-right: 10px;
-    }
-}
-.contactus{
-    border-left:1px solid $cntctus;
-    padding-left:10px;
-}
-.about{
-    padding-right:10px;
-}
-.footer-logo{
-    border-right:1px solid $cntctus;
-    padding-right: 10px;
-    margin-right: 10px;
-}
-// .upper-footer > p{ 
-//     display: inline;
-//     margin-right: 10px
-// }
-// .lower-footer > p
-// {
-//     margin-left:10px;
-// } 
-.lower-footer{
-    font: normal normal bold 12px/16px Quicksand;
-    color: $footColor;
-    margin: 15px 0 0 0 0;
-    @include flex(center,default);
-    width: 100%;
-    padding: 10px;
-    background-color: $footBack;
-    p{
-        margin-left:10px;
-    }
-}

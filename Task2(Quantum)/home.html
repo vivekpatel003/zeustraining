@@ -9,23 +9,153 @@
   <body>
     <!-- Header-->
     <div class="header">
-      <div class="logo-img">
-        <img src="images/logo used in header.svg" alt="logo" />
-      </div>
       <div class="navbar">
-        <ul>
-          <li class="dashboard">dashboard</li>
-          <li>content</li>
-          <li>users</li>
-          <li>reports</li>
-          <li>admin</li>
+        <img id="logo-img" src="" alt="logo" />
+        <ul id="nav-list-id">
+          <!-- script has been added -->
         </ul>
         <div class="navbar-logo">
-          <img src="images/alerts.svg" alt="alerts" />
-          <img src="images/announcements.svg" alt="announcements" />
-          <img src="images/account_circle.svg" alt="ProfilePicture" />
-          <img  class="hamp" src="images/hamburger-menu.svg" alt="hampburger">
+         <a class="alerts" href="javascript:void(0);"  >
+          <img onmouseover="alertFunc()" onmouseout="closeAlt()" src="images/alerts.svg" alt="alerts" />
+          <button id="badge1-id" class="badge1">2</button>
+        </a>
+          <a class="announcements" href="javascript:void(0);" ><img  onmouseover="announcementFunc()" onmouseout="closeAnn()" src="images/announcements.svg" alt="announcements" /><button id="badge2-id" class="badge2">1</button></a>
+          <a class="ProfilePicture" href=""><img src="images/account_circle.svg" alt="ProfilePicture" /><button class="badge3">T</button></a>
+          <a href="javascript:void(0);"  class="hamp" onmouseover="menuList()" onmouseout="closeHamp()"><img  src="images/hamburger-menu.svg" alt="hampburger" /></a>
         </div>
+
+        <div id="hamp-menu-id">
+          <a href="#dashboard">DASHBORAD
+            <button></button> </a>
+          <a href="#content">CONTENT
+            <button></button>
+          </a>
+          <a href="#users">USERS
+            <button></button>
+          </a>
+          <a href="#report">REPORTS
+            <button></button>
+          </a>
+          <a href="#admin">ADMIN
+            <button></button>
+          </a>
+        </div>
+
+        <div id="alerts-menu-id">
+
+          <div class="al-1">
+            <div class="up">
+              <p>License for Introduction to Algebra has been assigned to your school</p>
+              <a href=""><img src="images/dnd.png" alt="left"></a>
+              </div>
+              <div class="mid"></div>
+            <div class="lw">15-Sep-2018 at 07:21 pm</div>
+          </div>
+
+          <div class="al-2">
+            <div class="up">
+              <p>Lesson 3 Practice Worksheet overdue for Amy Santiago</p>
+              <a href=""><img src="images/correct.png" alt="left"></a>
+              </div>
+              <div class="mid">Course: Advanced Mathematics</div>
+            <div class="lw">15-Sep-2018 at 05:21 pm</div>
+          </div>
+
+          <div class="al-1">
+            <div class="up">
+              <p>23 new students created</p>
+              <a href=""><img src="images/dnd.png" alt="left"></a>
+              </div>
+              <div class="mid"></div>
+            <div class="lw">13-Sep-2018 at 01:15 pm</div>
+          </div>
+
+          <div class="al-1">
+            <div class="up">
+              <p>15 submissions ready for evaluation</p>
+              <a href=""><img src="images/dnd.png" alt="left"></a>
+              </div>
+              <div class="mid"><b>Class:</b> Basics of Algebra</div>
+            <div class="lw">15-Sep-2018 at 07:21 pm</div>
+          </div>
+
+          
+          <div class="al-1">
+            <div class="up">
+              <p>License for Basic Concepts in Geometry has been assigned to your... school</p>
+              <a href=""><img src="images/dnd.png" alt="left"></a>
+            </div>
+            <div class="mid"></div>
+            <div class="lw">15-Sep-2018 at 07:21 pm</div>
+          </div>
+
+            <div class="al-2">
+              <div class="up">
+                <p>Lesson 3 Practice Worksheet overdue for Sam Diego</p>
+                <a href=""><img src="images/correct.png" alt="left"></a>
+                </div>
+                <div class="mid">Course: Advanced Mathematics</div>
+              <div class="lw">15-Sep-2018 at 07:21 pm</div>
+            </div>
+
+          <div class="btn-alt">
+            <button class="show-all">   SHOW ALL </button>
+          </div>
+          </div>
+
+
+          <div id="announces-menu-id">
+
+            <div class="an-2">
+              <div class="up-an">
+                <p>PA: Wilson Kumar</p>
+                <a href=""><img src="images/correct.png" alt="left"></a>
+                </div>
+                <div class="mid-an"><p>No classes will be held on 21st Nov</p></div>
+              <div class="lw-an"><p>2 files are attached</p><p>15-Sep-2018 at 07:21 pm</p></div>
+            </div>
+  
+            <div class="an-1">
+              <div class="up-an">
+                <p>PA: Samson White</p>
+                <a href=""><img src="images/dnd.png" alt="left"></a>
+                </div>
+                <div class="mid-an"><p>Guest lecture on Geometry on 20th September</p></div>
+              <div class="lw-an"><p>2 files are attached</p><p>15-Sep-2018 at 07:21 pm</p></div>
+            </div>
+
+            <div class="an-2">
+              <div class="up-an">
+                <p>PA: Wilson Kumar</p>
+                <a href=""><img src="images/correct.png" alt="left"></a>
+                </div>
+                <div class="mid-an"><p>Additional course materials available on request</p></div>
+              <div class="lw-an"><p>Course: Mathematics 101</p><p>15-Sep-2018 at 07:21 pm</p></div>
+            </div>
+
+            <div class="an-1">
+              <div class="up-an">
+                <p>PA: Wilson Kumar</p>
+                <a href=""><img src="images/dnd.png" alt="left"></a>
+                </div>
+                <div class="mid-an"><p>No classes will be held on 25th Dec</p></div>
+              <div class="lw-an"><p></p><p>15-Sep-2018 at 07:21 pm</p></div>
+            </div>
+            
+            <div class="an-1">
+              <div class="up-an">
+                <p>PA: Wilson Kumar</p>
+                <a href=""><img src="images/dnd.png" alt="left"></a>
+                </div>
+                <div class="mid-an"><p>Additional course materials available on request</p></div>
+              <div class="lw-an"><p>Course: Mathematics 101</p><p>15-Sep-2018 at 07:21 pm</p></div>
+            </div>
+            
+            <div class="btns-ans">
+              <button class="show-all" id="show-all-btn" onclick="showAns()">   SHOW ALL </button><button class="create-new">   CREATE NEW </button>
+            </div>
+            </div>
+          
       </div>
     </div>
 
@@ -33,29 +163,25 @@
     <div class="Mid-div">
       <!-- Second Div -->
       <div class="Second-div">
-        <div class="Course">
-          <img src="images/courses.svg" alt="courses" />
-          <p><b>4</b>Courses</p>
+        <div class="Course" id="Course-id">
+          <img id="first-tab-img" src="" alt="courses" />
+          <p id="course-txt-id"></p>
         </div>
-        <div class="Classes">
-          <img src="images/classes.svg" alt="courses" />
-          <p><b>4</b>Clasees</p>
+        <div class="Classes" id="Class-id">
+          <img id="second-tab-img" src="" alt="courses" />
+          <p id="class-txt-id"></p>
         </div>
       </div>
 
       <!-- Third Div -->
       <div class="third-div">
         <div class="third-first">
-          <p>Showing 4 of 4 courses</p>
+          <p id="third-txt-id"></p>
         </div>
         <div class="third-second">
           <label for="Courses">Sort By:</label>
-          <select name="" id="Courses">
-            <option value="CourseName">Course Name</option>
-            <option value="Date">Date</option>
-            <option value="Size">Size</option>
-          </select>
-          <img src="images/sort.svg" alt="sort" />
+          <select name="" id="Courses"></select>
+          <img id="third-img-id" src="" alt="sort" />
         </div>
       </div>
 
@@ -64,152 +190,90 @@
         <!-- One -->
         <div class="One">
           <div class="One-main">
-            <img class="One-img" src="images/imageMask-1.svg" alt="section-1-img" />
+            <img id="one-img-id" class="One-img" src="" alt="section-1-img" />
             <div class="One-details">
               <div class="head">
-                <p>Acceleration</p>
+                <p id="one-head-id"></p>
                 <img class="fav" src="images/favourite.svg" alt="fav" />
               </div>
-              <div class="sub">
-                <p class="sb">Physics</p>
-                <p class="Grd">Grade 7<span>+2</span></p>
-              </div>
-              <div class="Grade">
-                <p><strong>4</strong>Units</p>
-                <p><strong>18</strong>Lessons</p>
-                <p><strong>24</strong>Topics</p>
-              </div>
-              
-                <select name="" id="Teacher">
-                  <option value="Frank" selected>Mr. Frank's Class B</option>
-                  <option value="Rahul">Mr. Rahul's Class B</option>
-                </select>
-             
-              <div class="foot">
-                <p class="sb">50 Students</p>
-                <p>21-Jan-2020 - 21-Aug-2020</p>
-              </div>
+
+              <div class="sub" id="one-subject-id"></div>
+
+              <div class="Grade" id="one-grade-id"></div>
+
+              <select name="" id="one-Teacher"></select>
+
+              <div class="foot" id="one-foot-id"></div>
             </div>
           </div>
-          <div class="One-icons">
-            <img src="images/preview.svg" alt="prev" />
-            <img src="images/manage course.svg" alt="manage" />
-            <img src="images/grade submissions.svg" alt="submission" />
-            <img src="images/reports.svg" alt="report" />
-          </div>
+
+          <div class="One-icons" id="one-icons-id"></div>
         </div>
         <!-- Two -->
         <div class="Two">
           <div class="Two-main">
-            <img class="Two-img" src="images/imageMask-2.svg" alt="section-2-img" />
+            <img id="two-img-id" class="Two-img" src="" alt="section-2-img" />
 
             <div class="Two-details">
               <div class="head">
-                <p>Displacement, Velocity and Speed</p>
+                <p id="two-head-id"></p>
                 <img class="fav" src="images/favourite.svg" alt="fav" />
               </div>
-              <div class="sub">
-                <p class="sb">Physics 2</p>
-                <p class="Grd">Grade 6<span>+3</span></p>
-              </div>
-              <div class="Grade">
-                <p><strong>2</strong>Units</p>
-                <p><strong>15</strong>Lessons</p>
-                <p><strong>20</strong>Topics</p>
-              </div>
-              
-                <select name="" id="Teacher">
-                  <option value="" disabled selected>No Classes</option>
-                  <option value="Frank">Mr. Frank's Class B</option>
-                  <option value="Rahul">Mr. Frank's Class A</option>
-                </select>
-            
-              <div class="foot">
-                <p class="sb">50 Students</p>
-                <p>21-Jan-2020 - 21-Aug-2020</p>
-              </div>
+              <div class="sub" id="two-subject-id"></div>
+
+              <div class="Grade" id="two-grade-id"></div>
+
+              <select name="" id="two-Teacher"></select>
             </div>
           </div>
-          <div class="Two-icons">
-            <img src="images/preview.svg" alt="prev" />
-            <img class="dull" src="images/manage course.svg" alt="manage" />
-            <img class="dull" src="images/grade submissions.svg" alt="submission" />
-            <img src="images/reports.svg" alt="report" />
-          </div>
+          <div class="Two-icons" id="two-icons-id"></div>
         </div>
         <!-- Three -->
         <div class="Three">
           <div class="Three-main">
-            <img class="Three-img" src="images/imageMask.svg" alt="section-3-img" />
+            <img
+              id="three-img-id"
+              class="Three-img"
+              src=""
+              alt="section-3-img"
+            />
             <div class="Three-details">
               <div class="head">
-                <p>
-                  Introduction to Biology: Micro organisms and how they affec...
-                </p>
+                <p id="three-head-id"></p>
                 <img class="fav" src="images/favourite.svg" alt="fav" />
               </div>
-              <div class="sub">
-                <p class="sb">Biology</p>
-                <p class="Grd">Grade 4<span>+1</span></p>
-              </div>
-              <div class="Grade">
-                <p><strong>5</strong>Units</p>
-                <p><strong>16</strong>Lessons</p>
-                <p><strong>22</strong>Topics</p>
-              </div>
-                <select name="" id="Teacher">
-                  <option value="All classes" selected>All Classes</option>
-                  <option value="Frank">Mr. Frank's Class B</option>
-                  <option value="Rahul">Mr. Frank's Class A</option>
-                </select>
-              <div class="foot">
-                <p >300 Students</p>
-              </div>
+
+              <div class="sub" id="three-subject-id"></div>
+
+              <div class="Grade" id="three-grade-id"></div>
+
+              <select name="" id="three-Teacher"></select>
+
+              <div class="foot" id="three-foot-id"></div>
             </div>
           </div>
-          <div class="Three-icons">
-            <img src="images/preview.svg" alt="prev" />
-            <img class="dull" src="images/manage course.svg" alt="manage" />
-            <img class="dull" src="images/grade submissions.svg" alt="submission" />
-            <img src="images/reports.svg" alt="report" />
-          </div>
+          <div class="Three-icons" id="three-icons-id"></div>
         </div>
         <!-- Four -->
         <div class="Four">
-            <span>expired</span>
+          <div class="expired">expired</div>
           <div class="Four-main">
-            <img class="Four-img" src="images/imageMask-3.svg" alt="section-4-img" />
+            <img id="four-img-id" class="Four-img" src="" alt="section-4-img" />
             <div class="Four-details">
               <div class="head">
-                <p>Introduction to High School Mathematics</p>
+                <p id="four-head-id"></p>
               </div>
-              <div class="sub">
-                <p class="sb">Mathematics</p>
-                <p class="Grd">Grade 8<span>+3</span></p>
-              </div>
-              <div class="Grade">
-                <p><strong>2</strong>Units</p>
-                <p><strong>15</strong>Lessons</p>
-                <p><strong>20</strong>Topics</p>
-              </div>
-             
-                <select name="" id="Teacher">
-                  <option value="Frank">Mr. Frank's Class B</option>
-                  <option value="Rahul" selected>Mr. Frank's Class A</option>
-                </select>
-             
-              <div class="foot">
-                <p class="sb">44 Students</p>
-                <p>14-Oct-2019 - 20-Oct-2020</p>
-              </div>
+
+              <div class="sub" id="four-subject-id"></div>
+
+              <div class="Grade" id="four-grade-id"></div>
+
+              <select name="" id="four-Teacher"></select>
+
+              <div class="foot" id="four-foot-id"></div>
             </div>
           </div>
-          <div class="Four-icons">
-            <img src="images/preview.svg" alt="prev" />
-            <img src="images/manage course.svg" alt="manage" />
-            <img src="images/grade submissions.svg" alt="submission" />
-            <img src="images/reports.svg" alt="report" />
-          </div>
+          <div class="Four-icons" id="four-icons-id"></div>
         </div>
       </div>
     </div>
@@ -229,5 +293,6 @@
         <p>All rights reserved.</p>
       </div>
     </div>
+    <script src="scripts/dashBoard.js"></script>
   </body>
 </html>

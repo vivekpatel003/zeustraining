@@ -1,5 +1,7 @@
 @import "./login-variables";
 @import "./login-mixin";
+@import "./footer";
+
 @font-face {
     font-family: Quicksand;
     src: url("../Quicksand-VariableFont_wght.ttf");
@@ -7,6 +9,8 @@
  body{
     font-family: $fonts;
     background-color: $bodyBack;
+    box-sizing:border-box;
+    margin: 0;
  }
 
  /* header styling */
@@ -16,13 +20,52 @@
 }
 
 .hamp{
-    visibility: collapse;
+    @include Displaytype(none);
 }
-.dashboard{
-    color: $formBack;
+#hamp-menu-id{
+    @include Displaytype(none);
+}
+#alerts-menu-id > div >div > a > img{
+    height: 18px;
+    width: 15px;
+    display: inline;
+    background-color: white;
+}
+#announces-menu-id > div >div > a > img{
+    height: 18px;
+    width: 15px;
+    display: inline;
+    background-color: white;
+}
+
+.badge1,.badge2,.badge3{
+    position: absolute;
+    top: -10px;
+    right:10px;
+    border-radius: 50%;
+    background-color: #2A7FF3;
+    color: white;
+    z-index: 2;
     border: none;
-    border-bottom: 4px solid $formBack;
-    padding:14px ;
+    visibility: visible;
+}
+.badge1{
+    visibility: visible;
+}
+.badge2{
+    top:-10px;
+    right:10px;
+    visibility: visible;
+    
+}
+.badge3{
+    top:-10px;
+    right:15px;
+    background-color: #FFFFFF;
+    color: #222222;
+}
+.alerts,.announcements,.ProfilePicture{
+    position: relative;
 }
 .header{
     /* text-align: center; */
@@ -34,26 +77,163 @@
     font: normal normal medium 14px/14px ;
     text-transform:uppercase ;
     color: $buttonColor;
+    cursor:pointer;
 }
-
+.navbar{
+    @include Displaytype(flex);
+    width: 100%;
+    position: relative;
+ }
+ .up-an{
+    @include flex(space-between,center);
+    font-size: 12px;
+    padding: 5px;  
+}
+.mid-an{
+     font-size:14px; 
+     padding: 5px;  
+ }
+ .lw-an{
+    @include flex(space-between,center);
+    font-size: 12px;
+    padding: 5px;  
+ }
+ #announces-menu-id{
+    // position: relative;
+    z-index: 15;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top:52px;
+    right: 60px;
+    width:315px ;
+    height: 488px;
+    color: #222222;
+    background-color: white;
+    text-transform: none;
+    box-shadow: 0px 13px 20px #0000003D;
+    overflow: hidden;
+    overflow-y: scroll;
+    display: none;
+}
+.alerts:hover #alerts-menu-id{
+    display: flex;
+}
+.up{
+    @include flex(space-between,center);
+    font-size:14px; 
+    padding: 5px;  
+}
+.mid{
+    font-size: 12px;
+    padding: 5px;
+}
+.lw{
+    align-items: center;
+    text-align: right;
+    font-size: 12px ;
+    padding: 5px;
+    color: #6E6E6E;
+    padding: 5px;
+}
+.al-1,.al-2,.an-1,.an-2{
+    font-weight: 500;
+    background-color: #FFFFEE;
+    border: 1px solid #2222221F;
+    box-sizing: border-box;
+}
+.al-2,.an-2{
+    background-color: #FFFFFF;
+}
+.show-all,.create-new{
+    color:#1F7A54;
+    background-color: #FFFFFF;
+    position: -webkit-sticky;
+    position: sticky;
+    border: none;
+    width: 100%;
+    bottom: 0;
+    height: 46px;
+    cursor: pointer;
+}
+.show-all{
+    border-right:1px solid #0000001F ;
+    line-height: 10%;
+}
+.btns-alt{
+    position: sticky;
+    height: 46px;
+}
+.btns-ans{
+    display: flex;
+}
+#alerts-menu-id{
+    // position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top:52px;
+    right: 108px;
+    width:315px ;
+    height: 488px;
+    color: #222222;
+    background-color: white;
+    text-transform: none;
+    box-shadow: 0px 13px 20px #0000003D;
+    overflow: auto;
+    overflow-y: scroll;
+    display: none;
+}
+#hamp-menu-id a{
+    color: #1F7A54;
+    text-decoration: none;
+    width: 100%;
+    text-align: left;
+    padding-left: 16px;
+}
+#hamp-menu-id > a:hover{
+    background-color: black;
+}
+#hamp-menu-id {
+    position: absolute;
+    top: 40px;
+    right: 21px;
+    @include flex(space-around,center);
+    flex-direction: column;
+    background-color: #FFFFFF;
+    height: 288px;
+    width: 280px;
+    @include Displaytype(none);
+    box-shadow: 0px 13px 20px #0000003D;
+}
+#nav-list-id > a{
+    text-decoration: none;
+    color: $buttonColor;
+}
+#nav-list-id > a :hover{
+    color: white;
+    border-bottom: 4px solid $formBack;
+    padding:14px ; 
+}
 .navbar-logo{
-   @include flex(space-between,default);
+   @include flex(space-between,center);
    flex-shrink: 1;
+   
 }
-.navbar-logo > img{
+.navbar-logo > a >img{
     margin-right: 20px;
+    @include Displaytype(inline)
 }
-.header > .navbar > ul > li{
+.header > .navbar > ul > a >li{
    @include Displaytype(inline);
    margin-right: 20px;
 }
-.logo-img{
-    margin:5px 10px 5px 20px;
+#logo-img{
+    margin-right:auto ;
+    margin-left: 10px;
 }
-.navbar{
-   @include Displaytype(flex);
-    margin-left:auto;
-}
+
 
 
 /* Mid division styling */
@@ -106,6 +286,8 @@ b{
     border: none;
     border-bottom: 1px solid $footColor;
     padding: 1%;
+    padding-left: 0;
+    padding-right: 0;
 }
 .third-second{
     text-align: right;
@@ -167,9 +349,9 @@ select{
     margin-right: 10%;
 }
 .One-icons,.Two-icons,.Three-icons,.Four-icons{
-    @include flex(center,default);
+    @include flex(space-between,default);
     margin: 0 5%;
-    padding:3% 0 ;
+    padding:3% 3% ;
     border: none;
     border-top: 1px solid $footColor;
 }
@@ -207,13 +389,13 @@ strong{
 }
 
 .One-icons > img,.Two-icons > img,.Three-icons > img,.Four-icons > img{
-    margin-right: 10%;
+    
 }
 .One-details > .head{
     width: 100%;
 }
 
-#Teacher{
+#one-Teacher,#two-Teacher,#three-Teacher,#four-Teacher{
     width: 100%;
     background-color: $formBack;
 }
@@ -226,38 +408,54 @@ strong{
     color:$inputColor;
     @include Displaytype(inline);
     background-color: $formBack;
+    width: 12%;
 }
 .Grd
 {
     width: 30%;
 }
-span{
+.expired{
     @include Displaytype(inline);
     color: $spanColor;
     background-color: $spanBack;
     width: 12%;
     text-transform: uppercase;
     padding: 0.5%;
-    
-}
-.Four-main{
-    padding-top: 1%;
 }
 
-@media (max-width:1003px) and (min-width:500px){
+
+@media (max-width:804px) and (min-width:500px){
     
     .fourth-div{
         grid-template-columns: 1fr;
+        margin-left: 75px;
+        margin-right: 75px;
+    }
+    .Mid-div{
+        margin:2% 5%;
     }
     .One,.Two,.Three,.Four
     {
         grid-column: 1/span1;
     }
     .navbar > ul{
-        visibility: hidden;
+        @include Displaytype(none)
     }
     .hamp{
-        visibility: visible;
+        @include Displaytype(block);
+        cursor:pointer;
+    }
+  
+    .navbar{
+        position: relative;
+    }
+   
+    #alerts-menu-id{
+        top:40px;
+    }
+    #announces-menu-id{
+        top:40px;
+        right: 103px;
     }
     
 }
@@ -288,55 +486,16 @@ span{
         font-size: small;
     }
     .navbar > ul{
-        visibility: collapse;
+        @include Displaytype(none)
     }
     .navbar{
         flex-wrap: wrap;
     }
     .hamp{
-        visibility: visible;
+        @include Displaytype(block);
+        cursor:pointer;
     }
     span{
         font-size: small;
     }
-}
-.footer{
-    @include flex(default,center);
-    @include flexRotate();
-    margin-bottom: 0px;
-}
-
-.upper-footer{
-    font: normal normal medium 14px/18px ;
-    text-align: center;
-    color: $inputColor;
-
-}
-.contactus{
-    border-left:1px solid $cntctus  ;
-    padding-left:10px;
-}
-.about{
-    padding-right:10px;
-}
-.footer-logo{
-    border-right:1px solid $cntctus  ;
-    padding-right: 10px;
-    margin-right: 10px;
-}
-.upper-footer > p{ 
-    @include Displaytype(inline);
-}
-.lower-footer > p
-{
-    margin-left:10px;
-} 
-.lower-footer{
-    font: normal normal bold 12px/16px ;
-    color: $footColor;
-    margin: 15px 0 0 0 0;
-    @include flex(center,default);
-    width: 100%;
-    padding: 10px;
-    background-color: $footBack;
 }
