@@ -5,157 +5,70 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home</title>
     <link rel="stylesheet" href="styles/home-style-preprocessor.css" />
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
   </head>
   <body>
     <!-- Header-->
     <div class="header">
       <div class="navbar">
+
         <img id="logo-img" src="" alt="logo" />
+
         <ul id="nav-list-id">
           <!-- script has been added -->
         </ul>
+
         <div class="navbar-logo">
-         <a class="alerts" href="javascript:void(0);"  >
-          <img onmouseover="alertFunc()" onmouseout="closeAlt()" src="images/alerts.svg" alt="alerts" />
-          <button id="badge1-id" class="badge1">2</button>
-        </a>
-          <a class="announcements" href="javascript:void(0);" ><img  onmouseover="announcementFunc()" onmouseout="closeAnn()" src="images/announcements.svg" alt="announcements" /><button id="badge2-id" class="badge2">1</button></a>
-          <a class="ProfilePicture" href=""><img src="images/account_circle.svg" alt="ProfilePicture" /><button class="badge3">T</button></a>
-          <a href="javascript:void(0);"  class="hamp" onmouseover="menuList()" onmouseout="closeHamp()"><img  src="images/hamburger-menu.svg" alt="hampburger" /></a>
-        </div>
-
-        <div id="hamp-menu-id">
-          <a href="#dashboard">DASHBORAD
-            <button></button> </a>
-          <a href="#content">CONTENT
-            <button></button>
+          <a
+            class="alerts"
+            href="javascript:void(0);"      
+          >
+            <img id="alerts-id" src="" alt="alerts" onmouseover="alertFunc()" onmouseout="closeAlt()"/>
+            <button id="badge1-id" class="badge1">2</button>
           </a>
-          <a href="#users">USERS
-            <button></button>
+
+          <a
+            class="announcements" 
+            href="javascript:void(0);"
+            ><img id="announcements-id" src="" alt="announcements" onmouseover="announcementFunc()" onmouseout="closeAnn()"/><button
+              id="badge2-id"
+              class="badge2"
+            >
+            </button>
           </a>
-          <a href="#report">REPORTS
-            <button></button>
+          <a class="ProfilePicture" href=""
+            ><img id="ProfilePicture-id" src="" alt="ProfilePicture" /><button
+              class="badge3" id="badge3-id"
+            >
+            </button>
           </a>
-          <a href="#admin">ADMIN
-            <button></button>
-          </a>
-        </div>
-
-        <div id="alerts-menu-id">
-
-          <div class="al-1">
-            <div class="up">
-              <p>License for Introduction to Algebra has been assigned to your school</p>
-              <a href=""><img src="images/dnd.png" alt="left"></a>
-              </div>
-              <div class="mid"></div>
-            <div class="lw">15-Sep-2018 at 07:21 pm</div>
-          </div>
-
-          <div class="al-2">
-            <div class="up">
-              <p>Lesson 3 Practice Worksheet overdue for Amy Santiago</p>
-              <a href=""><img src="images/correct.png" alt="left"></a>
-              </div>
-              <div class="mid">Course: Advanced Mathematics</div>
-            <div class="lw">15-Sep-2018 at 05:21 pm</div>
-          </div>
-
-          <div class="al-1">
-            <div class="up">
-              <p>23 new students created</p>
-              <a href=""><img src="images/dnd.png" alt="left"></a>
-              </div>
-              <div class="mid"></div>
-            <div class="lw">13-Sep-2018 at 01:15 pm</div>
-          </div>
-
-          <div class="al-1">
-            <div class="up">
-              <p>15 submissions ready for evaluation</p>
-              <a href=""><img src="images/dnd.png" alt="left"></a>
-              </div>
-              <div class="mid"><b>Class:</b> Basics of Algebra</div>
-            <div class="lw">15-Sep-2018 at 07:21 pm</div>
-          </div>
-
+          <a
+            href="javascript:void(0);"
+            class="hamp"
           
-          <div class="al-1">
-            <div class="up">
-              <p>License for Basic Concepts in Geometry has been assigned to your... school</p>
-              <a href=""><img src="images/dnd.png" alt="left"></a>
-            </div>
-            <div class="mid"></div>
-            <div class="lw">15-Sep-2018 at 07:21 pm</div>
+            ><img src="" alt="hampburger" id="hampburger-id"  onmouseover="menuList()"  onmouseout="closeHamp()"/>
+          </a>
+
+          <!-- hampburger menu -->
+          <div id="hamp-menu-id">
           </div>
 
-            <div class="al-2">
-              <div class="up">
-                <p>Lesson 3 Practice Worksheet overdue for Sam Diego</p>
-                <a href=""><img src="images/correct.png" alt="left"></a>
-                </div>
-                <div class="mid">Course: Advanced Mathematics</div>
-              <div class="lw">15-Sep-2018 at 07:21 pm</div>
-            </div>
-
-          <div class="btn-alt">
-            <button class="show-all">   SHOW ALL </button>
-          </div>
-          </div>
-
-
+          <!-- Announcement Menu -->
           <div id="announces-menu-id">
+          </div>
 
-            <div class="an-2">
-              <div class="up-an">
-                <p>PA: Wilson Kumar</p>
-                <a href=""><img src="images/correct.png" alt="left"></a>
-                </div>
-                <div class="mid-an"><p>No classes will be held on 21st Nov</p></div>
-              <div class="lw-an"><p>2 files are attached</p><p>15-Sep-2018 at 07:21 pm</p></div>
-            </div>
-  
-            <div class="an-1">
-              <div class="up-an">
-                <p>PA: Samson White</p>
-                <a href=""><img src="images/dnd.png" alt="left"></a>
-                </div>
-                <div class="mid-an"><p>Guest lecture on Geometry on 20th September</p></div>
-              <div class="lw-an"><p>2 files are attached</p><p>15-Sep-2018 at 07:21 pm</p></div>
-            </div>
+          <!-- alerts Menu -->
+          <div id="alerts-menu-id">
+          </div>
 
-            <div class="an-2">
-              <div class="up-an">
-                <p>PA: Wilson Kumar</p>
-                <a href=""><img src="images/correct.png" alt="left"></a>
-                </div>
-                <div class="mid-an"><p>Additional course materials available on request</p></div>
-              <div class="lw-an"><p>Course: Mathematics 101</p><p>15-Sep-2018 at 07:21 pm</p></div>
-            </div>
-
-            <div class="an-1">
-              <div class="up-an">
-                <p>PA: Wilson Kumar</p>
-                <a href=""><img src="images/dnd.png" alt="left"></a>
-                </div>
-                <div class="mid-an"><p>No classes will be held on 25th Dec</p></div>
-              <div class="lw-an"><p></p><p>15-Sep-2018 at 07:21 pm</p></div>
-            </div>
-            
-            <div class="an-1">
-              <div class="up-an">
-                <p>PA: Wilson Kumar</p>
-                <a href=""><img src="images/dnd.png" alt="left"></a>
-                </div>
-                <div class="mid-an"><p>Additional course materials available on request</p></div>
-              <div class="lw-an"><p>Course: Mathematics 101</p><p>15-Sep-2018 at 07:21 pm</p></div>
-            </div>
-            
-            <div class="btns-ans">
-              <button class="show-all" id="show-all-btn" onclick="showAns()">   SHOW ALL </button><button class="create-new">   CREATE NEW </button>
-            </div>
-            </div>
-          
+        </div>
       </div>
     </div>
 
@@ -263,7 +176,7 @@
               <div class="head">
                 <p id="four-head-id"></p>
               </div>
-
+              
               <div class="sub" id="four-subject-id"></div>
 
               <div class="Grade" id="four-grade-id"></div>
@@ -277,20 +190,12 @@
         </div>
       </div>
     </div>
+
+
     <div class="footer">
-      <div class="upper-footer">
-        <p class="About">About</p>
-        <p class="contactus">Contact Us</p>
+      <div class="upper-footer" id="upper-footer-id">
       </div>
-      <div class="lower-footer">
-        <img
-          class="footer-logo"
-          src="images/logousedinfooter.svg"
-          alt="footer-logo-img"
-        />
-        <p>Copyright © 2020-2021</p>
-        <p>Zeus Systems Pvt. Ltd.</p>
-        <p>All rights reserved.</p>
+      <div class="lower-footer" id="lower-footer-id">
       </div>
     </div>
     <script src="scripts/dashBoard.js"></script>

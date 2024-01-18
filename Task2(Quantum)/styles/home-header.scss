@@ -1,0 +1,249 @@
+@import "./login-variables";
+@import "./login-mixin";
+ 
+ /* header styling */
+ .header>img{
+    max-width: 20%;
+    height: 10%;
+}
+
+.hamp{
+    @include Displaytype(none);
+}
+#hamp-menu-id{
+    @include Displaytype(flex);
+}
+#alerts-menu-id > div >div > a > img{
+    height: 18px;
+    width: 15px;
+    display: inline;
+    background-color: $formBack;
+}
+#announces-menu-id > div >div > a > img{
+    height: 18px;
+    width: 15px;
+    display: inline;
+    background-color:$formBack;
+}
+
+.badge1,.badge2,.badge3{
+    position: absolute;
+    top: -10px;
+    right:10px;
+    border-radius: 50%;
+    background-color: $popCol;
+    color: $formBack;
+    z-index: 2;
+    border: none;
+    visibility: visible;
+}
+.badge1{
+    visibility: visible;
+}
+.badge2{
+    top:-10px;
+    right:10px;
+    visibility: visible;
+    
+}
+.badge3{
+    top:-10px;
+    right:15px;
+    background-color: $formBack;
+    color: $courseCol;
+}
+.alerts,.announcements,.ProfilePicture{
+    position: relative;
+    text-decoration: none;
+    color: $courseCol;
+}
+.announcements{
+    position: relative;
+    text-decoration: none;
+    color: $courseCol;
+}
+
+.header{
+    /* text-align: center; */
+    background-image: url("../images/headerpatternimage.png");
+    background-size: cover;
+    background-color: $headeBackGround;
+    margin-top: 0;
+    @include Displaytype(flex);
+    font: normal normal medium 14px/14px ;
+    text-transform:uppercase ;
+    color: $buttonColor;
+    cursor:pointer;
+}
+.navbar{
+    @include Displaytype(flex);
+    width: 100%;
+    position: relative;
+ }
+ .up-an{
+    @include flex(space-between,center);
+    font-size: 12px;
+    padding: 5px;  
+}
+.mid-an{
+     font-size:14px; 
+     padding: 5px;  
+ }
+ .lw-an{
+    @include flex(space-between,center);
+    font-size: 12px;
+    padding: 5px;  
+ }
+ #announces-menu-id{
+    // position: relative;
+    z-index: 15;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top:52px;
+    right: 60px;
+    width:315px ;
+    height: 488px;
+    color: $courseCol;
+    background-color: $formBack;
+    text-transform: none;
+    box-shadow: 0px 13px 20px $boxShadowcol;
+    overflow: hidden;
+    overflow-y: scroll;
+    display: none;
+    transition: 1s;
+    transition-timing-function: ease;
+}
+.alerts:hover #alerts-menu-id{
+    display: flex;
+}
+.up{
+    @include flex(space-between,center);
+    font-size:14px; 
+    padding: 5px;  
+}
+.mid{
+    font-size: 12px;
+    padding: 5px;
+}
+.lw{
+    align-items: center;
+    text-align: right;
+    font-size: 12px ;
+    padding: 5px;
+    color: $lightBlack;
+    padding: 5px;
+}
+.al-1,.al-2,.an-1,.an-2{
+    font-weight: 500;
+    background-color: $notificationBack;
+    border: 1px solid $light2black;
+    box-sizing: border-box;
+}
+.al-2,.an-2{
+    background-color: $formBack;
+}
+.show-all,.create-new{
+    color:$inputColor;
+    background-color: $formBack;
+    
+    border: none;
+    z-index: 500;
+    width: 100%;
+   
+    height: 46px;
+    cursor: pointer;
+}
+.show-all{
+    border-right:1px solid $light3black;
+    line-height: 10%;
+}
+.btns-alt{
+    position: sticky;
+    height: 46px;
+    bottom: 0;
+}
+.btns-ans{
+    position: sticky;
+    display: flex;
+    bottom: 0;
+}
+#alerts-menu-id{
+    // position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top:52px;
+    right: 108px;
+    width:315px ;
+    height: 488px;
+    color: $courseCol;
+    background-color: $formBack;
+    text-transform: none;
+    box-shadow: 0px 13px 20px $boxShadowcol;
+    overflow: auto;
+    overflow-y: scroll;
+    display: none;
+    transition: 1s;
+    transition-timing-function: ease;
+}
+#hamp-menu-id a{
+    color: $courseCol;
+    text-decoration: none;
+    width: 100%;
+    text-align: left;
+    padding-left: 10px;
+    box-sizing: border-box;
+    @include flex(space-between,default);
+    padding-right:10px; 
+    button{
+        background-color: $formBack;
+        border: none;
+        cursor: pointer;
+    }
+}
+p{
+    @include Displaytype(inline);
+}
+#hamp-menu-id {
+    position: absolute;
+    top: 40px;
+    right: 21px;
+    @include flex(space-around,center);
+    flex-direction: column;
+    background-color: $formBack;
+    height: 288px;
+    width: 280px;
+    @include Displaytype(none);
+    box-shadow: 0px 13px 20px $boxShadowcol;
+    transition:display 10s;
+    transition-timing-function: ease;
+}
+#nav-list-id > a{
+    text-decoration: none;
+    color: $buttonColor;
+}
+#nav-list-id > a :hover{
+    color: $formBack;
+    border-bottom: 4px solid $formBack;
+    padding:14px ; 
+}
+.navbar-logo{
+   @include flex(space-between,center);
+   flex-shrink: 1;
+   
+}
+.navbar-logo > a >img{
+    margin-right: 20px;
+    @include Displaytype(inline)
+}
+.header > .navbar > ul > a >li{
+   @include Displaytype(inline);
+   margin-right: 20px;
+}
+#logo-img{
+    margin-right:auto ;
+    margin-left: 10px;
+}
+

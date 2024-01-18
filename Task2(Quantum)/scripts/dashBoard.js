@@ -1,3 +1,4 @@
+  
 let logoImg = document.getElementById("logo-img");
 let ulList = document.getElementById("nav-list-id");
 let firstTabImg = document.getElementById("first-tab-img") 
@@ -37,13 +38,37 @@ let fourTeachersId = document.getElementById("four-Teacher")
 let hampMenuId = document.getElementById("hamp-menu-id")
 let alertID = document.getElementById("alerts-menu-id")
 let announceId = document.getElementById("announces-menu-id")
+let badge1Id = document.getElementById("badge1-id")
+let badge2Id = document.getElementById("badge2-id")
+let badge3Id = document.getElementById("badge3-id")
+let alertImggId = document.getElementById("alerts-id")
+let announcementImgId = document.getElementById("announcements-id")
+let profileImgId = document.getElementById("ProfilePicture-id")
+let hampImgId = document.getElementById("hampburger-id")
+let upperFooterId = document.getElementById("upper-footer-id")
+let lowerFooterId = document.getElementById("lower-footer-id")
 
 let dashBoard = {
+    dropIcon:`<i class="fa-solid fa-caret-down"></i>`,
     logoImgLink:"images/logo used in header.svg",
     navList: ["dashBoard","content","Users","Reports","Admin"],
+    badgeList:[badge1Id,badge2Id,badge3Id],
+    buttonContent:[1,2,'T'],
+    iconList:[alertImggId,announcementImgId,profileImgId,hampImgId],
+    logoIcons:["images/alerts.svg","images/announcements.svg","images/account_circle.svg","images/hamburger-menu.svg"],
+    alertClass:["al-1","al-2","al-1","al-1","al-1","al-2"],
+    iconStatusImg:["images/dnd.png","images/correct.png"],
+    courseAltNot:["","Course: Advanced Mathematics","","<b>Class:</b> Basics of Algebra","","Course: Advanced Mathematics"],
+    dateAltNot:["15-Sep-2018 at 07:21 pm","15-Sep-2018 at 05:21 pm","13-Sep-2018 at 01:15 pm","15-Sep-2018 at 07:21 pm","15-Sep-2018 at 07:21 pm","15-Sep-2018 at 07:21 pm"],
     alertMenu:["License for Introduction to Algebra has been assigned to your school","Lesson 3 Practice Worksheet overdue for Amy Santiago",
                 "23 new students created","15 submissions ready for evaluation","License for Basic Concepts in Geometry has been assigned to your... school",
                 "License for Basic Concepts in Geometry has been assigned to your... school"],
+
+    announceClass:["an-2","an-1","an-2","an-1","an-1"],
+    proffName:["PA: Wilson Kumar","PA: Samson White","PA: Wilson Kumar","PA: Wilson Kumar","PA: Wilson Kumar","",""],
+    courseAncNot:["2 files are attached","2 files are attached","Course: Mathematics 101","","Course: Mathematics 101"],
+    dateAncNot:["15-Sep-2018 at 07:21 pm","15-Sep-2018 at 07:21 pm","15-Sep-2018 at 07:21 pm","15-Sep-2018 at 07:21 pm","15-Sep-2018 at 07:21 pm"],
+    announceMenu:["No classes will be held on 21st Nov","Guest lecture on Geometry on 20th September","Additional course materials available on request","No classes will be held on 25th Dec","Additional course materials available on request",""],
     secondTab:{
         course:{
                 logo:"images/courses.svg",
@@ -83,6 +108,11 @@ let dashBoard = {
                 ["<strong>2</strong>Units","<strong>15</strong>Lessons","<strong>20</strong>Topics"]],
         teachers:["All Classes","No Classes","Mr. Frank's Class B","Mr. Frank's Class A"],
         icons:["images/preview.svg","images/manage course.svg","images/grade submissions.svg","images/reports.svg"]
+    },
+    footerTab:{
+        upperFooter:["About","Contact Us"],
+        lowerFooter:["Copyright © 2020-2021","Zeus Systems Pvt. Ltd.","All rights reserved."],
+        logoImg:"images/logousedinfooter.svg"
     }
 };
 
@@ -95,7 +125,7 @@ function renderNew()
     secondTab();
     thirdTab();
     cards();
-   
+   footerTab();
 }
 function navList()
 {
@@ -108,10 +138,132 @@ function navList()
                         ${headNav[i]}            
                     </li><a>`;    
     }
-    
     ulList.innerHTML = str;
-}
+    let arr1 = dashBoard.badgeList;
+    let arr2 = dashBoard.buttonContent;
+    for(let i=0;i<arr1.length;i++)
+    {
+        arr1[i].textContent = arr2[i] 
+    }
+    arr1 = dashBoard.iconList;
+    arr2 = dashBoard.logoIcons;
+    for(let i=0;i<arr1.length;i++)
+    {
+        
+             arr1[i].src = arr2[i];    
+    }
+    arr1 = dashBoard.navList;
+    str=''
+    for(let i=0;i<arr1.length;i++)
+    {
+        str += `<a href="#${arr1[i]}">
+                    <p>${arr1[i]}</p> 
+                    <button>${dashBoard.dropIcon}</button>
+                </a>`
+    }
+    hampMenuId.innerHTML = str;
 
+
+
+    str=''
+    arr1 = dashBoard.alertClass;
+   for(let i=0;i<arr1.length;i++)
+   {
+    if(arr1[i]==="al-1"){
+      str+= `<div class="${arr1[i]}">
+       <div class="up">
+       <p>${dashBoard.alertMenu[i]}
+       </p>
+       <a href=""><img src="${dashBoard.iconStatusImg[0]}" alt="left" /></a>
+       </div>
+       <div class="mid">${dashBoard.courseAltNot[i]}</div>
+       <div class="lw">${dashBoard.dateAltNot[i]}</div>
+       </div>`
+    }
+    else{
+        str+= `<div class="${arr1[i]}">
+       <div class="up">
+       <p>${dashBoard.alertMenu[i]}
+       </p>
+       <a href=""><img src="${dashBoard.iconStatusImg[1]}" alt="seen" /></a>
+       </div>
+       <div class="mid">${dashBoard.courseAltNot[i]}</div>
+       <div class="lw">${dashBoard.dateAltNot[i]}</div>
+       </div>`
+        }
+    }
+    alertID.innerHTML = str+`<div class="btns-alt">
+    <button class="show-all">SHOW ALL</button>
+  </div>`;
+
+
+
+  str=''
+  arr1 = dashBoard.announceClass;
+ for(let i=0;i<arr1.length;i++)
+ {
+    if(arr1[i]==="an-1"){
+    str += `<div class="${arr1[i]}">
+              <div class="up-an">
+                <p>${dashBoard.proffName[i]}</p>
+                <a href=""><img src="${dashBoard.iconStatusImg[0]}" alt="left" /></a>
+              </div>
+              <div class="mid-an">
+                <p>${dashBoard.announceMenu[i]}</p>
+              </div>
+              <div class="lw-an">
+                <p>${dashBoard.courseAncNot[i]}</p>
+                <p>${dashBoard.dateAncNot[i]}</p>
+              </div>
+            </div>`
+    }
+    else{
+        str += `<div class="${arr1[i]}">
+              <div class="up-an">
+                <p>${dashBoard.proffName[i]}</p>
+                <a href=""><img src="${dashBoard.iconStatusImg[1]}" alt="left" /></a>
+              </div>
+              <div class="mid-an">
+                <p>${dashBoard.announceMenu[i]}</p>
+              </div>
+              <div class="lw-an">
+                <p>${dashBoard.courseAncNot[i]}</p>
+                <p>${dashBoard.dateAncNot[i]}</p>
+              </div>
+            </div>`
+    }
+ }
+ announceId.innerHTML = str+`<div class="btns-ans">
+              <button class="show-all" id="show-all-btn" onclick="showAns()">
+                SHOW ALL</button
+              ><button class="create-new">CREATE NEW</button>
+            </div>`
+
+
+}
+function footerTab()
+{
+    let arr1 = dashBoard.footerTab.upperFooter;
+    str=''
+    for(let i=0;i<arr1.length;i++)
+    {
+        str+=`<p class="${arr1[i]}">${arr1[i]}</p>`
+    }
+    upperFooterId.innerHTML = str;
+
+    arr1 = dashBoard.footerTab.lowerFooter;
+    str=`<img
+    class="footer-logo"
+    src="${dashBoard.footerTab.logoImg}"
+    alt="footer-logo-img"
+  />`
+    for(let i=0;i<arr1.length;i++)
+    {
+        str+=`<p class="${arr1[i]}">${arr1[i]}</p>`
+    }
+    lowerFooterId.innerHTML = str;
+
+}
 function secondTab()
 {
     firstTabImg.src = dashBoard.secondTab.course.logo;
@@ -246,6 +398,7 @@ function cards()
 
 function menuList()
 {
+     
     if(hampMenuId.style.display==="none")
     {
         hampMenuId.style.display="flex";
