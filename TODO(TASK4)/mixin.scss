@@ -1,0 +1,31 @@
+@mixin flexFunc($jst,$aln){
+    display:flex;
+    justify-content: $jst;
+    align-items: $aln;
+}
+
+@mixin font($fs,$ff,$fw,$fc)
+{
+    font-size:$fs ;
+    font-family:$ff ;
+    font-weight:$fw ;
+    color:$fc ;
+}
+
+@mixin margin($u,$r,$d,$l)
+{
+    margin: $u $r $d $l;
+}
+
+@mixin position($pos,$u,$r,$d,$l)
+{
+    position: $pos;
+    top:$u;
+    right:$r;
+    down:$d;
+    left:$l;
+}
+
+@mixin backgroundColor($color){
+    background-color: $color;
+}

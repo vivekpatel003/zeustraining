@@ -1,14 +1,10 @@
+@import "./mixin";
 body,html{
     width: 100%;
     height: 100%;
     margin: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include flexFunc(center,center);
     font-family: 'Oswald', sans-serif;
-    font-family: 'Roboto', sans-serif;
-    font-family: 'Roboto Serif', serif;
-    background-color:#8d988d;
 }
 h1{
     width: 100%;
@@ -23,8 +19,6 @@ li{
     padding: 8px;
     margin: 8px 0;
     box-shadow: 0 2px 5px 2px black;
-    line-height: 40px;
-    background-color: #ffe4d2;
 }
 ul{
     width: 100%;
@@ -35,15 +29,13 @@ ul{
 .main{
         display: grid;
         grid-auto-columns: repeat(auto-fill,150px);
-        background-color: #d1c4ec;
-        backdrop-filter: blur(0px);
+        background-color: white;
         width: 30%;
-        box-shadow: 2px 4px 20px 2px white;
+        box-shadow: 2px 4px 20px 2px blue;
         margin:150px 50px;
 }
 body > div > div{
-    display: flex;
-    justify-content: space-evenly;
+    @include flexFunc(space-evenly,default);
     margin-bottom: 10px;
 }
 h2{
@@ -55,22 +47,14 @@ h2{
 }
 button{
     border-radius: 5px;
-    background-color: black;
-    color: white;
+    background-color: aliceblue;
+    color: green;
     border: 1px solid #616161;
     padding: 10px;
-    cursor: pointer;
-    font-weight: 700;
-   
 }
-
 input{
     width: 100%;
     margin: 10px;
     border:none;
     border-bottom: 1px solid black;
-    line-height: 30px;
-    border-radius: 5px;
-    font-size: large;
-    text-align: center;
 }

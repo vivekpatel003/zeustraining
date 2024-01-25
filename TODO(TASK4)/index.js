@@ -3,9 +3,32 @@ const removeBtn = document.querySelector('.Remove')
 const todoList = document.getElementById('todo-list')
 const inpt = document.getElementById('task-input')
 const head2 = document.querySelector('h2')
+// let jsonData = '';
+//         fetch('./index.json')
+//         .then((res)=>{
+//             if(!res.ok)
+//             {
+//                 throw new Error (`HTTP error! status ${res.status}`)
+//             }
+//             return res.json();
+//         }).then((data)=>{
+            
+//             console.log("The data is:",  data)
+
+//         })
+//         .catch((error)=>{
+//             console.error("unable to fetch data:",error);
+//         })
+// console.log("This is json data",typeof jsonData)
+// const sample =require("./index.json");
+// script.js
+// import user from "./index.json" assert { type: 'json' };
+// console.log(user)
+
+
 
 document.addEventListener("DOMContentLoaded",()=>{
-    str=''
+    let str=''
     Object.keys(localStorage).forEach((key)=>{
         str+=`<li>${localStorage[key]}</li>`; 
     })
@@ -44,7 +67,6 @@ removeBtn.addEventListener("click",()=>{
         else
         str+=`<li>${localStorage[key]}</li>`; 
     })
-    
     todoList.innerHTML = str;
     if(localStorage.length === 0)
     {
