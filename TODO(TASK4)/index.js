@@ -77,9 +77,13 @@ removeBtn.addEventListener("click",()=>{
     } 
 })
 todoList.addEventListener("click",(e)=>{
-    if( e.target.style.backgroundColor === "green")
-        e.target.style.backgroundColor = "white";
-    else    
+    if( e.target.style.backgroundColor === "green"){
+        e.target.style.backgroundColor = "#ffe4d2";
+        e.target.style.textDecoration = "none";
+    }
+    else{
+        e.target.style.textDecoration = "line-through";
         e.target.style.backgroundColor = "green";
+    }
     
 });
