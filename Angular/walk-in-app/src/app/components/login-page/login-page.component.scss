@@ -1,0 +1,109 @@
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Quicksand;
+    letter-spacing: 0px;
+}
+body{
+    background-color: #EEEEEE;
+}
+.mid-tab{
+        background-color: #FFFFFF;
+        width: 488px;
+        height: 419px;
+        box-sizing: border-box;
+        margin: 143px 268px 90px 268px;
+        border: 1px solid #FFFFFF;
+        border-top:4px solid #3AC7EC;
+}
+form{
+    padding: 24px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 419px;
+}
+form div{
+    position: relative;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0px;
+}
+form div span{
+    text-transform: uppercase;
+    color: #1F7A54;
+    position: absolute;
+    right: 0px;
+    
+}
+input{
+    line-height: 25px;
+    display: block;
+    width: 100%;
+    border:none;
+    border-bottom: 1px solid #00000012;
+    font-size: 16px;
+}
+form .password-input-box input{
+    background-image: url('../../../assets/WalkInPortal-Icons-ListingtoSuccessflow/preview.svg');
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: 22px 17px;
+}
+
+
+form h2{
+    color: #222222;
+    text-align: center;
+    letter-spacing: 0px;
+    font-weight: medium;
+    font-size: 28px;
+}
+
+button{
+    display: block;
+    height: 40px;
+    width: 216px;
+    box-sizing: border-box;
+    padding: 11px 65px ;
+    font-size: 14px;
+    font-weight: 600;
+    color: #1F2834;
+    background-color: #3FD28B;
+    box-shadow: 0px 3px 5px #0000003D;
+    border: none;
+}
+.remember-checkbox input{
+    display: inline;
+    width:18px;
+    height: 24px;
+    box-sizing: border-box;
+    margin:0px;
+    background-color: #1F7A54;
+    margin-right: 5px;
+}
+.remember-checkbox{
+    display: flex;
+    align-items: center;
+}
+.login-button{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+form .create-register-text{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 4px;
+    align-items: center;
+}
+form .create-register-text a{
+    text-decoration: none;
+    color: #1F7A54;
+    font-weight: 600;
+}
+input[type='checkbox'] {
+    accent-color: #1F7A54;
+}

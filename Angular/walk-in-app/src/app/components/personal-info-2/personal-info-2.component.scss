@@ -1,0 +1,175 @@
+.main-tab{
+    margin: 24px ;
+    font-family: Quicksand;
+    margin-bottom: 0;
+}
+.status-tab{
+    background-color: #FFFFFF;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 14px;
+    font-weight: 600;
+    
+}
+.status-tab div{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+}
+hr{
+    border: none;
+    width: 30%;
+    height: 0px;
+    border:2px solid #EEEEEE;
+}
+
+.status-tab div span{
+    background-color: #757575;
+    height: 32px;
+    width: 32px;
+    text-align: center;
+    border-radius: 50%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin-right: 8px;
+    font-size: 16px;
+    font-weight: 600;
+}
+.personal-button span{
+    background-color: #3FD28B;
+}
+.personal-button span img{
+    height: 16px;
+    width:12px;
+}
+.education-qualification-tab{
+    margin-top: 24px;
+}
+.education-qualification-header{
+    background-color:#DBEFFF ;
+    height: 55px;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;   
+}
+.education-qualification-header h2,.education-qualification-header div img{
+    padding: 16px;
+}
+.education-qualification-header div {
+    padding-left: 10px;
+    border-left:1px solid #0000006d;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content:center ;
+}
+.education-qualification-form{
+    background-color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+}
+
+form{
+    padding: 24px;
+    width: 100%;
+}
+.education-qualification-form form div{
+    margin-bottom: 40px;
+}
+.passing-year-box{
+    width: 317.4px;
+}
+.education-qualification-form form div select{
+    width: 100%;
+    display: block;
+    height: 25px;
+    border: none;
+    border-bottom: 1px solid #5d5b5bcd;
+}
+.education-qualification-form form div input{
+    display: block;
+    line-height: 25px;
+    width: 183.4px;
+    border: none;
+    border-bottom: 1px solid #5d5b5bcd;
+}
+.two-span-tab{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.two-span-tab div:nth-child(1)
+{
+    grid-column: 1 /span 1;
+}
+.two-span-tab div:nth-child(2)
+{
+    grid-column: 2 /span 1;
+    padding-left: 24px;
+    
+}
+input{
+    line-height: 25px;
+}
+
+.professional-qualification-tab{
+    margin-top: 24px;
+}
+.professional-qualification-header{
+    background-color:#DBEFFF ;
+    height: 55px;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+}
+
+.professional-qualification-header h2,.professional-qualification-header div img{
+    padding: 16px;
+}
+.professional-qualification-header div {
+    padding-left: 10px;
+    border-left:1px solid #0000006d;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content:center ;
+}
+.mode-of-apllication-tab{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    background-color: #FFFFFF;
+    height: 100px;
+    padding: 24px;
+}
+.mode-of-apllication-tab label{
+    margin-bottom:13px ;
+    color: #666666;
+    font-size: 12px;
+}
+.mode-of-apllication-tab div label{
+    margin-right: 24px;
+    margin-left:9px;
+    font-size: 20px;
+    font-weight: 600;
+    color: #222222;
+}
+.mode-of-apllication-tab div{
+    display: flex;
+    justify-content: center;
+}
+.mode-of-apllication-tab div input{
+    height: 24px;
+    width: 24px;
+    accent-color: #1F7A54;
+}

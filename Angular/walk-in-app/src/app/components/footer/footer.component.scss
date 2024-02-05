@@ -1,0 +1,26 @@
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Quicksand;
+}
+.footer{
+    position:absolute;
+    bottom: 0px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    
+}
+.footer p{
+    padding: 0 18px;
+    color: #1F7A54;
+    font-size: 14px;
+}
+.footer p:nth-child(1)
+{
+    border: none;
+    border-right: 1px solid #0000001F;
+    
+}

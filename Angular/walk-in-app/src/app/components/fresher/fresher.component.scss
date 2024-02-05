@@ -1,0 +1,72 @@
+.main-fresher-tab{
+    background-color: #FFFFFF;
+    margin:24px;
+    margin-top: 8px;
+    font-family: Quicksand;
+}
+form{
+    padding: 24px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+form div{
+    grid-column: 1/span 1;
+    color: #666666;
+    text-transform: capitalize;
+    font-size: 12px;
+    margin-bottom:40px;
+}
+
+input{
+    width: 100%;
+    line-height: 25px;
+    border:none;
+    border-bottom: 1px solid #5d5b5bcd;
+    accent-color: #1F7A54;
+}
+.subjects-box div input{
+    width: 18px;
+    height: 24px;
+}
+.subjects-box div input[type="text"]{
+    width: 100%;
+    display: block;
+}
+.subjects-box div label{
+    margin-left:9px;
+    color: #222222;
+    font-weight: 600;
+    font-size: 16px;
+}
+.subjects-box div{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    margin-bottom: 20px;
+    margin-top:18px ;
+}
+
+form div:nth-child(1){
+    margin-bottom: 0;
+}
+
+.worked-option-box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.worked-option-box div{
+    display: flex;
+    align-items: start;
+    justify-content: start;
+}
+.worked-option-box input{
+    width: 18px;
+    height: 24px;
+}
+.worked-option-box label{
+    color: #222222;
+    font-size:16px ;
+    margin-left: 9px;
+    font-weight: 600;
+}

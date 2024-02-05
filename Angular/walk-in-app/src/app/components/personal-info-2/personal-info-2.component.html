@@ -1,0 +1,95 @@
+<div class="main-tab">
+    <div class="status-tab">
+        <div  class="personal-button">
+            <span style="background-color: #3FD28B;"><img src="../../../assets/WalkInPortal-Icons-ListingtoSuccessflow/pencile.svg" alt=""></span>
+            <p>Personal Information</p>
+        </div>
+        <hr/>
+        <div class="qualification-button">
+            <span style="background-color: #3FD28B;">2</span>
+            <p>Qualifications</p>
+        </div>
+        <hr/>
+        <div class="review-button">
+            <span>3</span>
+            <p>Review and Proceed</p>
+        </div>
+</div>
+
+<div class="education-qualification-tab">
+    <div class="education-qualification-header">
+        <h2>Educational Qualifications</h2>
+        <div>
+            <img src="../../../assets/WalkInPortal-Icons-ListingtoSuccessflow/drop-down.png" alt="">
+        </div>
+    </div>
+
+
+    <div class="education-qualification-form">
+        <form #educationQualification = "ngForm">
+            <div >
+                <label for="percentage">Aggregate Percentage*</label>
+                <input type="text" name="percentage" #percentage>
+            </div>
+
+            <div class="passing-year-box">
+                <label for="passingYear">Year of Passing*</label>
+                <select name="passingyear" #passingYear>
+                    <option value=""></option>
+                </select>
+            </div>
+
+
+            <div class="two-span-tab">
+                <div>
+                    <label for="qualification">Qualification*</label>
+                    <select name="Qualification" #qualification>
+                        <option value=""></option>
+                </select>
+            </div>
+            <div>
+                <label for="stream">Stream*</label>
+                <select name="Stream" #stream>
+                    <option value=""></option>
+                </select>
+            </div>
+        </div>
+
+        <div class="two-span-tab">
+            <div>
+                <label for="college">College*</label>
+                <select name="collegeName" #college>
+                    <option value=""></option>
+                </select>
+        </div>
+        <div>
+            <label for="otherCollege">If others, please enter your college name</label>
+            <input style="width: 100%;" type="text" #otherCollege name="otherCollege">
+        </div>
+    </div>
+
+    <div>
+        <label for="collegeLocation">Where is your college located?*</label>
+        <input type="text" #collegeLocation name="collegeLocation">
+    </div>
+        </form>
+    </div>
+</div>
+
+<div class="professional-qualification-tab"> 
+    <div class="professional-qualification-header">
+        <h2>Professional Qualifications</h2>
+        <div>
+            <img src="../../../assets/WalkInPortal-Icons-ListingtoSuccessflow/drop-down.png" alt="">
+        </div>
+    </div>
+    <div class="mode-of-apllication-tab">
+        <label for="">Applicant Type*</label>
+        <div>
+            <input type="radio" #fresher name="typeOfUser"><label for="fresher">Fresher</label>
+            <input type="radio" checked #experienced name="typeOfUser"><label for="experienced">Experienced</label>
+        </div>
+    </div>
+    
+</div>
+</div>

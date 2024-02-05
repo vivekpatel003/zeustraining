@@ -1,0 +1,32 @@
+.create-account-tab{
+    background-color: #3C4E62;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: Quicksand;
+    height: 48px;
+}
+.create-account-tab img{
+    margin-left: 24px;
+}
+.create-account-tab h3{
+    color: #FFFFFF;
+    letter-spacing: 0px;
+    text-transform: capitalize;
+}
+.create-account-tab div{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-right: 24px;
+}
+.create-account-tab div button{
+    background-color: #3FD28B;
+    color: #1F2834;
+    box-shadow: 0px 3px 5px #0000003D;
+    border:none;
+    margin-left:16px;
+    width: 90px;
+    height: 22px;
+    text-transform: uppercase;
+}

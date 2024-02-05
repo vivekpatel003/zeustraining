@@ -1,0 +1,17 @@
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+header{
+    background-color:black ;
+    background-image: url('../../../assets/WalkInPortal-Icons-ListingtoSuccessflow/headerpatternimage.png');
+    background-size: cover;
+    height: 56px;
+    width: 100%;
+    padding: 10.5px 0 9.5px 24px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    border-bottom: 2px solid #31B9E4;
+}
