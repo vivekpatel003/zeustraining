@@ -1,48 +1,44 @@
+@import "../header/mixin.scss";
+@import "../header/variables.scss";
 .main-tab{
     margin: 24px ;
     font-family: Quicksand;
     margin-bottom: 0;
 }
 .status-tab{
-    background-color: #FFFFFF;
-    display: flex;
+    background-color: $light-White;
+    box-shadow: 0px 4px 6px $box-shadow-color;
+    @include flex(space-around,center,default);
     flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-around;
     font-size: 14px;
     font-weight: 600;
-    
 }
 .status-tab div{
-    display: flex;
+    @include flex(space-between,center,default);
     flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
     padding: 10px;
 }
 hr{
     border: none;
     width: 30%;
     height: 0px;
-    border:2px solid #EEEEEE;
+    border:2px solid $hr-color;
 }
 
 .status-tab div span{
-    background-color: #757575;
+    background-color: $left-color;
     height: 32px;
     width: 32px;
     text-align: center;
     border-radius: 50%;
-    display: flex;
+    @include flex(center,center,default);
     flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
     margin-right: 8px;
     font-size: 16px;
     font-weight: 600;
 }
 .personal-button span{
-    background-color: #3FD28B;
+    background-color: $button-color;
 }
 .personal-button span img{
     height: 16px;
@@ -52,30 +48,25 @@ hr{
     margin-top: 24px;
 }
 .education-qualification-header{
-    background-color:#DBEFFF ;
+    background-color:$header-tag-color;
+    box-shadow: 0px 4px 6px $box-shadow-color;
     height: 55px;
     text-align: left;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;   
+    @include flex(space-between,center,default);  
 }
 .education-qualification-header h2,.education-qualification-header div img{
     padding: 16px;
 }
 .education-qualification-header div {
     padding-left: 10px;
-    border-left:1px solid #0000006d;
+    border-left:1px solid $lable-color;
     height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content:center ;
+    @include flex(center,center,default); 
 }
 .education-qualification-form{
-    background-color: #FFFFFF;
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    justify-content: center;
+    background-color: $light-White;
+    box-shadow: 0px 4px 6px $box-shadow-color;
+    @include flex(center,start,column); 
 }
 
 form{
@@ -93,14 +84,14 @@ form{
     display: block;
     height: 25px;
     border: none;
-    border-bottom: 1px solid #5d5b5bcd;
+    border-bottom: 1px solid $lable-color;
 }
 .education-qualification-form form div input{
     display: block;
     line-height: 25px;
     width: 183.4px;
     border: none;
-    border-bottom: 1px solid #5d5b5bcd;
+    border-bottom: 1px solid $lable-color;
 }
 .two-span-tab{
     display: grid;
@@ -124,12 +115,11 @@ input{
     margin-top: 24px;
 }
 .professional-qualification-header{
-    background-color:#DBEFFF ;
+    background-color:$header-tag-color;
+    box-shadow: 0px 4px 6px $box-shadow-color;
     height: 55px;
     text-align: left;
-    display: flex;
-    align-items: center;
-    justify-content: space-between; 
+    @include flex(space-between,center,default);
 }
 
 .professional-qualification-header h2,.professional-qualification-header div img{
@@ -137,24 +127,20 @@ input{
 }
 .professional-qualification-header div {
     padding-left: 10px;
-    border-left:1px solid #0000006d;
+    border-left:1px solid $lable-color;
     height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content:center ;
+    @include flex(center,center,default);
 }
 .mode-of-apllication-tab{
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    justify-content: center;
-    background-color: #FFFFFF;
+    @include flex(center,start,column);
+    background-color: $light-White;
+    box-shadow: 0px 4px 6px $box-shadow-color;
     height: 100px;
     padding: 24px;
 }
 .mode-of-apllication-tab label{
     margin-bottom:13px ;
-    color: #666666;
+    color: $lable-color;
     font-size: 12px;
 }
 .mode-of-apllication-tab div label{
@@ -162,14 +148,13 @@ input{
     margin-left:9px;
     font-size: 20px;
     font-weight: 600;
-    color: #222222;
+    color: $black-font;
 }
 .mode-of-apllication-tab div{
-    display: flex;
-    justify-content: center;
+    @include flex(center,default,default);
 }
 .mode-of-apllication-tab div input{
     height: 24px;
     width: 24px;
-    accent-color: #1F7A54;
+    accent-color: $light-green;
 }

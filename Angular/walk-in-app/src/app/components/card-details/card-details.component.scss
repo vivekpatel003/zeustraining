@@ -1,0 +1,231 @@
+@import "../header/mixin.scss";
+.main-tab{
+    margin:24px;
+}
+.card-tab{
+    background-color: #FFFFFF;
+    padding: 16px;
+    margin-bottom: 0;
+    box-shadow: 0px 4px 6px #0000003D;
+}
+.card-tab> div{
+    margin-bottom:16px;
+}
+label{
+    color: #666666;
+    font-size: 12px;
+}
+p{
+    color: #222222;
+    font-weight: 600;
+    font-size: 16px;
+}
+.card-tab-header{
+    @include flex(space-between,center,default);
+}
+.card-second-tab{
+    @include flex(start,default,default);
+    height: 41px;
+}
+.card-second-tab div:nth-child(2){
+    @include flex(space-between,end,default);
+    padding-left: 16px;
+    img{
+        width: 18px;
+        height: 20px;
+    }
+
+}
+.card-second-tab div:nth-child(1)
+{
+    @include flex(space-between,start,column);
+    padding-right: 16px;
+}
+
+.card-lower-tab > div{
+        @include flex(default,default,default);
+        div p{
+            display: inline;
+        }
+        div{
+            margin: 18px;
+            @include flex(default,center,default);
+        }
+
+}
+.card-lower-tab  div div img{
+    margin-right: 8px;
+    border-radius: 50%;
+}
+.card-lower-tab div div {
+    margin-left:0; 
+}
+.card-lower-tab div div p{
+    color: #1F7A54;
+    font-size: 14px;
+}
+@include button( 5px 16px);
+
+
+.Pre-requisites-head-tab{
+    background-color: #DBEFFF;
+    box-shadow: 0px 4px 6px #0000003D;
+    height: 40px;
+    @include flex(space-between,center,default);
+    margin-top: 0;
+    padding:0 16px;
+    div{
+        border-left:1px solid #666666;
+        padding-left: 10px;
+    }
+    img{
+        width: 15px;
+        height: 24px;
+    }
+}
+.card-details{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr  3fr 1px 4fr 1px 1fr;
+    background-color: #FFFFFF;
+    box-shadow: 0px 4px 6px #0000003D;
+    margin-top: 24px;
+    padding: 16px;
+    padding-bottom: 0;
+    label{
+        color: #666666;
+        font-size: 12px;
+    }
+    h3{
+        grid-row: 1/ span 1;
+        color: #222222;
+        line-height: 20px;
+    }
+    hr{
+        width: 100%;
+        grid-column: 1 /span 2;
+        grid-row: 3/span 1;
+        background-color: #666666;
+    }
+    .second-hr{
+        grid-row: 5/span 1;
+    }
+    .preferences-box{
+        grid-row: 4/span 1;
+        grid-column: 1 /span 1;
+        padding-bottom: 18px;
+        div{
+            @include flex(default,center,default);
+            margin-top: 20px;
+            input{
+                margin-right:8px;
+                width: 20px;
+                height: 24px;
+                accent-color: #1F7A54;
+            }
+            label{
+                font-weight: 600;
+                color: #222222;
+                font-size: 16px;
+            }
+        }
+    }
+    .time-date-box{
+        grid-row: 2/span 1;
+        grid-column: 1 /span 1;
+        padding-bottom: 18px;
+        div{
+            @include flex(default,center,default);
+            margin-top: 20px;
+            input{
+                margin-right:8px;
+                width: 20px;
+                height: 24px;
+                accent-color: #1F7A54;
+            }
+            label{
+                font-weight: 600;
+                color: #222222;
+                font-size: 16px;
+            }
+        }
+    }
+    .upload-box{
+        grid-column: 1/span 2;
+        grid-row: 6 /span 1;
+        @include flex(space-between,center,default);
+        div{
+            @include flex(start,center,default);
+            img{
+                margin-right: 8px;
+            }
+            p{
+                color: #1F7A54;
+            }
+        }
+        button{
+            border-radius: 50%;
+            height: 32px;
+            width: 32px;
+            @include flex(center,default,default);
+            img{
+                height: 20px;
+                width: 20px;
+            }
+        }
+    }
+}
+.preferences-box > label{
+    margin-top: 18px;
+
+}
+.prerequisite-details-tab{
+    background-color:#FFFFFF;
+    box-shadow: 0px 4px 6px #0000003D;
+    padding: 24px;
+    @include flex(start,start,column);
+    padding-top:0px;
+   
+    div div{
+        @include flex(start,default,default);
+    }
+    li,p{
+        color: #222222;
+        font-size: 14px;
+        font-weight: 600;
+    }
+   li{
+    margin-top: 5px;
+   }
+    label{
+        color: #666666;
+        font-size: 12px;
+    }
+    @include ul;
+    
+}
+.prerequisite-details-tab > div{
+    padding-bottom: 16px;
+    width: 100%;
+    border-bottom: 1px solid  #666666;
+    padding-top:16px ;
+}
+.prerequisite-details-tab > div:last-child{
+    border-bottom: none;
+    padding-bottom: 0;
+}
+.prerequisite-details-tab div:nth-child(1)
+{
+    div{
+        margin-top: 8px;
+    }
+}
+.process-details-tab{
+    @include flex(space-around,start,column);
+    div{
+        @include flex(start,start,column);
+        margin-top:16px;
+        margin-bottom: 16px;
+    }
+    
+}

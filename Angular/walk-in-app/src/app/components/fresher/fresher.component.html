@@ -1,4 +1,4 @@
-<div class="main-fresher-tab">
+<div class="main-tab">
     <form #fresherForm = "ngForm">
         <div>
             <label for="subject">Select All The Technologies You Are Familiar In</label>
@@ -23,25 +23,29 @@
         </div>
 
         <div>
-            <label for="">If others, please mention</label>
-            <input type="text" name="" id="">
+            <label for="otherSubject">If others, please mention</label>
+            <input type="text" name="otherSubject" #otherSubject>
         </div>
 
         <div>
-            <label for="">Have You Appeared For Any Test By Zeus in the past 12 months?*</label>
+            <label for="workOption">Have You Appeared For Any Test By Zeus in the past 12 months?*</label>
             <div class="worked-option-box">
                 <div>
-                    <input type="radio" name="" id=""><label for="">Yes</label>
+                    <input type="radio" name="workOption" #workOption><label for="">Yes</label>
                 </div>
                 <div>
-                    <input type="radio" name="" id=""><label for="">No</label>
+                    <input  type="radio" name="workOption" #workOption><label for="">No</label>
                 </div>
             </div>
         </div>
 
         <div>
-            <label for="">If Yes, which role did you apply for?</label>
-            <input type="text" name="" id="">
+            <label for="roleApplied">If Yes, which role did you apply for?</label>
+            <input type="text" name="roleApplied" #roleApplied>
         </div>
     </form>
+    <div class="button-tab">
+            <button>PREVIOUS</button>
+            <button>NEXT</button>
+    </div>
 </div>

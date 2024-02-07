@@ -1,0 +1,215 @@
+@import "../header/mixin.scss";
+@import "../header/variables.scss";
+.main-tab{
+    margin:24px;
+    font-family: Quicksand;
+}
+
+.status-tab{
+    background-color:$light-White ;
+    box-shadow: 0px 4px 6px $box-shadow-color;
+    @include flex(space-around,center,default);
+    font-size: 14px;
+    font-weight: 600;
+    
+}
+.status-tab div{
+    @include flex(space-between,center,default);
+    padding: 10px;
+}
+hr{
+    border: none;
+    width: 30%;
+    height: 0px;
+    border:2px solid $hr-color;
+}
+
+.status-tab div span{
+    background-color: $left-color;
+    height: 32px;
+    width: 32px;
+    text-align: center;
+    border-radius: 50%;
+    @include flex(center,center,default);
+    flex-wrap: wrap;
+    margin-right: 8px;
+    font-size: 16px;
+    font-weight: 600;
+}
+.status-tab div span{
+    background-color: $button-color;
+}
+.personal-button span img,.qualification-button span img{
+    height: 16px;
+    width:12px;
+}
+.PersonalInfo-edit-tab div img{
+    height: 18px;
+    width: 18px;
+    margin-right: 9px;
+    filter: invert(38%) sepia(71%) saturate(367%) hue-rotate(103deg) brightness(90%) contrast(101%);
+}
+.PersonalInfo-edit-tab{
+    @include flex(space-between,default,default);
+    margin-top:24px;
+}
+.PersonalInfo-edit-tab > p{
+    color:$black-font;
+    font-size: 16px;
+    font-weight:600 ;
+}
+.PersonalInfo-edit-tab div{
+    @include flex(default,default,default);
+}
+.PersonalInfo-edit-tab div p{
+    color:$light-green;
+    font-size: 16px;
+    font-weight:500 ;
+}
+.personal-info-summery{
+    background-color:$light-White;
+    box-shadow: 0px 4px 6px $box-shadow-color;
+    margin-top: 24px;
+    padding: 24px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-radius: 2px;
+}
+.details-tab {
+    @include flex(center,start,column);
+}
+.details-tab > div{
+    margin-bottom: 40px;
+}
+.details-tab > div p:nth-child(1)
+{
+    color: $lable-color;
+    font-size: 12px;
+    font-weight: 500;
+    margin-bottom: 12px;
+}
+.details-tab div div{
+    @include flex(default,center,default);
+}
+.details-tab div div p:nth-child(1){
+    margin-bottom: 0;
+}
+.details-tab > div > div p{
+    margin-right: 8px;
+}
+.details-tab > div > div p:nth-child(2){
+    margin-right: 12px;
+}
+.details-tab > div p:nth-child(2),.details-tab > div > div p,.details-tab div:nth-child(5) p:nth-child(3),.details-tab > div:nth-child(7) > div{
+    color: $black-font;
+    font-size: 16px;
+    font-weight: 600;
+}
+.details-tab div:last-child {
+    @include flex(default,center,default);
+    margin-bottom: 0;
+}
+.details-tab div:last-child > input{
+    margin-right:9px;
+    height:24px ;
+    accent-color: $black-font;
+    width: 18px;
+}
+.details-tab div:last-child > label{
+    color: $black-font;
+    font-size: 14px;
+    font-weight: 600;
+}
+.details-tab div:nth-child(5) p:nth-child(2)
+{
+   text-transform: uppercase;
+}
+.details-tab div:nth-child(5)
+{
+    display: flex;
+    align-items: center;
+}
+.details-tab div>*{
+    margin-right: 8px;
+}
+.details-tab > div:nth-child(7) > div{
+    @include flex(default,start,column);
+    margin-bottom: 16px;
+}
+.details-tab > div:nth-child(7) > div{
+    margin-bottom: 0;
+}
+.details-tab > div:nth-child(7) > div p{
+    margin-bottom: 16px;
+}
+.details-tab > div:nth-child(7) > div p:last-child{
+    margin-bottom: 0;
+}
+.profile-picture-tab img{
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+   
+}
+.profile-picture-tab{
+    @include flex(end,start,default);
+}
+.header-tab{
+    width: 100%;
+    background-color: $header-tag-color;
+    box-shadow: 0px 4px 6px $box-shadow-color;
+    height: 56px;
+    @include flex(default,center,default);
+    padding-left: 24px;
+    color: $black-font;
+    font-weight: 600;
+    font-size: medium;
+    margin-top: 24px;
+}
+label{
+    color: $lable-color;
+    font-weight: 500;
+    font-size: 12px;
+}
+.Qualification-summery p{
+    color: $black-font;
+    font-size: 16px;
+    font-weight: 600;
+}
+.education-summery-tab,.professional-qualification-type-tab,.professional-qualification-summery{
+    background-color: $light-White;
+    box-shadow: 0px 4px 6px $box-shadow-color;
+    padding: 24px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.education-summery-tab > div,.professional-qualification-summery > div{
+    grid-column: 1/span 1;
+    margin-bottom: 40px;
+}
+.education-summery-tab div:nth-child(3),.education-summery-tab div:nth-child(4),.professional-qualification-summery div:nth-child(7){
+    grid-column: 1/span 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.education-summery-tab div:last-child,.professional-qualification-summery:last-child{
+    margin-bottom: 0;
+}
+.education-summery-tab div:nth-child(3) div:nth-child(1),.education-summery-tab div:nth-child(4) div:nth-child(1),.professional-qualification-summery div:nth-child(7) div:nth-child(1){
+    grid-column: 1/span 1;
+}
+.education-summery-tab div:nth-child(3) div:nth-child(2),.education-summery-tab div:nth-child(4) div:nth-child(2),.professional-qualification-summery div:nth-child(7) div:nth-child(2){
+    grid-column: 2/span 1;
+}
+.professional-qualification-summery{
+margin-top:8px ;
+}
+.professional-qualification-summery div:last-child{
+    margin-bottom: 0px;
+}
+.button-tab{
+    width: 100%;
+    @include flex(center,center,default);
+    margin-top: 32px;
+}
+@include button(5px 16px);

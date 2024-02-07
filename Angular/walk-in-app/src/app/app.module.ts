@@ -12,6 +12,11 @@ import { PersonalInfoComponent } from './components/personal-info/personal-info.
 import { PersonalInfo2Component } from './components/personal-info-2/personal-info-2.component';
 import { ExperiencedComponent } from './components/experienced/experienced.component';
 import { FresherComponent } from './components/fresher/fresher.component';
+import { SummeryComponent } from './components/summery/summery.component';
+import { WalkInHomeComponent } from './components/walk-in-home/walk-in-home.component';
+import { CardDetailsComponent } from './components/card-details/card-details.component';
+import { JobDetailsComponent } from './components/job-details/job-details.component';
+import { HallTicketPageComponent } from './components/hall-ticket-page/hall-ticket-page.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +28,12 @@ import { FresherComponent } from './components/fresher/fresher.component';
     PersonalInfoComponent,
     PersonalInfo2Component,
     ExperiencedComponent,
-    FresherComponent
+    FresherComponent,
+    SummeryComponent,
+    WalkInHomeComponent,
+    CardDetailsComponent,
+    JobDetailsComponent,
+    HallTicketPageComponent
   ],
   imports: [
     BrowserModule,

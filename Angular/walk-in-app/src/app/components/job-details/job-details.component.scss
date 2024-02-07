@@ -1,0 +1,64 @@
+@import "../header/mixin.scss";
+@import "../header/variables.scss";
+.main-tab{
+    margin:24px;
+    box-shadow: 0px 4px 6px $box-shadow-color;
+}
+.job-details-head-tab{
+    background-color: $header-tag-color;
+    height: 40px;
+    @include flex(space-between,center,default);
+    margin-top: 0;
+    padding:0 16px;
+    div{
+        border-left:1px solid $lable-color;
+        padding-left: 10px;
+    }
+    img{
+        width: 15px;
+        height: 24px;
+    }
+}
+
+.job-details-tab{
+    background-color:$light-White;
+    padding: 24px;
+    @include flex(start,start,column);
+    div div{
+        @include flex(start,default,default);
+    }
+
+    li,p{
+        color: $black-font;
+        font-size: 14px;
+        font-weight: 600;
+    }
+   li{
+    margin-top: 5px;
+
+   }
+    label{
+        color: $lable-color;
+        font-size: 12px;
+    }
+    
+    
+}
+@include ul;
+
+.job-details-tab > div{
+    padding-bottom: 16px;
+    width: 100%;
+    border-bottom: 1px solid  $lable-color;
+    padding-top:16px ;
+}
+.job-details-tab > div:last-child{
+    border-bottom: none;
+    padding-bottom: 0;
+}
+.job-details-tab div:nth-child(1)
+{
+    div{
+        margin-top: 8px;
+    }
+}

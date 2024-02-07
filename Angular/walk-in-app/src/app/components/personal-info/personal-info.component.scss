@@ -1,96 +1,83 @@
+@import "../header/mixin.scss";
+@import "../header/variables.scss";
 .main-tab{
     margin: 24px ;
-    font-family: Quicksand;
 }
 .status-tab{
-    background-color: #FFFFFF;
-    display: flex;
+    background-color: $light-White;
+    box-shadow: 0px 4px 6px $box-shadow-color;
+    @include flex(space-around,center,default);
     flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-around;
     font-size: 14px;
     font-weight: 600;
     
 }
 .status-tab div{
-    display: flex;
+    @include flex(space-between,center,default);
     flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
     padding: 10px;
 }
 hr{
     border: none;
     width: 30%;
     height: 0px;
-    border:2px solid #EEEEEE;
+    border:2px solid $hr-color;
 }
 .status-tab div span{
-    background-color: #757575;
+    background-color: $left-color;
     height: 32px;
     width: 32px;
     text-align: center;
     border-radius: 50%;
-    display: flex;
+    @include flex(center,center,default);
     flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
     margin-right: 8px;
     font-size: 16px;
     font-weight: 600;
 }
 .personal-button span{
-    background-color: #3FD28B;
+    background-color: $button-color;
 }
 .personal-details-tab{
     display: grid;
     grid-template-columns: 1fr 1fr;
-    background-color: #FFFFFF;
+    background-color: $light-White;
+    box-shadow: 0px 4px 6px $box-shadow-color;
     margin-top:24px;
     padding: 24px;
 }
 form{
-    display: flex;
+    @include flex( space-around,start,column);
     flex-wrap: wrap;
     grid-column: 1/span 1;
-    flex-direction: column;
-    align-items:start;
-    justify-content: space-around;
 }
 .profile-picture-tab{
     grid-column: 2/span 1;
-    display: flex;
+    @include flex(start,end,column);
     flex-wrap: wrap;
-    flex-direction: column;
-    align-items: end;
-    justify-content: start;
-
 }
 .profile-picture-tab div img{
     width: 112px;
     height: 134px;
 }
 .profile-picture-tab div{
-    display: flex;
+    @include flex(start,center,column);
     flex-wrap: wrap;
-    flex-direction: column;
-    align-items: center;
-    justify-content: start;
 }
 .profile-picture-tab p:nth-child(1){
-    color: #1F7A54;
+    color: $light-green;
     font-size: 12px;
 }
 .profile-picture-tab p:nth-child(2){
     font-size: 10px;
-    color: #757575;
+    color: $left-color;
 }
 
 form div{
     width: 100%;
     margin-bottom: 40px;
     font-size: 12px;
-    color: #666666;
+    color: $lable-color;
 }
 
 form div input{
@@ -99,33 +86,28 @@ form div input{
     border: none;
     border-bottom:1px solid rgba(0, 0, 0, 0.287);
     font-size: 16px;
-    color: #222222;
+    color: $black-font;
 }
 .file-input-box{
-    display: flex;
+    @include flex(start,center,default);
     flex-wrap: wrap;
-    align-items: center;
-    display: center;
 }
 .file-input-box img{
     height:20px ;
     width: 16px;
 }
 .file-input-box label{
-    color: #1F7A54;
+    color: $light-green;
     text-transform: uppercase;
     margin-left: 8px;
     font-size: 14px;
     font-weight: 600;
 }
 .phone-number-box{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    
+    @include flex(center,center,default);
 }
 .phone-number-box span{
-    color: #222222;
+    color: $black-font;
     font-weight: 600;
 }
 .phone-number-box input:nth-child(2)
@@ -137,53 +119,39 @@ form div input{
     width: 20%;
 }
 .prefered-job-box div input{
-  accent-color: #1F7A54;
+  accent-color:$light-green ;
   width: 18px;
   height: 24px;
   margin-right: 9px;
 }
 .prefered-job-box div {
-    display: flex;
+    @include flex(start,center,default);
     flex-wrap: wrap;
-    align-items: center;
     margin-top:18px;
     margin-bottom: 18px;
     font-weight: 600;
-    color: #222222;
+    color: $black-font;
     font-size: 16px;
 }
 .notification-box input{
-    accent-color: #1F7A54;
+    accent-color: $light-green;
     width: 18px;
     height: 24px;
     margin-right: 9px;
 }
 .notification-box{
-    display: flex;
+    @include flex(start,center,default);
     flex-wrap: wrap;
-    align-items: center;
-    justify-content: start;
     font-weight: 600;
     font-size: 16px;
     margin-bottom: 0;
 }
 .notification-box label{
-    color: #222222;
+    color: $black-font;
 }
 .next-btn{
     margin-top: 32px;
     margin-bottom: 29px;
-    display: flex;
-    justify-content: center ;
+    @include flex(center,default,default);
 }
-.next-btn button{
-    width: 90px;
-    height: 28px;
-    text-transform: uppercase;
-    background-color: #3FD28B;
-    color: #1F2834;
-    box-shadow: 0px 3px 5px #0000003D;
-    border-radius: 2px;
-    border: none;
-    font-weight: 600;
-}
+@include button(5px 25px);

@@ -1,28 +1,18 @@
-*{
-    margin:0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Quicksand;
-    letter-spacing: 0px;
-}
-body{
-    background-color: #EEEEEE;
-}
+@import "../header/mixin.scss";
+@import "../header/variables.scss";
 .mid-tab{
-        background-color: #FFFFFF;
+        background-color: $light-White;
+        box-shadow: 0px 4px 6px $box-shadow-color;
         width: 488px;
         height: 419px;
         box-sizing: border-box;
         margin: 143px 268px 90px 268px;
-        border: 1px solid #FFFFFF;
-        border-top:4px solid #3AC7EC;
+        border: 1px solid $light-White;
+        border-top:4px solid $sky-blue;
 }
 form{
     padding: 24px;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+    @include flex(space-around,default,column);
     height: 419px;
 }
 form div{
@@ -33,7 +23,7 @@ form div{
 }
 form div span{
     text-transform: uppercase;
-    color: #1F7A54;
+    color: $light-green;
     position: absolute;
     right: 0px;
     
@@ -43,7 +33,7 @@ input{
     display: block;
     width: 100%;
     border:none;
-    border-bottom: 1px solid #00000012;
+    border-bottom: 1px solid $black-twe-opac;
     font-size: 16px;
 }
 form .password-input-box input{
@@ -55,55 +45,38 @@ form .password-input-box input{
 
 
 form h2{
-    color: #222222;
+    color: $black-font;
     text-align: center;
     letter-spacing: 0px;
     font-weight: medium;
     font-size: 28px;
 }
-
-button{
-    display: block;
-    height: 40px;
-    width: 216px;
-    box-sizing: border-box;
-    padding: 11px 65px ;
-    font-size: 14px;
-    font-weight: 600;
-    color: #1F2834;
-    background-color: #3FD28B;
-    box-shadow: 0px 3px 5px #0000003D;
-    border: none;
-}
+@include button(11px 65px);
 .remember-checkbox input{
     display: inline;
     width:18px;
     height: 24px;
     box-sizing: border-box;
     margin:0px;
-    background-color: #1F7A54;
+    background-color: $light-green;
     margin-right: 5px;
 }
 .remember-checkbox{
-    display: flex;
-    align-items: center;
+    @include flex(default,center,default);
 }
 .login-button{
     width: 100%;
-    display: flex;
-    justify-content: center;
+    @include flex(center,default,default);
 }
 form .create-register-text{
-    display: flex;
-    flex-direction: column;
+    @include flex(default,center,column);
     margin-bottom: 4px;
-    align-items: center;
 }
 form .create-register-text a{
     text-decoration: none;
-    color: #1F7A54;
+    color: $light-green;
     font-weight: 600;
 }
 input[type='checkbox'] {
-    accent-color: #1F7A54;
+    accent-color: $light-green ;
 }

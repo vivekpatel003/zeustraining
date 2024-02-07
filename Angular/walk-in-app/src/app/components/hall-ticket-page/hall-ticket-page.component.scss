@@ -1,0 +1,55 @@
+@import "../header/mixin.scss";
+@import "../header/variables.scss";
+.main-tab{
+    margin:76px 24px;
+    background-color:$light-White;
+    padding: 24px;
+    position: relative;
+    box-shadow: 0px 4px 6px $box-shadow-color;
+}
+label{
+    color: $lable-color;
+    font-size: 12px;
+}
+li{
+    color:$black-font;
+    font-size:14px;
+    font-weight: 600;
+}
+.main-tab > img{
+    background-color: $correct-logo-color;
+    position: absolute;
+    height: 100px;
+    width: 100px;
+    top:-50px;
+    left:46%;
+    // filter: invert(99%) sepia(94%) saturate(0%) hue-rotate(196deg) brightness(108%) contrast(100%);
+    border-radius: 50%;
+}
+@include ul;
+h2{
+    text-align: center;
+    font-size: 18px;
+    margin-top:74px
+}
+.main-tab > div{
+    line-height: 20px;
+    padding-bottom:16px ;
+    padding-top: 16px;
+    border-bottom: 1px solid $lable-color;
+}
+.main-tab div:last-child{
+    border-bottom: none;
+    padding:0;
+}
+
+
+.button-tab{
+    width: 100%;
+    @include flex(center,center,default);
+    margin-top: 24px;
+    border-bottom:none;
+    padding-top:0;
+}
+
+@include button(5px 16px);
