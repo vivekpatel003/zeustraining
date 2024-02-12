@@ -1,29 +1,27 @@
 @import "../header/mixin.scss";
 @import "../header/variables.scss";
 .main-tab{
-    font-family: Quicksand;
     margin-top: 35px;
 }
 .main-tab > div{
     background-color:$light-White;
     box-shadow: 0px 4px 6px $box-shadow-color;
-    margin: 24px;
+    margin: 2%;
     display: grid;
-    // height: 244px;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 1fr auto;
     h2{
         color: $light-green;
-        font-size: 18px;
+        font-size: calc(13.69px + 0.390625vw);
         font-weight: 600;
         margin-bottom: 16px;
     }
     label{
-        font-size: 12px;
+        font-size: calc(7.69px + 0.390625vw);
         color: $lable-color;
     }
     p{
         color: $black-font;
-        font-size: 14px;
+        font-size: calc(9.69px + 0.390625vw);
         font-weight: 600;
     }
 }
@@ -38,39 +36,80 @@
 .upper-tab > div
 {
     display: grid;
-    grid-template-columns: 1fr 5fr;
+    grid-template-columns: auto 1fr;
 }
-
+.upper-tab > div div:nth-child(1) p
+{
+    padding-right:10px;
+    border-right:1px solid $hr-color;
+}
 .upper-tab > div div:nth-child(2)
 {
     @include flex(default,end,default);
-    padding-left:36px;
-    border-left:1px solid $hr-color;
+    padding-left:10px;
     img{
-        height:20px ;
-        width: 12px;
+        height:calc(15.69px + 0.390625vw) ;
+        width: calc(7.69px + 0.390625vw);
     }
 }
 .lower-tab{
     grid-row: 2 /span 1;
+    div:nth-child(1){
+        margin-bottom: 10px;
+    }
+    
 }
+
 .jobs-tab{
-    @include flex(start,center,default);    
+    @include flex(start,center,default);
+    height: auto;    
 }
 .jobs-tab div{
     @include flex(default,default,default);
     margin-top:11px;
-    margin-right: 17px;
+    padding-right: 10px;
+    padding-left: 10px;
+    border-right: 1px solid $hr-color;
     img{
         margin-right: 8px;
-        height: 16px;
-        width: 16px;
+        height: calc(11.69px + 0.390625vw);
+        width: calc(11.69px + 0.390625vw);
         border-radius: 50%;
+        border: 1px solid #222222;
     }
+}
+.jobs-tab div:nth-child(1)
+{
+    padding-left:0 ;
+}
+.jobs-tab div:last-child{
+    border: none;
 }
 .button-tab{
     width: 100%;
     @include flex(center,center,default);
     margin-bottom: 16px;
 }
+.lower-tab .notification-tab {
+    border-radius: 9px;
+    color: $black-font;
+    background-color: $gold-color;
+    width: 10%;
+    display:none;
+    @include flex(center,center,default);
+}
 @include button(5px 16px);
+
+@media (max-width:375px){
+    .jobs-tab{
+        display: block;
+    }
+    .jobs-tab div{
+        border:none;
+        padding-left:0;
+    }
+    .upper-tab > div{
+        grid-template-columns: auto auto;
+    }
+
+}

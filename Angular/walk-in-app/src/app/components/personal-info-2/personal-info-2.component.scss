@@ -2,20 +2,18 @@
 @import "../header/variables.scss";
 .main-tab{
     margin: 24px ;
-    font-family: Quicksand;
     margin-bottom: 0;
 }
 .status-tab{
     background-color: $light-White;
     box-shadow: 0px 4px 6px $box-shadow-color;
     @include flex(space-around,center,default);
-    flex-wrap: wrap;
-    font-size: 14px;
+    font-size: calc(9.69px + 0.390625vw);
     font-weight: 600;
 }
 .status-tab div{
     @include flex(space-between,center,default);
-    flex-wrap: wrap;
+    // flex-wrap: wrap;
     padding: 10px;
 }
 hr{
@@ -27,22 +25,22 @@ hr{
 
 .status-tab div span{
     background-color: $left-color;
-    height: 32px;
-    width: 32px;
+    height:calc(27.69px + 0.390625vw);
+    width: calc(27.69px + 0.390625vw);
     text-align: center;
     border-radius: 50%;
     @include flex(center,center,default);
     flex-wrap: wrap;
     margin-right: 8px;
-    font-size: 16px;
+    font-size: calc(11.69px + 0.390625vw);
     font-weight: 600;
 }
 .personal-button span{
     background-color: $button-color;
 }
 .personal-button span img{
-    height: 16px;
-    width:12px;
+    height:calc(11.69px + 0.390625vw);
+    width:calc(7.69px + 0.390625vw);
 }
 .education-qualification-tab{
     margin-top: 24px;
@@ -50,31 +48,40 @@ hr{
 .education-qualification-header{
     background-color:$header-tag-color;
     box-shadow: 0px 4px 6px $box-shadow-color;
-    height: 55px;
+    height: calc(50.69px + 0.390625vw);
     text-align: left;
     @include flex(space-between,center,default);  
 }
 .education-qualification-header h2,.education-qualification-header div img{
     padding: 16px;
+    cursor: pointer;
 }
 .education-qualification-header div {
     padding-left: 10px;
     border-left:1px solid $lable-color;
     height: 100%;
     @include flex(center,center,default); 
+    img{
+        transform: rotate(180deg);
+        transition: 1s transform;
+    }
 }
 .education-qualification-form{
     background-color: $light-White;
     box-shadow: 0px 4px 6px $box-shadow-color;
     @include flex(center,start,column); 
+    display: block;
 }
 
 form{
     padding: 24px;
     width: 100%;
 }
-.education-qualification-form form div{
+.education-qualification-form form> div{
     margin-bottom: 40px;
+    label{
+        font-size: calc(7.69px + 0.390625vw);
+    }
 }
 .passing-year-box{
     width: 317.4px;
@@ -82,14 +89,14 @@ form{
 .education-qualification-form form div select{
     width: 100%;
     display: block;
-    height: 25px;
+    height:calc(20.69px + 0.390625vw);
     border: none;
     border-bottom: 1px solid $lable-color;
 }
 .education-qualification-form form div input{
     display: block;
     line-height: 25px;
-    width: 183.4px;
+    width:calc(178.69px + 0.390625vw);
     border: none;
     border-bottom: 1px solid $lable-color;
 }
@@ -117,7 +124,7 @@ input{
 .professional-qualification-header{
     background-color:$header-tag-color;
     box-shadow: 0px 4px 6px $box-shadow-color;
-    height: 55px;
+    height:calc(50.69px + 0.390625vw);
     text-align: left;
     @include flex(space-between,center,default);
 }
@@ -130,31 +137,273 @@ input{
     border-left:1px solid $lable-color;
     height: 100%;
     @include flex(center,center,default);
+    img{
+        transform: rotate(180deg);
+        transition: 1s transform;
+    }
 }
 .mode-of-apllication-tab{
     @include flex(center,start,column);
     background-color: $light-White;
     box-shadow: 0px 4px 6px $box-shadow-color;
-    height: 100px;
+    height:calc(95.69px + 0.390625vw);
     padding: 24px;
 }
 .mode-of-apllication-tab label{
     margin-bottom:13px ;
     color: $lable-color;
-    font-size: 12px;
+    font-size: calc(7.69px + 0.390625vw);
 }
 .mode-of-apllication-tab div label{
     margin-right: 24px;
     margin-left:9px;
-    font-size: 20px;
+    font-size: calc(15.69px + 0.390625vw);
     font-weight: 600;
     color: $black-font;
 }
 .mode-of-apllication-tab div{
-    @include flex(center,default,default);
+    margin-top: 16px;
+    @include flex(start,default,default);
 }
 .mode-of-apllication-tab div input{
-    height: 24px;
-    width: 24px;
+    height: calc(19.69px + 0.390625vw);
+    width: calc(19.69px + 0.390625vw);
     accent-color: $light-green;
+}
+.button-tab{
+    width: 100%;
+    @include flex(center,center,default);
+    flex-wrap: wrap;
+    margin-top: 32px;
+}
+@include button(5px 16px);
+
+.button-tab button:nth-child(1){
+    margin-right: 16px;
+}
+
+@media (max-width:750px)
+{
+    .two-span-tab{
+        display: flex;
+        flex-direction: column;
+    }
+    .two-span-tab div:nth-child(1){
+        
+    }
+    .two-span-tab div:nth-child(2){
+        padding:0;
+        margin:0;
+    }
+}
+
+
+.fre-main-tab{ 
+    margin:24px;
+    margin-top: 8px;
+    border-radius: 2px;
+}
+.fre-form{
+    background-color:$light-White;
+    box-shadow: 0px 4px 6px $box-shadow-color;
+    padding: 24px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.fre-form div{
+    grid-column: 1/span 1;
+    color: $lable-color;
+    text-transform: capitalize;
+    font-size: calc(7.69px + 0.390625vw);
+    margin-bottom:40px;
+}
+
+input{
+    width: 100%;
+    line-height: 25px;
+    border:none;
+    border-bottom: 1px solid $lable-color;
+    accent-color: $light-green;
+}
+.subjects-box div input{
+    width: calc(13.69px + 0.390625vw);
+    height:calc(19.69px + 0.390625vw);
+}
+.subjects-box div input[type="text"]{
+    width: 100%;
+    display: block;
+}
+.subjects-box div label{
+    margin-left:9px;
+    color: $black-font;
+    font-weight: 600;
+    font-size: calc(11.69px + 0.390625vw);
+}
+.subjects-box div{
+    @include flex(start,center,default);
+    margin-bottom: 20px;
+    margin-top:18px ;
+}
+
+.fre-form div:nth-child(1),form div:nth-child(3),form div:nth-child(4){
+    margin-bottom: 0;
+}
+.worked-option-box div:nth-child(2){
+    margin-bottom: 0;
+}
+.worked-option-box{
+    @include flex(start,center,default);
+    margin-bottom: 0;
+}
+.worked-option-box div{
+    @include flex(start,start,default);
+    margin-right: 24px;
+}
+.worked-option-box input{
+    width: calc(13.69px + 0.390625vw);
+    height: calc(19.69px + 0.390625vw);
+}
+.worked-option-box label{
+    color: $black-font;
+    font-size:calc(11.69px + 0.390625vw) ;
+    margin-left: 9px;
+    font-weight: 600;
+}
+.button-tab{
+    width: 100%;
+    @include flex(center,center,default);
+    flex-wrap: wrap;
+    margin-top: 32px;
+}
+@include button(5px 16px);
+
+.button-tab button:nth-child(1){
+    margin-right: 16px;
+}
+
+
+.exp-main-tab{
+    margin: 24px;
+    border-radius: 2px;
+
+.exp-form{
+    box-shadow: 0px 4px 6px $box-shadow-color;
+    padding:24px;
+    background-color: $light-White;
+    padding: 24px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.exp-form>div{
+    grid-column: 1/span 1;
+    color: $lable-color ;
+    text-transform: capitalize;
+    font-size: calc(7.69px + 0.390625vw);
+    margin-bottom:40px;
+}
+input{
+    width:100%;
+    border: none;
+    border-bottom: 1px solid $lable-color;
+    line-height: 25px;
+    color: #222222;
+    font-weight: 600;
+    font-size: calc(11.69px + 0.390625vw);
+}
+select{
+    height:calc(23.69px + 0.390625vw);
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid $lable-color;
+}
+.exp-form div input{
+    display: block;
+}
+.subjects-box div input{
+    width: calc(13.69px + 0.390625vw);
+    height:calc(19.69px + 0.390625vw);
+    margin-right: 9px;
+}
+.subjects-box div{
+    @include flex(start,center,default);
+    margin-bottom:20px ;
+}
+.subjects-box div:last-child{
+    margin-bottom: 0;
+}
+.subjects-box{
+    @include flex(default,default,column);
+    font-weight: 600;
+    font-size: calc(11.69px + 0.390625vw);
+    accent-color: $light-green;
+    margin-top:18px;
+}
+.exp-form div:nth-child(4),.exp-form div:nth-child(6){
+    margin-bottom: 18px;
+}
+.exp-form div:nth-child(9)
+{
+    grid-column: 1/span 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.exp-form div:nth-child(9) div:nth-child(1){
+    grid-column: 1/span 1;
+}
+.exp-form div:nth-child(9) div:nth-child(2){
+    grid-column: 2/span 1;
+    padding-left:24px ;
+}
+.worked-option-box{
+    font-weight: 600;
+    font-size: calc(11.69px + 0.390625vw);
+    accent-color: $light-green;
+    display: flex;
+}
+.worked-option-box div{
+    @include flex(start,start,default);
+    margin-right: 24px;
+}
+.worked-option-box input{
+    width: calc(13.69px + 0.390625vw);
+    height: calc(19.69px + 0.390625vw);
+}
+.worked-option-box label{
+    color: $black-font;
+    font-size:calc(11.69px + 0.390625vw) ;
+    margin-left: 9px;
+    font-weight: 600;
+}
+.button-tab{
+    width: 100%;
+    @include flex(center,center,default);
+    margin-top: 32px;
+}
+@include button(5px 16px);
+
+.exp-form div:last-child{
+    margin-bottom: 0;
+}
+.button-tab button:nth-child(1){
+    margin-right: 16px;
+}
+
+@media (max-width:550px){
+    .exp-form div{
+        grid-column: 1/span 2;
+    }
+    .exp-form div:nth-child(9) div:nth-child(2){
+        grid-column: 1/span 1;
+        padding: 0;
+    }
+    .exp-form div:nth-child(9) div:nth-child(1){
+        grid-column: 1/span 1;
+        margin-bottom: 18px;
+    }
+}
+}
+.error-msg{
+    color:red;
+    display: block;
+    font-size:  calc(7.69px + 0.390625vw)
 }

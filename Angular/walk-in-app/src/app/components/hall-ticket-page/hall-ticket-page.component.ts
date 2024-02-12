@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrl: './hall-ticket-page.component.scss'
 })
 export class HallTicketPageComponent {
-
+    dp:boolean=true;
 }

@@ -3,10 +3,11 @@
 .create-account-tab{
     background-color:$light-blue ;
     @include flex(space-between,center,default);
-    height: 48px;
+    padding-top: 1%;
+    padding-bottom: 1%;
 }
-.create-account-tab img{
-    margin-left: 24px;
+.create-account-tab >  div{
+    margin-left: 2%;
 }
 .create-account-tab h3{
     color: $light-White;
@@ -15,7 +16,7 @@
 }
 .create-account-tab div{
     @include flex(space-between,center,default);
-    margin-right: 24px;
+    margin-right: 2%;
 }
 .create-account-tab div button{
     background-color: $button-color;
@@ -23,7 +24,21 @@
     box-shadow: 0px 3px 5px $box-shadow-color;
     border:none;
     margin-left:16px;
-    width: 90px;
-    height: 22px;
+    width: calc(85.69px + 0.390625vw);
+    height:calc(17.69px + 0.390625vw);
     text-transform: uppercase;
+    padding: 5px 12px;
+    @include flex(center,center,default);
+    cursor: pointer;
+}
+@media (max-width:400px){
+    .create-account-tab{
+        flex-wrap: wrap;
+        img{
+            display: block;
+        }
+        div{
+           flex-wrap: inherit;
+        }
+    }
 }

@@ -16,7 +16,7 @@ form>div{
     grid-column: 1/span 1;
     color: $lable-color ;
     text-transform: capitalize;
-    font-size: 12px;
+    font-size: calc(7.69px + 0.390625vw);
     margin-bottom:40px;
 }
 input{
@@ -26,10 +26,10 @@ input{
     line-height: 25px;
     color: #222222;
     font-weight: 600;
-    font-size: 16px;
+    font-size: calc(11.69px + 0.390625vw);
 }
 select{
-    height: 28px;
+    height:calc(23.69px + 0.390625vw);
     width: 100%;
     border: none;
     border-bottom: 1px solid $lable-color;
@@ -38,8 +38,8 @@ form div input{
     display: block;
 }
 .subjects-box div input{
-    width: 18px;
-    height: 24px;
+    width: calc(13.69px + 0.390625vw);
+    height:calc(19.69px + 0.390625vw);
     margin-right: 9px;
 }
 .subjects-box div{
@@ -52,7 +52,7 @@ form div input{
 .subjects-box{
     @include flex(default,default,column);
     font-weight: 600;
-    font-size: 16px;
+    font-size: calc(11.69px + 0.390625vw);
     accent-color: $light-green;
     margin-top:18px;
 }
@@ -74,7 +74,7 @@ form div:nth-child(9) div:nth-child(2){
 }
 .worked-option-box{
     font-weight: 600;
-    font-size: 16px;
+    font-size: calc(11.69px + 0.390625vw);
     accent-color: $light-green;
     display: flex;
 }
@@ -83,12 +83,12 @@ form div:nth-child(9) div:nth-child(2){
     margin-right: 24px;
 }
 .worked-option-box input{
-    width: 18px;
-    height: 24px;
+    width: calc(13.69px + 0.390625vw);
+    height: calc(19.69px + 0.390625vw);
 }
 .worked-option-box label{
     color: $black-font;
-    font-size:16px ;
+    font-size:calc(11.69px + 0.390625vw) ;
     margin-left: 9px;
     font-weight: 600;
 }
@@ -104,4 +104,17 @@ form div:last-child{
 }
 .button-tab button:nth-child(1){
     margin-right: 16px;
+}
+@media (max-width:550px){
+    form div{
+        grid-column: 1/span 2;
+    }
+    form div:nth-child(9) div:nth-child(2){
+        grid-column: 1/span 1;
+        padding: 0;
+    }
+    form div:nth-child(9) div:nth-child(1){
+        grid-column: 1/span 1;
+        margin-bottom: 18px;
+    }
 }

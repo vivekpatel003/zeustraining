@@ -1,3 +1,4 @@
+<app-header [display]="dp"></app-header>
 <div class="main-tab">
         <div >
             <div class="upper-tab">
@@ -28,9 +29,12 @@
                         </div>
                     </div>
                 </div>
+                <div class="notification-tab">
+                    <p>notification</p>
+                </div>
             </div>
                 <div class="button-tab">
-                    <button>VIEW MORE DETAILS</button>
+                    <button (click)="expandData()">VIEW MORE DETAILS</button>
                 </div>
             </div>
         </div>  

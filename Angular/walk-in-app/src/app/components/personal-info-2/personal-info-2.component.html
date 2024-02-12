@@ -1,3 +1,5 @@
+<app-header></app-header>
+<app-create-account [id] ="createButton" [back]="backButton"></app-create-account>
 <div class="main-tab">
     <div class="status-tab">
         <div  class="personal-button">
@@ -20,57 +22,67 @@
     <div class="education-qualification-header">
         <h2>Educational Qualifications</h2>
         <div>
-            <img src="../../../assets/WalkInPortal-Icons-ListingtoSuccessflow/drop-down.png" alt="">
+            <img #dropDown src="../../../assets/WalkInPortal-Icons-ListingtoSuccessflow/drop-down.png" alt="" (click)="showeduFunc()">
         </div>
     </div>
 
 
-    <div class="education-qualification-form">
-        <form #educationQualification = "ngForm">
+    <div #educationTab class="education-qualification-form">
+        <form #educationQualification = "ngForm" >
             <div >
                 <label for="percentage">Aggregate Percentage*</label>
-                <input type="text" name="percentage" #percentage>
+                <input type="text" required max-length="3" pattern="[0-9]+$" #percentage="ngModel" name="percentage" [(ngModel)]="educationData.percentageVal"  value=""  >
+                <p class="error-msg" *ngIf="percentage.invalid && educationQualification.touched">Enter Percentage*</p>
             </div>
 
             <div class="passing-year-box">
                 <label for="passingYear">Year of Passing*</label>
-                <select name="passingyear" #passingYear>
-                    <option value=""></option>
+                <select name="passingyear" required #passingYear="ngModel" [(ngModel)]="educationData.passingYear">
+                    <option value="" disabled selected>Select Option</option>
+                    <option *ngFor="let years of passingYears" [value]="years">{{years}}</option>
                 </select>
+                <p class="error-msg" *ngIf="passingYear.invalid && educationQualification.touched">Select passing Year*</p>
             </div>
 
 
             <div class="two-span-tab">
                 <div>
                     <label for="qualification">Qualification*</label>
-                    <select name="Qualification" #qualification>
-                        <option value=""></option>
-                </select>
+                    <select name="Qualification" #qualification="ngModel" required [(ngModel)]="educationData.qualification">
+                        <option value="" disabled selected>Select Option</option>
+                        <option *ngFor="let Qualifications of QualificationList" [value]="Qualifications">{{Qualifications}}</option>
+                    </select>
+                    <p class="error-msg" *ngIf="qualification.invalid && educationQualification.touched">Select qualification*</p>
             </div>
             <div>
                 <label for="stream">Stream*</label>
-                <select name="Stream" #stream>
-                    <option value=""></option>
+                <select name="Stream" #stream="ngModel" required  [(ngModel)]="educationData.stream">
+                    <option value="" disabled selected>Select Option</option>
+                    <option *ngFor="let streams of StreamList" [value]="streams">{{streams}}</option>
                 </select>
+                <p class="error-msg" *ngIf="stream.invalid && educationQualification.touched">Select stream*</p>
             </div>
         </div>
 
         <div class="two-span-tab">
             <div>
                 <label for="college">College*</label>
-                <select name="collegeName" #college>
-                    <option value=""></option>
+                <select name="collegeName" #college="ngModel" required  [(ngModel)]="educationData.college">
+                    <option value="" disabled selected>Select Option</option>
+                    <option *ngFor="let colleges of collegesList" [value]="colleges">{{colleges}}</option>
                 </select>
+                <p class="error-msg" *ngIf="stream.invalid && educationQualification.touched">Select College*</p>
         </div>
         <div>
             <label for="otherCollege">If others, please enter your college name</label>
-            <input style="width: 100%;" type="text" #otherCollege name="otherCollege">
+            <input style="width: 100%;" type="text" #otherCollege name="otherCollege"  [(ngModel)]="educationData.other">
         </div>
     </div>
 
     <div>
         <label for="collegeLocation">Where is your college located?*</label>
-        <input type="text" #collegeLocation name="collegeLocation">
+        <input type="text" #collegeLocation="ngModel" required pattern="[a-zA-Z]+$" name="collegeLocation"  [(ngModel)]="educationData.location">
+        <p class="error-msg" *ngIf="collegeLocation.invalid && educationQualification.touched">Enter Your Location*</p>
     </div>
         </form>
     </div>
@@ -80,16 +92,163 @@
     <div class="professional-qualification-header">
         <h2>Professional Qualifications</h2>
         <div>
-            <img src="../../../assets/WalkInPortal-Icons-ListingtoSuccessflow/drop-down.png" alt="">
+            <img src="../../../assets/WalkInPortal-Icons-ListingtoSuccessflow/drop-down.png" #proffDropDown (click)="showproffFunc()" alt="">
         </div>
     </div>
-    <div class="mode-of-apllication-tab">
+    <div #modeAppTab class="mode-of-apllication-tab">
         <label for="">Applicant Type*</label>
         <div>
-            <input type="radio" #fresher name="typeOfUser"><label for="fresher">Fresher</label>
-            <input type="radio" checked #experienced name="typeOfUser"><label for="experienced">Experienced</label>
+            <input type="radio" #fresher  [(ngModel)]="educationData.show" name="typeOfUser" value="Fresher"><label for="fresher">Fresher</label>
+            <input type="radio"  #experienced name="typeOfUser"  [(ngModel)]="educationData.show"  value="Experienced" checked><label for="experienced">Experienced</label>
         </div>
     </div>
+</div>
+</div>
+
+<div #freTab>  
+<ng-container *ngIf="educationData.show==='Fresher'; else elseBlock">
+    <div  class="fre-main-tab">
+        <form #fresherForm = "ngForm" class="fre-form">
+            <div>
+                <label for="subject">Select All The Technologies You Are Familiar In</label>
+                <div class="subjects-box">
+                    <div *ngFor="let item of subjectListFam">
+                        <input type="checkbox" [(ngModel)]="item.selected" name="subject" ><label for="">{{item.name}}</label>
+                    </div>    
+                </div>
+            </div>
     
+            <div>
+                <label for="otherSubject">If others, please mention</label>
+                <input type="text" name="otherSubject" [(ngModel)]="experiencedData.otherFam" #otherSubject>
+            </div>
+    
+            <div>
+                <label for="workOption">Have You Appeared For Any Test By Zeus in the past 12 months?*</label>
+                <div class="worked-option-box">
+                    <div>
+                        <input type="radio" name="workOption" [(ngModel)]="experiencedData.appeared" value="Yes"><label for="workOption">Yes</label>
+                    </div>
+                    <div>
+                        <input  type="radio" name="workOption"  [(ngModel)]="experiencedData.appeared" value="No"><label for="workOption">No</label>
+                    </div>
+                </div>
+            </div>
+    
+            <div>
+                <label for="roleApplied">If Yes, which role did you apply for?</label>
+                <input type="text" name="roleApplied" [(ngModel)]="experiencedData.roleApplied" #roleApplied>
+            </div>
+        </form>
+       
+    </div>
+    
+
+
+</ng-container>
+
+<ng-template #elseBlock>
+    <div  class="exp-main-tab">
+        <form #fresherForm = "ngForm" class="exp-form">
+    
+            <div>
+                <label for="yearOfExp">Years of Experience*</label>
+                <input type="text" #yearOfExp="ngModel" required pattern="[0-9]+$" max-legth="3" [(ngModel)]="experiencedData.yearOfExperience"  name="yearOfExp">
+                <p class="error-msg" *ngIf="yearOfExp.invalid && yearOfExp.touched">Enter Years*</p>
+            </div>
+    
+            <div>
+                <label for="currCtc">Current CTC* (In Rupees)</label>
+                <input type="text" name="currCtc" [(ngModel)]="experiencedData.cCTC">
+                <p class="error-msg" *ngIf="yearOfExp.invalid && yearOfExp.touched">Enter Years*</p>
+            </div>
+    
+    
+            <div>
+                <label for="expCtc">Expected CTC* (In Rupees)</label>
+                <input type="text" name="expCtc" [(ngModel)]="experiencedData.eCTC">
+                <p class="error-msg" *ngIf="yearOfExp.invalid && yearOfExp.touched">Enter Years*</p>
+            </div>
+    
+            <div>
+                <label for="subject">Select All The Technologies You Expertise In*</label>
+                <div class="subjects-box">
+                    <div *ngFor="let subjects of subjectListExp">
+                        <input type="checkbox" [(ngModel)]="subjects.selected" name="subject" ><label for="">{{subjects.name}}</label>
+                    </div>
+                    
+                </div>
+            </div>
+    
+            <div>
+                <label for="otherSubject">If others, please mention</label>
+                <input type="text" [(ngModel)]="experiencedData.otherExp"  name="otherSubject" #otherSubject>
+            </div>
+    
+            <div>
+                <label for="subject">Select All The Technologies You Are Familiar In</label>
+                <div class="subjects-box">
+                    <div *ngFor="let item of subjectListFam">
+                        <input type="checkbox" #subject [(ngModel)]="item.selected" name="subject" value="" ><label for="">{{item.name}}</label>
+                    </div>
+                </div>
+            </div>
+    
+            <div>
+                <label for="otherSubject">If others, please mention</label>
+                <input type="text" name="otherSubject" [(ngModel)]="experiencedData.otherFam"  #otherSubject>
+            </div>
+    
+    
+            <div>
+                <label for="noticePeriod">Are you currently on notice period?*</label>
+                <div class="worked-option-box">
+                    <div>
+                        <input type="radio" [(ngModel)]="experiencedData.onNotice"  name="noticePeriod" #noticePeriod value="Yes"><label for="noticePeriod">Yes</label>
+                    </div>
+                    <div>
+                        <input  type="radio"  [(ngModel)]="experiencedData.onNotice" name="noticePeriod" value="No"><label for="noticePeriod">No</label>
+                    </div>
+                </div>
+            </div>
+    
+            <div>
+                <div>
+                    <label for="endDate">If Yes, when will your notice period end?*</label>
+                    <input type="date" [(ngModel)]="experiencedData.endDate" name="endDate" #endDate>
+                </div>
+                <div>
+                    <label for="">How long is your notice period?* (Mention in months)</label>
+                    <select name="notceDuration" [(ngModel)]="experiencedData.duration"  #noticeDuration >
+                        <option value="" disabled selected>Select Option</option>
+                        <option *ngFor="let item of durationList" value="item">{{item}}</option>
+                    </select>
+                </div>
+            </div>
+    
+            <div>
+                <label for="workOption">Have You Appeared For Any Test By Zeus in the past 12 months?*</label>
+                <div class="worked-option-box">
+                    <div>
+                        <input type="radio" name="workOption" [(ngModel)]="experiencedData.appeared" value="Yes" ><label for="">Yes</label>
+                    </div>
+                    <div>
+                        <input  type="radio" name="workOption" [(ngModel)]="experiencedData.appeared" value="No" ><label for="">No</label>
+                    </div>
+                </div>
+            </div>
+    
+            <div>
+                <label for="roleApplied">If Yes, which role did you apply for?</label>
+                <input type="text" name="roleApplied" [(ngModel)]="experiencedData.roleApplied" #roleApplied>
+            </div>
+        </form>
+    </div>
+</ng-template>
 </div>
-</div>
+    <div class="button-tab">
+        <button (click)="navigateFunction()">PREVIOUS</button>
+        <button [disabled]="educationQualification.invalid " (click)="addData()">NEXT</button>
+    </div>
+
+

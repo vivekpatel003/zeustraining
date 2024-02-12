@@ -3,49 +3,33 @@
         <div>
             <label for="subject">Select All The Technologies You Are Familiar In</label>
             <div class="subjects-box">
-                <div>
-                    <input type="checkbox" #subject name="subject" value="" ><label for="">Javascript</label>
-                </div>
-                <div>
-                    <input type="checkbox" #subject name="subject" value="" ><label for="">Angular JS</label>
-                </div>
-                <div>
-                    <input type="checkbox" #subject name="subject" value="" ><label for="">React</label>
-                </div>
-                <div>
-                    <input type="checkbox" #subject name="subject" value="" ><label for="">Node JS</label>
-                </div>
-                <div>    
-                    <input type="checkbox" #subject name="subject" value="" ><label for="">Others</label>
-                </div>
-                
+                <div *ngFor="let item of jobs">
+                    <input type="checkbox" [(ngModel)]="item.selected" name="subject" ><label for="">{{item.name}}</label>
+                </div>    
             </div>
         </div>
 
         <div>
             <label for="otherSubject">If others, please mention</label>
-            <input type="text" name="otherSubject" #otherSubject>
+            <input type="text" name="otherSubject" ngModel #otherSubject>
         </div>
 
         <div>
             <label for="workOption">Have You Appeared For Any Test By Zeus in the past 12 months?*</label>
             <div class="worked-option-box">
                 <div>
-                    <input type="radio" name="workOption" #workOption><label for="">Yes</label>
+                    <input type="radio" name="workOption"  ngModel><label for="workOption">Yes</label>
                 </div>
                 <div>
-                    <input  type="radio" name="workOption" #workOption><label for="">No</label>
+                    <input  type="radio" name="workOption"  ngModel><label for="workOption">No</label>
                 </div>
             </div>
         </div>
 
         <div>
             <label for="roleApplied">If Yes, which role did you apply for?</label>
-            <input type="text" name="roleApplied" #roleApplied>
+            <input type="text" name="roleApplied" ngModel #roleApplied>
         </div>
     </form>
-    <div class="button-tab">
-            <button>PREVIOUS</button>
-            <button>NEXT</button>
-    </div>
+   
 </div>

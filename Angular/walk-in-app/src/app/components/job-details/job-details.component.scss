@@ -6,17 +6,19 @@
 }
 .job-details-head-tab{
     background-color: $header-tag-color;
-    height: 40px;
+    height:calc(35.69px + 0.390625vw);
     @include flex(space-between,center,default);
     margin-top: 0;
     padding:0 16px;
     div{
-        border-left:1px solid $lable-color;
+        border-left:1px solid $hr-color;
         padding-left: 10px;
     }
     img{
-        width: 15px;
-        height: 24px;
+        width: calc(10.69px + 0.390625vw);
+        height:calc(19.69px + 0.390625vw);
+        transform: rotate(0deg);
+        transition: 0.5s transform;
     }
 }
 
@@ -45,13 +47,16 @@
     
 }
 @include ul;
-
+.job-details-tab{
+    display: none;
+}
 .job-details-tab > div{
     padding-bottom: 16px;
     width: 100%;
-    border-bottom: 1px solid  $lable-color;
-    padding-top:16px ;
+    border-bottom: 1px solid  $hr-color;
+    padding-top:16px;
 }
+
 .job-details-tab > div:last-child{
     border-bottom: none;
     padding-bottom: 0;

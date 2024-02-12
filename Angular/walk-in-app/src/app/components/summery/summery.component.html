@@ -1,3 +1,5 @@
+<app-header></app-header>
+<app-create-account [id]="createButton" [back]="backButton"></app-create-account>
 <div class="main-tab">
     <div class="status-tab">
         <div  class="personal-button">
@@ -11,7 +13,7 @@
         </div>
         <hr/>
         <div class="review-button">
-            <span>3</span>
+            <span style="background-color: #3FD28B;">3</span>
             <p>Review and Proceed</p>
         </div>
     </div>
@@ -28,54 +30,58 @@
         <div class="details-tab">
             <div>
                 <p>First Name</p>
-                <p>John</p>
+                <p>{{personalData.firstName}}</p>
             </div>
            
             <div>
                 <p>Last Name</p>
-                <p>Watson</p>
+                <p>{{personalData.lastName}}</p>
             </div>
 
             <div>
                 <p>Email</p>
-                <p>Johnwatson&#64;example.com</p>
+                <p>{{personalData.Email}}</p>
             </div>
 
             <div>
                 <p>Phone Number</p>
                 <div>
                     <p>+</p>
-                    <p>91</p>
-                    <p>9876543210</p>
+                    <p>{{personalData.countryCode}}</p>
+                    <p>{{personalData.phoneNumber}}</p>
                 </div>
             </div>
 
             <div>
                 <img src="../../../assets/WalkInPortal-Icons-ListingtoSuccessflow/Upload_black_24dp.svg" alt="">
                 <p>Upload Resume</p>
-                <p>MyResume.pdf</p>
+                <p>{{personalData.uploadImage}}</p>
             </div>
 
             <div>
                 <p>Enter Portfolio URL (if any)</p>
-                <p>www.myportfolio.in</p>
+                <p>{{personalData.portfolio}}</p>
             </div>
 
             <div>
                 <p>Preferred Job Roles</p>
                 <div>
-                    <p>Instructional Designer</p>
-                    <p>Software Quality Engineer</p>
+                    <p *ngFor="let item of personalData.selectedJob">{{item.name}}</p>
                 </div>
             </div>
 
             <div>
                 <p>If You Are Registering Via A Referral, Please Mention Full Name Of The Employee Who Referred You</p>
-                <p>-</p>
+                <ng-container *ngIf="personalData.reffredPerson != ''; else elseBlock">
+                    <p>{{personalData.reffredPerson}}</p>
+                </ng-container>
+                <ng-template #elseBlock>
+                    <p>-</p>
+                </ng-template>
             </div>
 
             <div>
-                <input type="checkbox" checked name="ifNot" #ifNot ><label for="ifNot">Send me job related updates via mail</label>
+                <input type="checkbox" [checked]="personalData.notification" name="ifNot" #ifNot ><label for="ifNot">Send me job related updates via mail</label>
             </div>
         </div>
         <div class="profile-picture-tab">
@@ -99,40 +105,45 @@
         <div class="education-summery-tab">
                 <div>
                     <label>Aggregate Percentage</label>
-                    <p>65</p>
+                    <p>{{educationQualificationData.percentageVal}}</p>
 
                 </div>
 
                 <div>
                     <label>Year of Passing</label>
-                    <p>2020</p>
+                    <p>{{educationQualificationData.passingYear}}</p>
                 </div>
 
                 <div>
                     <div>
                         <label>Qualification</label>
-                        <p>Bachelor in Technology (B.Tech)</p>
+                        <p>{{educationQualificationData.qualification}}</p>
                     </div>
                     <div>
                         <label>Stream</label>
-                        <p>Information Technology</p>
+                        <p>{{educationQualificationData.stream}}</p>
                     </div>
                 </div>
 
                 <div>
                     <div>
                         <label>College</label>
-                        <p>Pune Institute of Technology (PIT)</p>
+                        <p>{{educationQualificationData.college}}</p>
                     </div>
                     <div>
                         <label>If others, please enter your college name</label>
-                        <p>-</p>
+                        <ng-container *ngIf="educationQualificationData.other!=='';else elseBlock">
+                            <p>{{educationQualificationData.other}}</p>
+                        </ng-container>
+                        <ng-template #elseBlock>
+                            <p>-</p>
+                        </ng-template>
                     </div>
                 </div>
 
                 <div>
                     <label>Where is your college located?</label>
-                    <p>Pune</p>
+                    <p>{{educationQualificationData.location}}</p>
                 </div>
                 
         </div>
@@ -143,71 +154,85 @@
         <div class="professional-qualification-type-tab">
             <div>
                 <label>Applicant Type</label>
-                <p>Experienced</p>
+                <p>{{professionalQualificationData.show}}</p>
             </div>
         </div>
         <div class="professional-qualification-summery">
             <div>
                 <label>Years of Experience</label>
-                <p>5</p>
+                <p>{{professionalQualificationData.yearOfExperience}}</p>
             </div>
 
             <div>
                 <label>Current CTC (In Rupees)</label>
-                <p>5,00,000</p>
+                <p>{{professionalQualificationData.cCTC}}</p>
             </div>
 
             <div>
                 <label>Expected CTC (In Rupees)</label>
-                <p>6,50,000</p>
+                <p>{{professionalQualificationData.eCTC}}</p>
             </div>
 
             <div>
                 <label>Select All The Technologies You Expertise In</label>
-                <p>Javascript</p>
+                <p *ngFor="let item of professionalQualificationData.techExp ">{{item.name}}</p>
                 <label>If others, please mention</label>
-                <p>-</p>
+                <ng-container *ngIf="professionalQualificationData.otherExp != ''; else elseBlock">
+                    <p>{{professionalQualificationData.otherExp}}</p>
+                </ng-container>
+                <ng-template #elseBlock>
+                    <p>-</p>
+                </ng-template>
             </div>
 
             <div>
                 <label>Select All The Technologies You are familiar In</label>
-                <p>Angular JS</p>
-                <p>React</p>
+                <p *ngFor="let item of professionalQualificationData.techFam">{{item.name}}</p>
 
                 <label>If others, please mention</label>
-                <p>-</p>
+                <ng-container *ngIf="professionalQualificationData.otherFam != ''; else elseBlock">
+                    <p>{{professionalQualificationData.otherFam}}</p>
+                </ng-container>
+                <ng-template #elseBlock>
+                    <p>-</p>
+                </ng-template>
             </div>
 
             <div>
                 <label>Are you currently on notice period?</label>
-                <p>Yes</p>
+                <p>{{professionalQualificationData.onNotice}}</p>
             </div>
 
             <div>
                 <div>
                     <label>If Yes, when will your notice period end?</label>
-                    <p>20-May-2020</p>
+                    <p>{{professionalQualificationData.endDate}}</p>
                 </div>
                 <div>
                     <label>How long is your notice period? (Mention in months)</label>
-                    <p>2 Months</p>
+                    <p>{{professionalQualificationData.duration}}</p>
                 </div>
             </div>
 
             <div>
                 <label>Have You Appeared For Any Test By Zeus in the past 12 months?</label>
-                <p>No</p>
+                <p>{{professionalQualificationData.appeared}}</p>
             </div>
 
             <div>
                 <label>If Yes, which role did you apply for?</label>
-                <p>-</p>
+                <ng-container *ngIf="professionalQualificationData.roleApplied != ''; else elseBlock">
+                    <p>{{professionalQualificationData.roleApplied}}</p>
+                </ng-container>
+                <ng-template #elseBlock>
+                    <p>-</p>
+                </ng-template>
             </div>
         </div>
     </div>
 
     <div class="button-tab">
-        <button>PREVIOUS</button>
+        <button (click)="navigateFunction()">PREVIOUS</button>
     </div>
 
 </div>

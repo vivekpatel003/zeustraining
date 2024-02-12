@@ -41,34 +41,21 @@
 
         <div>
             <label for="otherSubject">If others, please mention</label>
-            <input type="text" name="otherSubject" #otherSubject>
+            <input type="text" ngModel  name="otherSubject" #otherSubject>
         </div>
 
         <div>
             <label for="subject">Select All The Technologies You Are Familiar In</label>
             <div class="subjects-box">
-                <div>
-                    <input type="checkbox" #subject name="subject" value="" ><label for="">Javascript</label>
+                <div *ngFor="let item of jobs">
+                    <input type="checkbox" #subject [(ngModel)]="item.selected" name="subject" value="" ><label for="">{{item.name}}</label>
                 </div>
-                <div>
-                    <input type="checkbox" #subject name="subject" value="" ><label for="">Angular JS</label>
-                </div>
-                <div>
-                    <input type="checkbox" #subject name="subject" value="" ><label for="">React</label>
-                </div>
-                <div>
-                    <input type="checkbox" #subject name="subject" value="" ><label for="">Node JS</label>
-                </div>
-                <div>    
-                    <input type="checkbox" #subject name="subject" value="" ><label for="">Others</label>
-                </div>
-                
             </div>
         </div>
 
         <div>
             <label for="otherSubject">If others, please mention</label>
-            <input type="text" name="otherSubject" #otherSubject>
+            <input type="text" name="otherSubject" ngModel  #otherSubject>
         </div>
 
 
@@ -76,10 +63,10 @@
             <label for="noticePeriod">Are you currently on notice period?*</label>
             <div class="worked-option-box">
                 <div>
-                    <input type="radio" name="noticePeriod" #noticePeriod><label for="">Yes</label>
+                    <input type="radio" ngModel  name="noticePeriod" #noticePeriod><label for="noticePeriod">Yes</label>
                 </div>
                 <div>
-                    <input  type="radio" name="noticePeriod" #noticePeriod><label for="">No</label>
+                    <input  type="radio"  ngModel name="noticePeriod" #noticePeriod><label for="noticePeriod">No</label>
                 </div>
             </div>
         </div>
@@ -87,11 +74,11 @@
         <div>
             <div>
                 <label for="endDate">If Yes, when will your notice period end?*</label>
-                <input type="date" name="endDate" #endDate>
+                <input type="date" ngModel name="endDate" #endDate>
             </div>
             <div>
                 <label for="">How long is your notice period?* (Mention in months)</label>
-                <select name="notceDuration" #notceDuration ></select>
+                <select name="notceDuration" ngModel  #notceDuration ></select>
             </div>
         </div>
 
@@ -99,21 +86,17 @@
             <label for="workOption">Have You Appeared For Any Test By Zeus in the past 12 months?*</label>
             <div class="worked-option-box">
                 <div>
-                    <input type="radio" name="workOption" #workOption><label for="">Yes</label>
+                    <input type="radio" name="workOption" ngModel #workOption><label for="">Yes</label>
                 </div>
                 <div>
-                    <input  type="radio" name="workOption" #workOption><label for="">No</label>
+                    <input  type="radio" name="workOption" ngModel #workOption><label for="">No</label>
                 </div>
             </div>
         </div>
 
         <div>
             <label for="roleApplied">If Yes, which role did you apply for?</label>
-            <input type="text" name="roleApplied" #roleApplied>
+            <input type="text" name="roleApplied" ngModel #roleApplied>
         </div>
     </form>
-    <div class="button-tab">
-            <button>PREVIOUS</button>
-            <button>NEXT</button>
-    </div>
 </div>

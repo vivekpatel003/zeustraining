@@ -9,28 +9,29 @@
 }
 label{
     color: $lable-color;
-    font-size: 12px;
+    font-size: calc(7.69px + 0.390625vw);
 }
 li{
     color:$black-font;
-    font-size:14px;
+    font-size:calc(9.69px + 0.390625vw);
     font-weight: 600;
 }
 .main-tab > img{
     background-color: $correct-logo-color;
     position: absolute;
-    height: 100px;
-    width: 100px;
-    top:-50px;
-    left:46%;
+    height: calc(95.69px + 0.390625vw);
+    width:calc(95.69px + 0.390625vw);
+    top:calc(-55.69px + 0.390625vw);
+    // left:50%;
+    right: 48%;
     // filter: invert(99%) sepia(94%) saturate(0%) hue-rotate(196deg) brightness(108%) contrast(100%);
     border-radius: 50%;
 }
 @include ul;
 h2{
     text-align: center;
-    font-size: 18px;
-    margin-top:74px
+    font-size: calc(13.69px + 0.390625vw);
+    margin-top:74px;
 }
 .main-tab > div{
     line-height: 20px;

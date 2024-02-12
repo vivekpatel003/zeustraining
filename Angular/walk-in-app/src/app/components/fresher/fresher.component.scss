@@ -16,7 +16,7 @@ form div{
     grid-column: 1/span 1;
     color: $lable-color;
     text-transform: capitalize;
-    font-size: 12px;
+    font-size: calc(7.69px + 0.390625vw);
     margin-bottom:40px;
 }
 
@@ -28,8 +28,8 @@ input{
     accent-color: $light-green;
 }
 .subjects-box div input{
-    width: 18px;
-    height: 24px;
+    width: calc(13.69px + 0.390625vw);
+    height:calc(19.69px + 0.390625vw);
 }
 .subjects-box div input[type="text"]{
     width: 100%;
@@ -39,7 +39,7 @@ input{
     margin-left:9px;
     color: $black-font;
     font-weight: 600;
-    font-size: 16px;
+    font-size: calc(11.69px + 0.390625vw);
 }
 .subjects-box div{
     @include flex(start,center,default);
@@ -62,18 +62,19 @@ form div:nth-child(1),form div:nth-child(3),form div:nth-child(4){
     margin-right: 24px;
 }
 .worked-option-box input{
-    width: 18px;
-    height: 24px;
+    width: calc(13.69px + 0.390625vw);
+    height: calc(19.69px + 0.390625vw);
 }
 .worked-option-box label{
     color: $black-font;
-    font-size:16px ;
+    font-size:calc(11.69px + 0.390625vw) ;
     margin-left: 9px;
     font-weight: 600;
 }
 .button-tab{
     width: 100%;
     @include flex(center,center,default);
+    flex-wrap: wrap;
     margin-top: 32px;
 }
 @include button(5px 16px);

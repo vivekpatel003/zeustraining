@@ -1,8 +1,9 @@
-<div class="main-tab">
-  <div class="card-tab">
+<app-header [display]="dp"></app-header>
+<div class="main-tab" >
+  <div class="card-tab" #mainTab>
     <div class="card-tab-header">
       <h2>Walk In for Multiple Job Roles</h2>
-      <button>APPLY</button>
+      <button (click)="getData()" [disabled]="timeSlot.invalid">APPLY</button>
     </div>
 
 
@@ -55,17 +56,17 @@
   <div class="Pre-requisites-head-tab">
     <h3>Pre-requisites & Application Process</h3>
     <div>
-      <img src="../../../assets/WalkInPortal-Icons-ListingtoSuccessflow/drop-down.png" alt="">
+      <img src="../../../assets/WalkInPortal-Icons-ListingtoSuccessflow/drop-down.png" #dropDown (click)="showtermFunc()" alt="">
     </div>
   </div>
 
 
-  <div class="prerequisite-details-tab">
+  <div #preReqTab class="prerequisite-details-tab">
       <div class="general-instruction-tab">
           <label>General Instructions :</label>
           <div>
              <ul class="dashed">
-              <li>We have a two–year indemnity for permanent candidates. We will provide training to the selected candidates. </li>
+              <li>We have a two-year indemnity for permanent candidates. We will provide training to the selected candidates. </li>
               <li> Candidates who have appeared for any test held by Zeus Learning in the past 12 months will not be allowed to appear for this recruitment test.</li>
              </ul>
           </div>
@@ -110,34 +111,31 @@
     </div>
   </div>
 
-  <div class="card-details">
+    <form  class="card-details"  #cardForm="ngForm" >
       <h3>Time Slots & Preferences</h3>
       <div class="time-date-box">
-          <label>Select a Time Slot :</label>
-          <div><input type="radio" name="timeSlot" #timeSlot><label for="timeSlot">9:00 AM to 11:00 AM</label></div>
-          <div><input type="radio" name="timeSlot" #timeSlot><label for="timeSlot">1:00 PM to 3:00 PM</label></div>
+        <label>Select a Time Slot :</label>
+        <div><input type="radio" name="timeSlot" [(ngModel)]="form_data.timing" #timeSlot="ngModel" required value="9 to 11"><label for="timeSlot">9:00 AM to 11:00 AM</label></div>
+        <div><input type="radio" name="timeSlot" [(ngModel)]="form_data.timing" #timeSlot="ngModel" required value="1 to 3"><label for="timeSlot">1:00 PM to 3:00 PM</label></div>
       </div>
       <hr class="first-hr"/>
       <div class="preferences-box">
-      <label >Select Your Preference :</label>
-      <div>
-          <input type="checkbox" #subject name="subject" value="" ><label for="">Instructional Designer</label>
-      </div>
-      <div>
-          <input type="checkbox" #subject name="subject" value="" ><label for="">Software Engineer</label>
-      </div>
-      <div>
-          <input type="checkbox" #subject name="subject" value="" ><label for="">Software Quality Engineer</label>
-      </div>
-
+        <label >Select Your Preference :</label>
+        <div *ngFor="let item of checkBoxes">
+          <input type="checkbox" ngModel name="subject"  [(ngModel)]="item.selected"  ><label for="">{{item.name}}</label>
+        </div>
       </div>
       <hr class="second-hr" />
       <div class="upload-box">
         <div>
-          <img src="../../../assets/WalkInPortal-Icons-ListingtoSuccessflow/Upload_black_24dp.svg" alt="">
-          <p>Upload Updated Resume</p>
+          <label for="file-input"><img src="../../../assets/WalkInPortal-Icons-ListingtoSuccessflow/Upload_black_24dp.svg" alt="">
+          <input type="file" [(ngModel)]="form_data.resume"  name="file-upload" id="file-input">
+        </label>
+        <p>Upload Updated Resume</p>
         </div>
-        <button><img src="../../../assets/WalkInPortal-Icons-ListingtoSuccessflow/arrow_upward_black_24dp.svg" alt=""></button>
+        <button id="top-btn" (click)="scrollTop()"><img src="../../../assets/WalkInPortal-Icons-ListingtoSuccessflow/arrow_upward_black_24dp.svg" alt=""></button>
       </div>
+    </form>
   </div>
-</div>
+
+  <app-job-details></app-job-details>

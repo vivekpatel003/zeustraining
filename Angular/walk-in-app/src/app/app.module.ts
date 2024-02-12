@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -17,6 +18,8 @@ import { WalkInHomeComponent } from './components/walk-in-home/walk-in-home.comp
 import { CardDetailsComponent } from './components/card-details/card-details.component';
 import { JobDetailsComponent } from './components/job-details/job-details.component';
 import { HallTicketPageComponent } from './components/hall-ticket-page/hall-ticket-page.component';
+import { OutletComponent } from './components/outlet/outlet.component';
+import { NotFoundPageComponent } from './components/not-found-page/not-found-page.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +36,9 @@ import { HallTicketPageComponent } from './components/hall-ticket-page/hall-tick
     WalkInHomeComponent,
     CardDetailsComponent,
     JobDetailsComponent,
-    HallTicketPageComponent
+    HallTicketPageComponent,
+    OutletComponent,
+    NotFoundPageComponent
   ],
   imports: [
     BrowserModule,
