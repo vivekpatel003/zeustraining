@@ -175,6 +175,7 @@ input{
     @include flex(center,center,default);
     flex-wrap: wrap;
     margin-top: 32px;
+    margin-bottom: 32px;
 }
 @include button(5px 16px);
 

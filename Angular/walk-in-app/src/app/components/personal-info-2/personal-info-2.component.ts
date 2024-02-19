@@ -1,6 +1,8 @@
 import { Component,AfterViewInit, ElementRef,ViewChild,Renderer2 } from '@angular/core';
 import { SharedServiceService } from "../../services/shared-service.service";
 import { Router } from "@angular/router";
+import {EducationPageDataService} from '../../services/education-page-data.service';
+import { Console } from 'console';
 
 @Component({
   selector: 'app-personal-info-2',
@@ -14,30 +16,30 @@ export class PersonalInfo2Component {
 
   backButton:string = 'education';
   educationData={
-    show:'',
-    percentageVal:'',
-    passingYear:'',
-    qualification:'',
-    stream:'',
-    college:'',
-    other:'',
-    location:''
+    show:this.SharedServiceService.educationData.show,
+    percentageVal:this.SharedServiceService.educationData.percentageVal,
+    passingYear:this.SharedServiceService.educationData.passingYear,
+    qualification:this.SharedServiceService.educationData.qualification,
+    stream:this.SharedServiceService.educationData.stream,
+    college:this.SharedServiceService.educationData.college,
+    other:this.SharedServiceService.educationData.other,
+    location:this.SharedServiceService.educationData.location
   };
 
  
   experiencedData={
-    yearOfExperience:'',
-    cCTC:'',
-    eCTC:'',
-    techExp:[],
-    otherExp:'',
-    techFam:[],
-    otherFam:'',
-    onNotice:'',
-    endDate:'',
-    duration:'',
-    appeared:'',
-    roleApplied:''
+    yearOfExperience:this.SharedServiceService.experiencedData.yearOfExperience,
+    cCTC:this.SharedServiceService.experiencedData.cCTC,
+    eCTC:this.SharedServiceService.experiencedData.eCTC,
+    techExp:this.SharedServiceService.experiencedData.techExp,
+    otherExp:this.SharedServiceService.experiencedData.otherExp,
+    techFam:this.SharedServiceService.experiencedData.techFam,
+    otherFam:this.SharedServiceService.experiencedData.otherFam,
+    onNotice:this.SharedServiceService.experiencedData.onNotice,
+    endDate:this.SharedServiceService.experiencedData.endDate,
+    duration:this.SharedServiceService.experiencedData.duration,
+    appeared:this.SharedServiceService.experiencedData.appeared,
+    roleApplied:this.SharedServiceService.experiencedData.roleApplied
   }
 
   passingYears:number[]=[2024,2025,2026,2027];
@@ -55,28 +57,21 @@ subjectListFam:{name:string,selected:boolean}[]=[
   ,{name:"Node JS",selected:false}
   ,{name:"Others",selected:false}
 ];
-  QualificationList:string[]= [
-    "Bachelor's Degree in Computer Science",
-    "Master's Degree in Business Administration",
-    "Certified Project Management Professional (PMP)",
-    "Fluent in English, Spanish, and French",
-    "Certified Scrum Master (CSM)"
-  ];
-  StreamList:string[]=[
-    "Computer Science",
-    "Electrical Engineering",
-    "Mechanical Engineering",
-    "Civil Engineering",
-    "Biotechnology"
-  ];
-  collegesList:string[]=[
-    
-      "Harvard University",
-      "Massachusetts Institute of Technology (MIT)",
-      "Stanford University",
-      "University of Cambridge",
-      "ETH Zurich (Swiss Federal Institute of Technology)"
-    ];
+  QualificationList:any={
+    college:{
+      cId:'',
+      collegeName:''
+    },
+    stream:{
+      sId:'',
+      streamName:''
+    },
+    qualification:{
+      qId:'',
+      qualificationName:''
+    }
+  }
+
     
     durationList:string[]=[
       "1 Months",
@@ -103,7 +98,14 @@ subjectListFam:{name:string,selected:boolean}[]=[
     
 
 
-  constructor(private SharedServiceService:SharedServiceService,private router:Router,private render:Renderer2){}
+   constructor(private SharedServiceService:SharedServiceService,private router:Router,private render:Renderer2,private edu:EducationPageDataService){
+          this.edu.getdata().subscribe(data=>{
+            this.QualificationList = data;
+            console.log(this.QualificationList);
+          });
+          
+
+  }
   navigateFunction():void{
     this.router.navigate(['/createAccount']);
   }
@@ -143,7 +145,7 @@ subjectListFam:{name:string,selected:boolean}[]=[
  
   addData()
   {
-    console.log("Value is:",this.educationData.percentageVal)
+    console.log("Value is:",this.SharedServiceService.personalData.Email)
     console.log("fresher:",this.experiencedData)
     this.SharedServiceService.updateEducationData(this.educationData);
     console.log(this.SharedServiceService.getEducationData());
@@ -151,7 +153,7 @@ subjectListFam:{name:string,selected:boolean}[]=[
     this.experiencedData.techExp = this.selectedExpData
     this.SharedServiceService.updateExperiencedData(this.experiencedData);
     console.log(this.SharedServiceService.getExperiencedData());
-    this.router.navigate(['/review']);
+    // this.router.navigate(['/review']);
   }
   get selectedExpData()
   {

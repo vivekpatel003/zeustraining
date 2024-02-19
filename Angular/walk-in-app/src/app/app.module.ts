@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
+import {  HttpClientModule } from '@angular/common/http';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -20,6 +21,8 @@ import { JobDetailsComponent } from './components/job-details/job-details.compon
 import { HallTicketPageComponent } from './components/hall-ticket-page/hall-ticket-page.component';
 import { OutletComponent } from './components/outlet/outlet.component';
 import { NotFoundPageComponent } from './components/not-found-page/not-found-page.component';
+import { SharedServiceService } from './services/shared-service.service';
+import { AuthServiceService } from './services/auth-service.service';
 
 @NgModule({
   declarations: [
@@ -43,9 +46,12 @@ import { NotFoundPageComponent } from './components/not-found-page/not-found-pag
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+   HttpClientModule
   ],
   providers: [
+    SharedServiceService,
+    AuthServiceService,
     provideClientHydration()
   ],
   bootstrap: [AppComponent]

@@ -32,7 +32,7 @@
             <div >
                 <label for="percentage">Aggregate Percentage*</label>
                 <input type="text" required max-length="3" pattern="[0-9]+$" #percentage="ngModel" name="percentage" [(ngModel)]="educationData.percentageVal"  value=""  >
-                <p class="error-msg" *ngIf="percentage.invalid && educationQualification.touched">Enter Percentage*</p>
+                <p class="error-msg" *ngIf="percentage.invalid && percentage.touched">Enter Percentage*</p>
             </div>
 
             <div class="passing-year-box">
@@ -41,7 +41,7 @@
                     <option value="" disabled selected>Select Option</option>
                     <option *ngFor="let years of passingYears" [value]="years">{{years}}</option>
                 </select>
-                <p class="error-msg" *ngIf="passingYear.invalid && educationQualification.touched">Select passing Year*</p>
+                <p class="error-msg" *ngIf="passingYear.invalid && passingYear.touched">Select passing Year*</p>
             </div>
 
 
@@ -50,17 +50,17 @@
                     <label for="qualification">Qualification*</label>
                     <select name="Qualification" #qualification="ngModel" required [(ngModel)]="educationData.qualification">
                         <option value="" disabled selected>Select Option</option>
-                        <option *ngFor="let Qualifications of QualificationList" [value]="Qualifications">{{Qualifications}}</option>
+                        <option *ngFor="let Qualifications of QualificationList.qualification" [value]="Qualifications.qId">{{Qualifications.qualificationName}}</option>
                     </select>
-                    <p class="error-msg" *ngIf="qualification.invalid && educationQualification.touched">Select qualification*</p>
+                    <p class="error-msg" *ngIf="qualification.invalid && qualification.touched">Select qualification*</p>
             </div>
             <div>
                 <label for="stream">Stream*</label>
                 <select name="Stream" #stream="ngModel" required  [(ngModel)]="educationData.stream">
                     <option value="" disabled selected>Select Option</option>
-                    <option *ngFor="let streams of StreamList" [value]="streams">{{streams}}</option>
+                    <option *ngFor="let Qualifications of QualificationList.stream" [value]="Qualifications.sId">{{Qualifications.streamName}}</option>
                 </select>
-                <p class="error-msg" *ngIf="stream.invalid && educationQualification.touched">Select stream*</p>
+                <p class="error-msg" *ngIf="stream.invalid && stream.touched">Select stream*</p>
             </div>
         </div>
 
@@ -69,9 +69,9 @@
                 <label for="college">College*</label>
                 <select name="collegeName" #college="ngModel" required  [(ngModel)]="educationData.college">
                     <option value="" disabled selected>Select Option</option>
-                    <option *ngFor="let colleges of collegesList" [value]="colleges">{{colleges}}</option>
+                    <option *ngFor="let Qualifications of QualificationList.college" [value]="Qualifications.cId">{{Qualifications.collegeName}}</option>
                 </select>
-                <p class="error-msg" *ngIf="stream.invalid && educationQualification.touched">Select College*</p>
+                <p class="error-msg" *ngIf="stream.invalid && stream.touched">Select College*</p>
         </div>
         <div>
             <label for="otherCollege">If others, please enter your college name</label>
@@ -82,7 +82,7 @@
     <div>
         <label for="collegeLocation">Where is your college located?*</label>
         <input type="text" #collegeLocation="ngModel" required pattern="[a-zA-Z]+$" name="collegeLocation"  [(ngModel)]="educationData.location">
-        <p class="error-msg" *ngIf="collegeLocation.invalid && educationQualification.touched">Enter Your Location*</p>
+        <p class="error-msg" *ngIf="collegeLocation.invalid && collegeLocation.touched">Enter Your Location*</p>
     </div>
         </form>
     </div>
@@ -159,15 +159,15 @@
     
             <div>
                 <label for="currCtc">Current CTC* (In Rupees)</label>
-                <input type="text" name="currCtc" [(ngModel)]="experiencedData.cCTC">
-                <p class="error-msg" *ngIf="yearOfExp.invalid && yearOfExp.touched">Enter Years*</p>
+                <input type="text" name="currCtc" #currCtc="ngModel"  required [(ngModel)]="experiencedData.cCTC">
+                <p class="error-msg" *ngIf="currCtc.invalid && currCtc.touched">Enter Years*</p>
             </div>
     
     
             <div>
                 <label for="expCtc">Expected CTC* (In Rupees)</label>
-                <input type="text" name="expCtc" [(ngModel)]="experiencedData.eCTC">
-                <p class="error-msg" *ngIf="yearOfExp.invalid && yearOfExp.touched">Enter Years*</p>
+                <input type="text" name="expCtc" #expCtc="ngModel"  [(ngModel)]="experiencedData.eCTC">
+                <p class="error-msg" *ngIf="expCtc.invalid && expCtc.touched">Enter Years*</p>
             </div>
     
             <div>
@@ -189,7 +189,7 @@
                 <label for="subject">Select All The Technologies You Are Familiar In</label>
                 <div class="subjects-box">
                     <div *ngFor="let item of subjectListFam">
-                        <input type="checkbox" #subject [(ngModel)]="item.selected" name="subject" value="" ><label for="">{{item.name}}</label>
+                        <input type="checkbox" #subject [(ngModel)]="item.selected"  name="subject" value="" ><label for="">{{item.name}}</label>
                     </div>
                 </div>
             </div>
@@ -250,5 +250,7 @@
         <button (click)="navigateFunction()">PREVIOUS</button>
         <button [disabled]="educationQualification.invalid " (click)="addData()">NEXT</button>
     </div>
+
+    
 
 

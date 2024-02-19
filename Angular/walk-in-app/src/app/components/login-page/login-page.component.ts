@@ -1,5 +1,8 @@
 import { Component,ElementRef,ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import {AuthServiceService} from '../../services/auth-service.service';
+import {SharedServiceService} from '../../services/shared-service.service';
+import { Console } from 'console';
 
 
 @Component({
@@ -10,18 +13,33 @@ import { Router } from '@angular/router';
 export class LoginPageComponent {
   
   showPassword:boolean=false;
+  
   login_data={
-    email:'',
-    password:'',
-    remember:false
+    email:this.shared.loginData.email,
+    password:this.shared.loginData.password,
+    remember:this.shared.loginData.remember
   }
-   constructor(private router:Router){}
+   constructor(private router:Router,private auth:AuthServiceService,private shared:SharedServiceService){}
     togglePasswordVisibility()
     {
       this.showPassword=!this.showPassword;
     }
     showData():void{
-      console.log(this.login_data)
-      this.router.navigate(['/dashBoard']);
+      this.auth.authentication({
+          "srno": 0,
+          "email": this.login_data.email,
+          "password": this.login_data.password,
+          "isAdmin": true,
+          "dtCreated": "2024-02-16T07:19:28.912Z",
+          "dtModified": "2024-02-16T07:19:28.912Z"
+      }).subscribe(present=>{
+        if(present == false){
+          alert("Wrong Credentials!");
+        }
+        else{
+          console.log(this.login_data)
+          this.router.navigate(['/dashBoard']);
+        }
+      });
     }
 }

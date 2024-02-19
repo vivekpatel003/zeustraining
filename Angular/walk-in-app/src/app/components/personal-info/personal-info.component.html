@@ -25,19 +25,19 @@
         <div>
             <label for="firstName" >First Name*</label>
             <input type="text" required #firstName="ngModel" pattern="[a-zA-Z]+$" [(ngModel)]="personalData.firstName" name="firstName">
-            <p class="error-msg" *ngIf="firstName.invalid && createAccountForm.touched">Enter FirstName*</p>
+            <p class="error-msg" *ngIf="firstName.invalid && firstName.touched">Enter FirstName*</p>
         </div>
 
         <div>
             <label for="lastName">Last Name*</label>
             <input type="text" required #lastName="ngModel" pattern="[a-zA-Z]+$" [(ngModel)]="personalData.lastName" name="lastName">
-            <p class="error-msg" *ngIf="lastName.invalid && createAccountForm.touched">Enter LastPassword*</p>
+            <p class="error-msg" *ngIf="lastName.invalid && lastName.touched">Enter LastPassword*</p>
         </div>
 
         <div>
             <label for="email">Email*</label>
             <input type="email" required #email="ngModel" email [(ngModel)]="personalData.Email" name="Email">
-            <p  class="error-msg"*ngIf="email.invalid && createAccountForm.touched">Enter Email*</p>
+            <p  class="error-msg"*ngIf="email.invalid && email.touched">Enter Email*</p>
         </div>
 
         <div style="height: 51px;">
@@ -46,7 +46,7 @@
                 <span>+</span><input type="text" #countrycode="ngModel" pattern="[0-9]+$"  required [(ngModel)]="personalData.countryCode" name="country-code">
                 <input type="text" #phoneNumber="ngModel" minlength="10" pattern="[0-9]+$" required [(ngModel)]="personalData.phoneNumber" name="phoneNumber">
             </div>
-            <p class="error-msg" *ngIf="(countrycode.invalid || phoneNumber.invalid) && createAccountForm.touched">Enter MobileNumber*</p>
+            <p class="error-msg" *ngIf="(countrycode.invalid || phoneNumber.invalid) && (countrycode.touched||phoneNumber.touched)">Enter MobileNumber*</p>
         </div>
 
         <div class="file-input-box">
@@ -54,7 +54,7 @@
             <input type="file" required #uploadImage="ngModel" accept=".pdf" id="uploadImage" [(ngModel)]="personalData.uploadImage" name="Image">
             </label>
            <label>upload resume</label>
-            <p class="error-msg" *ngIf="uploadImage.invalid  && createAccountForm.touched">Add File*</p>
+            <p class="error-msg" *ngIf="uploadImage.invalid  && uploadImage.touched">Add File*</p>
         </div>
 
         <div>
@@ -66,7 +66,7 @@
         <div class="prefered-job-box">
             <label for="">Preferred Job Roles*</label>
             <div *ngFor="let item of jobs">
-                <input type="checkbox"  name="job" [(ngModel)]="item.selected"><label >{{item.name}}</label>
+                <input type="checkbox" [checked]="item.selected"  name="job" [(ngModel)]="item.selected"><label >{{item.name}}</label>
             </div>
 
         </div>

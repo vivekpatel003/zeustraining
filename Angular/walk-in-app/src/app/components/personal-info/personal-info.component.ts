@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class PersonalInfoComponent {
   createButton:boolean = false;
-  backButton:string = "createAccount" ;
+  backButton:string = "createAccount";
     jobs:{
       name:string,
       selected:boolean
@@ -18,23 +18,24 @@ export class PersonalInfoComponent {
       { name:"Software Engineer", selected:false},
       { name:"Software Quality Engineer", selected:false} 
     ]
+   
     personalData={
-      firstName:'',
-      lastName:'',
-      Email:'',
-      countryCode:'',
-      phoneNumber:'',
-      uploadImage:'',
-      portfolio:'',
-      selectedJob:[],
-      reffredPerson:'',
-      notification:''
+      firstName:this.SharedServiceService.personalData.firstName,
+      lastName:this.SharedServiceService.personalData.lastName,
+      Email:this.SharedServiceService.personalData.Email,
+      countryCode:this.SharedServiceService.personalData.countryCode,
+      phoneNumber:this.SharedServiceService.personalData.phoneNumber,
+      uploadImage:this.SharedServiceService.personalData.uploadImage,
+      portfolio:this.SharedServiceService.personalData.portfolio,
+      selectedJob:this.SharedServiceService.personalData.selectedJob,
+      reffredPerson:this.SharedServiceService.personalData.reffredPerson,
+      notification:this.SharedServiceService.personalData.notification
     }
     filled_data:any;
     constructor(private SharedServiceService:SharedServiceService,private router:Router){}
     getData():void
     {
-      this.personalData.selectedJob = this.jobChoosen
+      this.personalData.selectedJob = this.jobChoosen;
       this.SharedServiceService.updatePersonalInfoData(this.personalData);
       console.log(this.SharedServiceService.getPersonalInfoData())
       this.router.navigate(['/education'])

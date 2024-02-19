@@ -1,16 +1,57 @@
 import { Injectable } from '@angular/core';
-
+import {EducationPageDataService} from './education-page-data.service';
 @Injectable({
   providedIn: 'root'
 })
 export class SharedServiceService {
-
-  educationData:any;
-  experiencedData:any;
-  loginData:any;
-  personalData:any;
+  experiencedData:any={
+    yearOfExperience:'',
+    cCTC:'',
+    eCTC:'',
+    techExp:[],
+    otherExp:'',
+    techFam:[],
+    otherFam:'',
+    onNotice:'',
+    endDate:'',
+    duration:'',
+    appeared:'',
+    roleApplied:''
+  };
+  educationData:any={
+    show:'',
+    percentageVal:'',
+    passingYear:'',
+    qualification:'',
+    stream:'',
+    college:'',
+    other:'',
+    location:''
+  };
+  personalData:any={
+    firstName:'',
+    lastName:'',
+    Email:'',
+    countryCode:'',
+    phoneNumber:'',
+    uploadImage:'',
+    portfolio:'',
+    selectedJob:[],
+    reffredPerson:'',
+    notification:''
+  };
+  loginData={
+    email:'',
+    password:'',
+    remember:false
+  }
+  card_form_data:any={
+    timing:'',
+    preferences:[],
+    resume:''
+};
   
-  constructor() { }
+  constructor(private edu : EducationPageDataService) { }
 
   updateEducationData(data:any):void
   {
