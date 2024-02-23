@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 
 @Injectable({
@@ -7,19 +7,32 @@ import { HttpClient } from '@angular/common/http';
 })
 export class EducationPageDataService {
 
-  constructor(private http:HttpClient) { }
+  header! : HttpHeaders
+  constructor(private http:HttpClient) { 
+   var token = sessionStorage.getItem('token');
+   console.log("This is token",token);
+  this.header= new HttpHeaders({
+    Authorization : 'Bearer '+token
+   });
 
+  }
   getdata()
   {
-    return this.http.get("https://localhost:7148/api/DB/getData");
+
+    return this.http.get("https://localhost:7148/api/DB/getData",{headers:this.header});
   }
   sendProfileData(data:any)
   {
-    return this.http.post("https://localhost:7148/api/DB/check",data,{responseType:'text'});
+    return this.http.post("https://localhost:7148/api/DB/check",data,{headers:this.header,responseType:'text'});
   }
   getEmailChecked(data:any)
   {
-    return this.http.post("https://localhost:7148/api/DB/isEmailPresent",data,{responseType:'json'});
+    console.log(this.header)
+    return this.http.post("https://localhost:7148/api/DB/isEmailPresent",data,{headers:this.header,responseType:'json'});
+  }
+  sendMail(data:any)
+  {
+    return this.http.post("https://localhost:7148/api/DB/EmailSend",data,{headers:this.header,responseType:'text'});
   }
 
 }

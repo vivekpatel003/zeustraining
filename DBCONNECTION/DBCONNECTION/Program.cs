@@ -6,11 +6,15 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using Microsoft.EntityFrameworkCore.Storage;
 //using BrandContext;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
+
 // Add services to the container.
+//Database dependency injection
 var connection = builder.Configuration.GetConnectionString("Default");
 builder.Services.AddDbContext<BrandContext>(option=>
     option.UseMySql(connection,ServerVersion.AutoDetect(connection))
@@ -20,10 +24,15 @@ var connectionS = builder.Configuration.GetConnectionString("InternShip");
 builder.Services.AddDbContext<InternshipContext>(item =>
     item.UseMySql(connectionS, ServerVersion.AutoDetect(connectionS)));
 
+
+//controller DI
 builder.Services.AddControllers();
 
-
+//JWT DI
 builder.Services.AddScoped<IUserService, UserService>();
+
+//Email DI
+builder.Services.AddTransient<IEmailSender, EmailSender>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 //Jwt Configuration starts

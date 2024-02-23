@@ -2,7 +2,7 @@
 
 <app-create-account [id] ="createButton" [back]="backButton"></app-create-account>
 
-<div class="main-tab">
+<div class="main-tab" *ngIf="QualificationList != undefined">
     <div class="status-tab">
         <div  class="personal-button">
             <span style="background-color: #3FD28B;"><img src="../../../assets/WalkInPortal-Icons-ListingtoSuccessflow/pencile.svg" alt=""></span>
@@ -30,7 +30,7 @@
 
 
     <div #educationTab class="education-qualification-form">
-        <form #educationQualification = "ngForm" >
+        <form #educationQualification="ngForm" >
             <div >
                 <label for="percentage">Aggregate Percentage*</label>
                 <input type="text" required max-length="3" pattern="[0-9]+$" #percentage="ngModel" name="percentage" [(ngModel)]="educationData.percentageVal"  value=""  >
@@ -250,7 +250,7 @@
 </div>
     <div class="button-tab">
         <button (click)="navigateFunction()">PREVIOUS</button>
-        <button [disabled]="educationQualification.invalid " (click)="addData()">NEXT</button>
+        <button [disabled]="" (click)="addData()">NEXT</button>
     </div>
 
     

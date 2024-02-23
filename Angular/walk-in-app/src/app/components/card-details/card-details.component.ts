@@ -20,6 +20,7 @@ export class CardDetailsComponent implements OnInit{
     processInfo:string[];
     timeSlot:any;
     jobPrefers:any;
+    jobNames:any;
 
     @ViewChild('preReqTab') preReqTab:ElementRef;
     @ViewChild('dropDown') dropDown :ElementRef;
@@ -47,10 +48,15 @@ export class CardDetailsComponent implements OnInit{
 
 
   ngOnInit(): void {
+
+
     this.id = parseInt(this.route.snapshot.paramMap.get('id'))-1;
     console.log("This is an id:"+this.id)
+
     this.spec.getJobCardData().subscribe(data=>{
+
       this.jobData = data;
+      this.jobNames = this.jobData.result2[this.id+1];
       console.log(this.jobData)
       this.instructions = this.jobData.result1[this.id].generalInstruction.split('-').slice(1);
       this.instructionsForExam = this.jobData.result1[this.id].instructions.split('-').slice(1);
@@ -61,11 +67,11 @@ export class CardDetailsComponent implements OnInit{
   this.spec.getformData().subscribe(data=>{
     this.timeSlot = data;
     console.log(this.timeSlot.result1)
-    // this.jobPrefers = data.result2;
+    
   });
   
 
-    throw new Error('Method not implemented.');
+    // throw new Error('Method not implemented.');
   }
 
     showtermFunc()
@@ -91,7 +97,7 @@ export class CardDetailsComponent implements OnInit{
     {
       this.form_data.preferences = this.selectedData;
      await this.spec.getUserFormData({
-          "email": "vp435@gmail.com",
+          "email": sessionStorage.getItem('login'),
           "jobId": this.id+1,
           "timeSlotId":parseInt(this.form_data.timing),
           "resume": this.form_data.resume,

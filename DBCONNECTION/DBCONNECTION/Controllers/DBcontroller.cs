@@ -12,6 +12,8 @@ using System.Reflection.Metadata.Ecma335;
 using System.Transactions;
 using DBCONNECTION.Services;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System.Text;
 
 
 namespace DBCONNECTION.Controllers
@@ -23,10 +25,45 @@ namespace DBCONNECTION.Controllers
     {
         public readonly InternshipContext _internshipContext;
         public readonly IUserService _userService;
-        public DBcontroller(InternshipContext internshipContext,IUserService userService)
+        public readonly IEmailSender _emailSender;
+        public DBcontroller(InternshipContext internshipContext,IUserService userService, IEmailSender emailSender)
         {
             _userService = userService;
-            _internshipContext = internshipContext; 
+            _internshipContext = internshipContext;
+            _emailSender = emailSender;
+        }
+
+        [HttpPost]
+        [Route("EmailSend")]
+        public async  Task<IActionResult> getMail(EmailCheck ec)
+        {
+            try
+            {
+                const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+                StringBuilder stringBuilder = new StringBuilder();
+                Random random = new Random();
+                
+                for (int i = 0; i < 10; i++)
+                {
+                    int index = random.Next(chars.Length);
+                    stringBuilder.Append(chars[index]);
+                }
+               string message = stringBuilder.ToString();
+                await _emailSender.SendEmailAsync(ec.Email,"Your Password", message);
+                Userdatum ud = new Userdatum()
+                {
+                    Email = ec.Email,
+                    Password = message,
+                    IsAdmin=false
+                };
+                _internshipContext.Userdata.Add(ud);
+                _internshipContext.SaveChanges();
+                return Ok("done");
+            }
+            catch(Exception ex)
+            {
+                return StatusCode(500,ex.Message);
+            }
         }
 
         [HttpPost]
@@ -50,6 +87,40 @@ namespace DBCONNECTION.Controllers
             catch(Exception ex)
             {
                   return StatusCode(500,ex.Message);
+            }
+        }
+
+        [HttpPost]
+        [Route("hallTicket")]
+        public async Task<IActionResult> GetHallTicket(EmailCheck ec)
+        {
+            try
+            {
+                var query = from user in _internshipContext.UserJobDetails
+                            where user.Email == ec.Email
+                            select new
+                            {
+                                timing = user.TimeSlotId
+                                
+                            };
+
+                foreach(var item in query)
+                    {
+
+                    var query2 = from timeSlot in _internshipContext.TimeSlotTables
+                                 where timeSlot.TimeSlotId == item.timing
+                                 select new
+                                 {
+                                     time = timeSlot.TimeSlot
+                                
+                                 };
+                    return Ok(query2);
+                }
+                return Ok("done");
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
             }
         }
 

@@ -1,4 +1,4 @@
-<div class="create-account-tab"> 
+<div class="create-account-tab" *ngIf="fresherInfo != undefined"> 
     <div [ngSwitch]="back">
         <a *ngSwitchCase="'createAccount'" routerLink="/"><img src="../../../assets/WalkInPortal-Icons-ListingtoSuccessflow/back.svg" alt="back-button"></a>
         <a *ngSwitchCase="'summery'" routerLink="/education"><img src="../../../assets/WalkInPortal-Icons-ListingtoSuccessflow/back.svg" alt="back-button"></a>

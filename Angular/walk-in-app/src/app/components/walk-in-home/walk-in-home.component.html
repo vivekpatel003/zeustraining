@@ -1,5 +1,6 @@
 <app-header [display]="dp"></app-header>
-<div class="main-tab" *ngFor="let item of jobData.result1;let i = index">
+<div *ngIf="jobData != undefined" >
+    <div class="main-tab" *ngFor="let item of jobData.result1;let i = index" >
         <div >
             <div class="upper-tab">
                 <h2>{{item.jobTitle}}</h2>
@@ -36,4 +37,5 @@
             </div>
         </div>  
         
+    </div>
         

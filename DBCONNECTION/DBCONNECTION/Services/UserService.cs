@@ -8,12 +8,7 @@ namespace DBCONNECTION.Services
 {
     public class UserService : IUserService
     {
-        private List<Authentication> users = new List<Authentication>()
-        {
-            new Authentication{ Email="vivek@123gmail.com",password="Vivek@123" }
-        };
-
-
+        
         private readonly IConfiguration _configuration;
 
         public UserService(IConfiguration configuration)
@@ -58,9 +53,6 @@ namespace DBCONNECTION.Services
             throw new NotImplementedException();
         }
 
-        public string Login(Authentication auth)
-        {
-            throw new NotImplementedException();
-        }
+       
     }
 }

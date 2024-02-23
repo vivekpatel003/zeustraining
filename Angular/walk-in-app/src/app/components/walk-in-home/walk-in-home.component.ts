@@ -17,7 +17,7 @@ export class WalkInHomeComponent implements OnInit {
       this.jobData = data;
       console.log(this.jobData);   
   }) 
-    throw new Error('Method not implemented.');
+    // throw new Error('Method not implemented.');
   }
   expandData(id:number)
   {

@@ -1,5 +1,5 @@
 <app-header [display]="dp"></app-header>
-<div class="main-tab">
+<div class="main-tab" *ngIf="HallTicketData != undefined">
     <img src="../../../assets/WalkInPortal-Icons-ListingtoSuccessflow/check_black_24dp.svg" alt="">
         <div class="header-tab">
             <h2>Congratulations ! You have successfully applied for the walk-in opportunity</h2>
@@ -10,7 +10,7 @@
             <label>Date & Time of Walk-In :</label>
             <ul>
                 <li>03rd July 2021</li>
-                <li>9:00 AM to 11:00 AM</li>
+                <li>{{HallTicketData}}</li>
             </ul>
         </div>
 
@@ -37,6 +37,6 @@
         </div>
 
         <div class="button-tab">
-            <button>DOWNLOAD HALL TICKET</button>
+            <button (click)="printPage()">DOWNLOAD HALL TICKET</button>
         </div>
 </div>

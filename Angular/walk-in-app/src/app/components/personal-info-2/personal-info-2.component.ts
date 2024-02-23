@@ -57,20 +57,7 @@ subjectListFam:{name:string,selected:boolean,id:number}[]=[
   ,{name:"Node JS",selected:false,id:4}
   ,{name:"Others",selected:false,id:5}
 ];
-  QualificationList:any={
-    college:{
-      cId:'',
-      collegeName:''
-    },
-    stream:{
-      sId:'',
-      streamName:''
-    },
-    qualification:{
-      qId:'',
-      qualificationName:''
-    }
-  }
+  QualificationList:any;
 
     
     durationList:string[]=[
@@ -106,7 +93,7 @@ subjectListFam:{name:string,selected:boolean,id:number}[]=[
       this.QualificationList = data;
       console.log(this.QualificationList);
     });
-    throw new Error('Method not implemented.');
+
   }
 
   navigateFunction():void{

@@ -1,5 +1,5 @@
 <app-header [display]="dp"></app-header>
-<div class="main-tab" >
+<div class="main-tab" *ngIf="jobData != undefined" >
   <div class="card-tab" #mainTab>
     <div class="card-tab-header">
       <h2>{{jobData.result1[id].jobTitle}}</h2>
@@ -114,8 +114,9 @@
       </div>
     </form>
   </div>
-
-  <app-job-details [id]="id" *ngFor="let role of jobData.result2[id+1];let i=index"></app-job-details>
+<div *ngIf="jobNames != undefined">
+  <app-job-details [id]="id" [JobName]="role" *ngFor="let role of jobNames;let i=index"></app-job-details>
+</div>
  
 
 

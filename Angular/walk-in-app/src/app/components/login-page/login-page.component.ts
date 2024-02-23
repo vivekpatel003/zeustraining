@@ -34,7 +34,14 @@ export class LoginPageComponent {
           alert("Wrong Credentials");
         }
         else{
-          localStorage.setItem('0',JSON.stringify(present));
+          
+          if(sessionStorage.getItem('token')!='')
+          {
+            sessionStorage.clear();
+          }
+          sessionStorage.setItem('login',this.login_data.email);
+          sessionStorage.setItem('token',present);
+          this.router.navigate(["/dashBoard"]);
         }
       });
     }

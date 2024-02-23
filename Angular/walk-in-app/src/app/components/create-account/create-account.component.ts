@@ -36,8 +36,13 @@ export class CreateAccountComponent {
         data=>{
           console.log(data)
         });
-  
-      this.router.navigate(['/']);
+      this.education.sendMail({
+          "email":this.fresherInfo.email
+            }).subscribe((email)=>{
+      console.log("Email sent status: ",email)
+    })
+     
+    this.router.navigate(['/']);
        
       
    }

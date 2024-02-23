@@ -1,6 +1,6 @@
-<div class="main-tab"  >
+<div class="main-tab" *ngIf="jobRoleData != undefined && JobName!= undefined" >
     <div class="job-details-head-tab">
-        <h3></h3>
+        <h3>{{jobRoleData[0].jobRoles}}</h3>
         <div>
             <img src="../../../assets/WalkInPortal-Icons-ListingtoSuccessflow/drop-down.png" #dropDown (click)="showeduFunc()" alt="">
         </div>
@@ -11,7 +11,7 @@
             <label>gross compensation package :</label>
             <div>
                 <p>Rs.</p>
-                <p></p>
+                <p>{{jobRoleData[0].grossCompensation}}</p>
                 <p>lpa</p>
             </div>
         </div>
@@ -19,14 +19,14 @@
         <div  class="rolediscription-tab">
             <label>Role Description :</label>
             <ul class="dashed">
-                <li *ngFor="let item of roleDiscription"></li>
+                <li *ngFor="let item of roleDiscription">{{item}}</li>
             </ul>
         </div>
         
         <div class="requirement-tab">
             <label>Requirements :</label>
             <ul class="dashed" >
-                <li *ngFor="let item of requirement "></li>
+                <li *ngFor="let item of requirement ">{{item}}</li>
             </ul>
         </div>
     </div>

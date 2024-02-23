@@ -21,19 +21,21 @@ export class JobDetailsComponent implements OnInit {
     
   }
   ngOnInit(): void {
+    console.log("This is jobName",);
     this.spec.getJobDetails(
       {
-        "name":'Software Engineer'
+        "name":this.JobName
       }
       ).subscribe(data=>{
         this.jobRoleData = data;
         this.jobRoleData = JSON.parse(this.jobRoleData);
-        // this.requirement = this.jobRoleData.requirement.split('-').slice(1);
-        // this.roleDiscription = this.jobRoleData.roleDescription.split('-').slice(1);
-        console.log("this is jobdata",this.jobRoleData)
+        
+        this.requirement = this.jobRoleData[0].requirement.split('-').slice(1);
+        this.roleDiscription = this.jobRoleData[0].roleDescription.split('-').slice(1);
+        console.log("this is jobdata",this.jobRoleData[0].jobRoles)
       });
       console.log("the jobRole: ",this.JobName)
-    throw new Error('Method not implemented.');
+
   }
   
   showeduFunc()

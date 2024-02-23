@@ -16,36 +16,47 @@ import { CardDetailsComponent } from './components/card-details/card-details.com
 import { JobDetailsComponent } from './components/job-details/job-details.component';
 import { HallTicketPageComponent } from './components/hall-ticket-page/hall-ticket-page.component';
 import { NotFoundPageComponent } from './components/not-found-page/not-found-page.component';
+import { authGuardGuard } from './guards/auth-guard.guard';
 
 
 const routes: Routes = [
   {
     path:'createAccount',
-    component:PersonalInfoComponent
+    component:PersonalInfoComponent,
+    title:'Personal-Data'
   },
   {
     path:'',
-    component:OutletComponent
+    component:OutletComponent,
+    title:'Login'
   },
   {
     path:'education',
-    component:PersonalInfo2Component
+    component:PersonalInfo2Component,
+    title:'Education-Data'
   },
   {
     path:'review',
-    component:SummeryComponent
+    component:SummeryComponent,
+    title:'Review-Profile'
   },
   {
     path:'dashBoard',
-    component:WalkInHomeComponent
+    component:WalkInHomeComponent,
+    title:'DashBoard',
+    canActivate:[authGuardGuard]
   },
   {
       path:'cardDetail/:id',
-      component:CardDetailsComponent
+      component:CardDetailsComponent,
+      title:'Job-Details',
+      canActivate:[authGuardGuard]
   },
   {
       path:'hallTicket',
-      component:HallTicketPageComponent
+      component:HallTicketPageComponent,
+      title:'HallTicket',
+      canActivate:[authGuardGuard]
   },
   {
     path:'**',
