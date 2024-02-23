@@ -9,7 +9,7 @@
     <div>
         <button (click)="cancelProcess()">CANCEL</button>
         <ng-container *ngIf="id;else elseBlock">
-            <button >CREATE</button>
+            <button (click)="submitForm()">CREATE</button>
         </ng-container>
         <ng-template #elseBlock>
             <button style="opacity:0.6 ;" [disabled]="id">CREATE</button>

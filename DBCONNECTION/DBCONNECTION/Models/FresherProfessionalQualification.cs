@@ -17,5 +17,5 @@ public partial class FresherProfessionalQualification
 
     public DateTime? DtCreated { get; set; }
 
-    public virtual ICollection<TechnologyFamiliar> TechnologyFamiliars { get; set; } = new List<TechnologyFamiliar>();
+    public virtual ICollection<TechnologyFamiliar>? TechnologyFamiliars { get; set; } = new List<TechnologyFamiliar>();
 }

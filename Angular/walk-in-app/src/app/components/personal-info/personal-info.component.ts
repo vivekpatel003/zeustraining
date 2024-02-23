@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { SharedServiceService} from '../../services/shared-service.service';
+import { EducationPageDataService } from '../../services/education-page-data.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -12,11 +13,12 @@ export class PersonalInfoComponent {
   backButton:string = "createAccount";
     jobs:{
       name:string,
-      selected:boolean
+      selected:boolean,
+      id:number
     }[]=[
-      { name:"Instructional Designer", selected:false},
-      { name:"Software Engineer", selected:false},
-      { name:"Software Quality Engineer", selected:false} 
+      { name:"Instructional Designer", selected:false,id:1},
+      { name:"Software Engineer", selected:false,id:2},
+      { name:"Software Quality Engineer", selected:false,id:3} 
     ]
    
     personalData={
@@ -32,17 +34,36 @@ export class PersonalInfoComponent {
       notification:this.SharedServiceService.personalData.notification
     }
     filled_data:any;
-    constructor(private SharedServiceService:SharedServiceService,private router:Router){}
+    constructor(private SharedServiceService:SharedServiceService,private router:Router,private edu: EducationPageDataService){}
     getData():void
     {
-      this.personalData.selectedJob = this.jobChoosen;
-      this.SharedServiceService.updatePersonalInfoData(this.personalData);
-      console.log(this.SharedServiceService.getPersonalInfoData())
-      this.router.navigate(['/education'])
+      this.edu.getEmailChecked({
+        "email": this.personalData.Email
+      }).subscribe(obj=>{
+        if(!obj)
+        {
+          this.personalData.selectedJob = this.jobChoosen;
+          this.SharedServiceService.updatePersonalInfoData(this.personalData);
+          console.log(this.SharedServiceService.getPersonalInfoData())
+          this.router.navigate(['/education'])
+        }
+        else{
+          alert("Email already Exist!");
+        }
+      })
+      
     }
 
     get jobChoosen()
     {
-      return this.jobs.filter((p)=>p.selected=true);
+      var jobpreffered:number[]=[];
+      for(let item in this.jobs)
+      {
+          if(this.jobs[item].selected)
+          {
+            jobpreffered.push(this.jobs[item].id);
+          }
+      }
+      return jobpreffered;
     }
 }

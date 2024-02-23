@@ -20,7 +20,7 @@ export class SummeryComponent {
       portfolio:this.SharedServiceService.personalData.portfolio,
       selectedJob:this.SharedServiceService.personalData.selectedJob,
       reffredPerson:this.SharedServiceService.personalData.reffredPerson,
-      notification:this.SharedServiceService.personalData.notificationthis
+      notification:this.SharedServiceService.personalData.notification.toString()
     };
     educationQualificationData:any={
       show:this.SharedServiceService.educationData.show,
@@ -48,16 +48,49 @@ export class SummeryComponent {
       roleApplied:this.SharedServiceService.experiencedData.roleApplied
     };
    
-   
+    Personaldata:any = {
+      "email":this.personalData.Email , 
+      "firstName":this.personalData.firstName,
+      "lastName": this.personalData.lastName ,
+      "phoneNumber": this.personalData.phoneNumber + this.personalData.countryCode ,
+      "resumeString":this.personalData.uploadImage,
+      "portfolioUrl": this.personalData.portfolio ,
+      "employeeReffered":this.personalData.reffredPerson,
+      "isEmailNotification": (this.personalData.notification) ? 1:0
+    }
+    data:any = {
+      "show":this.educationQualificationData.show,
+      "email":  this.personalData.Email,
+      "firstName":this.personalData.firstName,
+      "lastName":  this.personalData.lastName,
+      "phoneNumber": this.personalData.phoneNumber + this.personalData.countryCode,
+      "resumeString":this.personalData.uploadImage,
+      "portfolioUrl": this.personalData.portfolio ,
+      "employeeReffered":this.personalData.reffredPerson,
+      "isEmailNotification":(this.personalData.notification) ? 1:0,
+      "preferedJobs": this.personalData.selectedJob,
+      "percentage":parseFloat(this.educationQualificationData.percentageVal),
+      "passingYear":parseInt(this.educationQualificationData.passingYear),
+      "qId": parseInt(this.educationQualificationData.qualification),
+      "sId":parseInt(this.educationQualificationData.stream),
+      "cId":parseInt(this.educationQualificationData.college),
+      "collegeLocation": this.educationQualificationData.location,
+      "collegeName": this.educationQualificationData.other,
+      "yearsOfExperience":parseInt(this.professionalQualificationData.yearOfExperience),
+      "currentCtc": parseInt( this.professionalQualificationData.cCTC),
+      "expectedCtc":parseInt(this.professionalQualificationData.eCTC),
+      "onNoticePeriod": this.professionalQualificationData.onNotice=="Yes" ? true : false ,
+      "otherTechnologies": this.professionalQualificationData.otherExp,
+      "endDate": this.professionalQualificationData.endDate,
+      "duration":  this.professionalQualificationData.duration,
+      "testAppeared": this.professionalQualificationData.appeared=="Yes" ? true : false ,
+      "roleApplied":this.professionalQualificationData.roleApplied,
+      "techExpertise": this.professionalQualificationData.techExp,
+      "techFamiliar": this.professionalQualificationData.techFam
+    }
+  
 
     constructor(private SharedServiceService:SharedServiceService,private router:Router){
-      this.personalData = this.SharedServiceService.getPersonalInfoData();
-      this.educationQualificationData = this.SharedServiceService.getEducationData();  
-      this.professionalQualificationData = this.SharedServiceService.getExperiencedData();
-      console.log(this.educationQualificationData.show)
-      console.log(this.personalData)
-      console.log(this.educationQualificationData)
-      console.log(this.professionalQualificationData)
     }
 
     navigateFunction():void{

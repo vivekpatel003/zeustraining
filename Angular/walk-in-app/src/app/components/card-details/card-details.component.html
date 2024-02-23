@@ -2,7 +2,7 @@
 <div class="main-tab" >
   <div class="card-tab" #mainTab>
     <div class="card-tab-header">
-      <h2>Walk In for Multiple Job Roles</h2>
+      <h2>{{jobData.result1[id].jobTitle}}</h2>
       <button (click)="getData()" [disabled]="timeSlot.invalid">APPLY</button>
     </div>
 
@@ -10,7 +10,7 @@
     <div class="card-second-tab">
       <div>
         <label>Date & Time :</label>
-        <p>03-Jul-2021 to 04-Jul-2021</p>
+        <p>{{jobData.result1[id].date}}</p>
       </div>
 
       <div>
@@ -18,7 +18,7 @@
           src="../../../assets/WalkInPortal-Icons-ListingtoSuccessflow/location_on_black_24dp.svg"
           alt=""
         />
-        <p>Mumbai</p>
+        <p>{{jobData.result1[id].location}}</p>
       </div>
 
     </div>
@@ -27,26 +27,12 @@
     <div class="card-lower-tab">
       <label> Job Roles : </label>
       <div>
-        <div>
+        <div *ngFor="let item of jobData.result2[id+1]" >
           <img
             src="../../../assets/WalkInPortal-Icons-ListingtoSuccessflow/Instructional Designer.svg"
             alt=""
           />
-          <p>Instructional Designer</p>
-        </div>
-        <div>
-          <img
-            src="../../../assets/WalkInPortal-Icons-ListingtoSuccessflow/Software Quality Engineer.svg"
-            alt=""
-          />
-          <p>Software Engineer</p>
-        </div>
-        <div>
-          <img
-            src="../../../assets/WalkInPortal-Icons-ListingtoSuccessflow/Software Quality Engineer.svg"
-            alt=""
-          />
-          <p>Software Quality Engineer</p>
+          <p>{{item}}</p>
         </div>
       </div>
     </div>
@@ -66,8 +52,8 @@
           <label>General Instructions :</label>
           <div>
              <ul class="dashed">
-              <li>We have a two-year indemnity for permanent candidates. We will provide training to the selected candidates. </li>
-              <li> Candidates who have appeared for any test held by Zeus Learning in the past 12 months will not be allowed to appear for this recruitment test.</li>
+              <li *ngFor="let item of instructions">{{item}}</li>
+              <!-- <li> Candidates who have appeared for any test held by Zeus Learning in the past 12 months will not be allowed to appear for this recruitment test.</li> -->
              </ul>
           </div>
       </div>
@@ -75,39 +61,31 @@
       <div  class="instruction-for-exam-tab">
           <label>Instructions for the Exam :</label>
           <ul class="dashed">
-              <li>Candidates are requested to log in half an hour prior to the exam start time as they would need to capture their image using a web camera. By taking this test, you are permitting the examination system to capture your video for invigilation purposes.</li>
-              <li>Candidates would not be able to appear for the exam if the web camera attached to their system is not functional.</li>
-              <li>The web camera of your system must be enabled and must remain switched on throughout the examination. In the event of non-receipt of a webcam, your examination will be considered null and void.</li>
-              <li>Address usability issues</li>
-              <li>Candidate’s audio and video will be recorded during the examination and will also be monitored by a live proctor. The proctor may terminate your exam in case he/she observes any malpractice during the exam.</li>
-              <li>Candidates are advised to use their own Laptop/PC with a stable internet connection (min 1 Mbps) during the exam. </li>
-              <li>Candidates cannot use an iOS system/device for this exam.</li>
+              <li *ngFor="let item of instructionsForExam">{{item}}</li>
           </ul>
       </div>
       
       <div class="min-system-req-tab">
           <label>Minimum System Requirements :</label>
           <ul class="dashed">
-              <li>Personal Laptop or Desktop computer in working condition with good quality camera (you can use Windows 7 and above).</li>
-              <li>The latest version of Google Chrome Browser only.</li>
-              <li>Please note that Internet speed should be minimum 1 Mbps.</li>
-              <li>Do not use a MacBook or iPad for the proctored exam.</li>
+              <li *ngFor="let item of MinSystemRequirement">{{item}}</li>
+              
           </ul>
       </div>
 
       <div class="proces-tab">
         <label>Process :</label>
         <ul class="dashed">
-            <li>Every round is an elimination round. Candidates need to clear all rounds to get selected.</li>
+            <li *ngFor="let item of processInfo">{{item}}</li>
         </ul>
-        <div class="process-details-tab">
+        <!-- <div class="process-details-tab">
           <div>
             <p>Round I : 4th August, 2018</p>
             <p>Aptitude Test : 25 Questions</p>
           </div>
           
           <p>Round II (Interview) : 4th August, 2018.</p>
-        </div>
+        </div> -->
     </div>
   </div>
 
@@ -115,9 +93,8 @@
       <h3>Time Slots & Preferences</h3>
       <div class="time-date-box">
         <label>Select a Time Slot :</label>
-        <div><input type="radio" name="timeSlot" [(ngModel)]="form_data.timing" #timeSlot="ngModel" required value="9 to 11"><label for="timeSlot">9:00 AM to 11:00 AM</label></div>
-        <div><input type="radio" name="timeSlot" [(ngModel)]="form_data.timing" #timeSlot="ngModel" required value="1 to 3"><label for="timeSlot">1:00 PM to 3:00 PM</label></div>
-      </div>
+        <div *ngFor="let item of timeSlot.result1"><input type="radio" name="timeSlot" [(ngModel)]="form_data.timing" #timeSlot="ngModel" required value="{{item.timeSlotId}}"><label for="timeSlot">{{item.timeSlot}}</label></div>
+          </div>
       <hr class="first-hr"/>
       <div class="preferences-box">
         <label >Select Your Preference :</label>
@@ -138,4 +115,7 @@
     </form>
   </div>
 
-  <app-job-details></app-job-details>
+  <app-job-details [id]="id" *ngFor="let role of jobData.result2[id+1];let i=index"></app-job-details>
+ 
+
+

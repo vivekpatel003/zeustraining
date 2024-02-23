@@ -1,6 +1,11 @@
 
 using Microsoft.EntityFrameworkCore;
 using DBCONNECTION.Models;
+using DBCONNECTION.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 //using BrandContext;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,17 +22,29 @@ builder.Services.AddDbContext<InternshipContext>(item =>
 
 builder.Services.AddControllers();
 
-//builder.Services.AddCors(options =>
-//{
-//    options.AddPolicy(name: "AllowOrigin", builder =>
-//    {
-//        builder.WithOrigins("http://localhost:4200/").AllowAnyHeader().AllowAnyMethod();
-//    });
-//});
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+
+builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+//Jwt Configuration starts
+var jwtIssuer = builder.Configuration.GetSection("Jwt:Issuer").Get<string>();
+var jwtKey = builder.Configuration.GetSection("Jwt:Key").Get<string>();
 
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+ .AddJwtBearer(options =>
+ {
+     options.TokenValidationParameters = new TokenValidationParameters
+     {
+         ValidateIssuer = true,
+         ValidateAudience = false,
+         ValidateLifetime = true,
+         ValidateIssuerSigningKey = true,
+         ValidIssuer = jwtIssuer,
+         ValidAudience = jwtIssuer,
+         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey))
+     };
+ });
+//jwt Configuration ends
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

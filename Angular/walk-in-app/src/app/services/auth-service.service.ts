@@ -9,7 +9,7 @@ export class AuthServiceService {
 
   authentication(data:any)
   {
-    return this.http.post("http://localhost:5021/api/DB/Login",data,{responseType:"json"});
+    return this.http.post("http://localhost:5021/api/DB/Login",data,{responseType:"text"});
   }
 
 }

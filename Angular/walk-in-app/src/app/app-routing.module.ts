@@ -40,7 +40,7 @@ const routes: Routes = [
     component:WalkInHomeComponent
   },
   {
-      path:'cardDetail',
+      path:'cardDetail/:id',
       component:CardDetailsComponent
   },
   {

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { response } from 'express';
+
 
 @Injectable({
   providedIn: 'root'
@@ -13,8 +13,13 @@ export class EducationPageDataService {
   {
     return this.http.get("https://localhost:7148/api/DB/getData");
   }
-  sendProfileData()
+  sendProfileData(data:any)
   {
-    return this.http.post("https://localhost:7148/api/DB/",null,{responseType:"json"});
+    return this.http.post("https://localhost:7148/api/DB/check",data,{responseType:'text'});
   }
+  getEmailChecked(data:any)
+  {
+    return this.http.post("https://localhost:7148/api/DB/isEmailPresent",data,{responseType:'json'});
+  }
+
 }

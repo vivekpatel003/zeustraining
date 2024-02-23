@@ -5,9 +5,9 @@ import {EducationPageDataService} from './education-page-data.service';
 })
 export class SharedServiceService {
   experiencedData:any={
-    yearOfExperience:'',
-    cCTC:'',
-    eCTC:'',
+    yearOfExperience:'0',
+    cCTC:'0',
+    eCTC:'0',
     techExp:[],
     otherExp:'',
     techFam:[],
@@ -19,7 +19,7 @@ export class SharedServiceService {
     roleApplied:''
   };
   educationData:any={
-    show:'',
+    show:'Experienced',
     percentageVal:'',
     passingYear:'',
     qualification:'',
@@ -38,12 +38,12 @@ export class SharedServiceService {
     portfolio:'',
     selectedJob:[],
     reffredPerson:'',
-    notification:''
+    notification:false
   };
   loginData={
     email:'',
     password:'',
-    remember:false
+    remember:''
   }
   card_form_data:any={
     timing:'',

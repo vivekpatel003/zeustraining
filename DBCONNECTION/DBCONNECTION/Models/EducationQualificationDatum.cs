@@ -25,9 +25,9 @@ public partial class EducationQualificationDatum
 
     public DateTime? DtModified { get; set; }
 
-    public virtual CollegeTable CIdNavigation { get; set; } = null!;
+    public virtual CollegeTable? CIdNavigation { get; set; } = null!;
 
-    public virtual Qualification QIdNavigation { get; set; } = null!;
+    public virtual Qualification? QIdNavigation { get; set; } = null!;
 
-    public virtual StreamTable SIdNavigation { get; set; } = null!;
+    public virtual StreamTable? SIdNavigation { get; set; } = null!;
 }

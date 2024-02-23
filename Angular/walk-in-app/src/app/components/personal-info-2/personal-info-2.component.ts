@@ -1,4 +1,4 @@
-import { Component,AfterViewInit, ElementRef,ViewChild,Renderer2 } from '@angular/core';
+import { Component,AfterViewInit, ElementRef,ViewChild,Renderer2,OnInit } from '@angular/core';
 import { SharedServiceService } from "../../services/shared-service.service";
 import { Router } from "@angular/router";
 import {EducationPageDataService} from '../../services/education-page-data.service';
@@ -9,7 +9,7 @@ import { Console } from 'console';
   templateUrl: './personal-info-2.component.html',
   styleUrl: './personal-info-2.component.scss'
 })
-export class PersonalInfo2Component {
+export class PersonalInfo2Component implements OnInit{
   createButton:boolean=false;
   educationDisplay:boolean=true;
   professionalDisplay:boolean=true;
@@ -43,19 +43,19 @@ export class PersonalInfo2Component {
   }
 
   passingYears:number[]=[2024,2025,2026,2027];
-  subjectListExp:{name:string,selected:boolean}[]=[
-  {name:"Javascript",selected:false}
-  ,{name:"Angular JS",selected:false}
-  ,{name:"React",selected:false}
-  ,{name:"Node JS",selected:false}
-  ,{name:"Others",selected:false}
+  subjectListExp:{name:string,selected:boolean,id:number}[]=[
+  {name:"Javascript",selected:false,id:1}
+  ,{name:"Angular JS",selected:false,id:2}
+  ,{name:"React",selected:false,id:3}
+  ,{name:"Node JS",selected:false,id:4}
+  ,{name:"Others",selected:false,id:5}
 ];
-subjectListFam:{name:string,selected:boolean}[]=[
-  {name:"Javascript",selected:false}
-  ,{name:"Angular JS",selected:false}
-  ,{name:"React",selected:false}
-  ,{name:"Node JS",selected:false}
-  ,{name:"Others",selected:false}
+subjectListFam:{name:string,selected:boolean,id:number}[]=[
+  {name:"Javascript",selected:false,id:1}
+  ,{name:"Angular JS",selected:false,id:2}
+  ,{name:"React",selected:false,id:3}
+  ,{name:"Node JS",selected:false,id:4}
+  ,{name:"Others",selected:false,id:5}
 ];
   QualificationList:any={
     college:{
@@ -99,13 +99,16 @@ subjectListFam:{name:string,selected:boolean}[]=[
 
 
    constructor(private SharedServiceService:SharedServiceService,private router:Router,private render:Renderer2,private edu:EducationPageDataService){
-          this.edu.getdata().subscribe(data=>{
-            this.QualificationList = data;
-            console.log(this.QualificationList);
-          });
           
-
+          }
+  ngOnInit(): void {
+    this.edu.getdata().subscribe(data=>{
+      this.QualificationList = data;
+      console.log(this.QualificationList);
+    });
+    throw new Error('Method not implemented.');
   }
+
   navigateFunction():void{
     this.router.navigate(['/createAccount']);
   }
@@ -153,15 +156,31 @@ subjectListFam:{name:string,selected:boolean}[]=[
     this.experiencedData.techExp = this.selectedExpData
     this.SharedServiceService.updateExperiencedData(this.experiencedData);
     console.log(this.SharedServiceService.getExperiencedData());
-    // this.router.navigate(['/review']);
+    this.router.navigate(['/review']);
   }
   get selectedExpData()
   {
-    return this.subjectListExp.filter((c)=>c.selected);
+    var expData:number[]=[];
+      for(let item in this.subjectListExp)
+      {
+          if(this.subjectListExp[item].selected)
+          {
+            expData.push(this.subjectListExp[item].id);
+          }
+      }
+      return expData;
   }
   get selectedFamData()
   {
-    return this.subjectListFam.filter((c)=>c.selected);
+      var famData:number[]=[];
+      for(let item in this.subjectListFam)
+      {
+          if(this.subjectListFam[item].selected)
+          {
+            famData.push(this.subjectListFam[item].id);
+          }
+      }
+      return famData;
   }
 
 }

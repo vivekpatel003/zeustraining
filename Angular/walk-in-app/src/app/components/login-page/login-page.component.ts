@@ -26,19 +26,15 @@ export class LoginPageComponent {
     }
     showData():void{
       this.auth.authentication({
-          "srno": 0,
-          "email": this.login_data.email,
-          "password": this.login_data.password,
-          "isAdmin": true,
-          "dtCreated": "2024-02-16T07:19:28.912Z",
-          "dtModified": "2024-02-16T07:19:28.912Z"
+        "email": this.login_data.email,
+        "password": this.login_data.password
       }).subscribe(present=>{
-        if(present == false){
-          alert("Wrong Credentials!");
+        if(present=="NotExist")
+        {
+          alert("Wrong Credentials");
         }
         else{
-          console.log(this.login_data)
-          this.router.navigate(['/dashBoard']);
+          localStorage.setItem('0',JSON.stringify(present));
         }
       });
     }

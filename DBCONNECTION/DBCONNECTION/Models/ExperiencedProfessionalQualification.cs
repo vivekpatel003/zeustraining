@@ -17,7 +17,7 @@ public partial class ExperiencedProfessionalQualification
 
     public string? OtherTechnologies { get; set; }
 
-    public DateOnly? EndDate { get; set; }
+    public string? EndDate { get; set; }
 
     public string? Duration { get; set; }
 
@@ -29,5 +29,5 @@ public partial class ExperiencedProfessionalQualification
 
     public DateTime? DtModified { get; set; }
 
-    public virtual ICollection<TechnologyExpertise> TechnologyExpertises { get; set; } = new List<TechnologyExpertise>();
+    public virtual ICollection<TechnologyExpertise>? TechnologyExpertises { get; set; } = new List<TechnologyExpertise>();
 }

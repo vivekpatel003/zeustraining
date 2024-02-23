@@ -1,16 +1,16 @@
 <app-header [display]="dp"></app-header>
-<div class="main-tab">
+<div class="main-tab" *ngFor="let item of jobData.result1;let i = index">
         <div >
             <div class="upper-tab">
-                <h2>Walk In for Designer Job Role</h2>
+                <h2>{{item.jobTitle}}</h2>
                 <div>
                     <div>
                         <label>Date & Time :</label>
-                        <p>10-Jul-2021 to 11-Jul-2021</p>
+                        <p>{{item.date}}</p>
                     </div>
                     <div>
                         <img src="../../../assets/WalkInPortal-Icons-ListingtoSuccessflow/location_on_black_24dp.svg" alt="location">
-                        <p>Mumbai</p>
+                        <p>{{item.location}}</p>
                     </div>
                 </div>
             </div>
@@ -19,14 +19,11 @@
                 <div>
                     <label>Job Roles :</label>
                     <div class="jobs-tab">
-                        <div>
+                        <div *ngFor="let role of jobData.result2[i+1]">
                             <img src="../../../assets/WalkInPortal-Icons-ListingtoSuccessflow/Instructional Designer.svg" alt="">
-                            <p>Instructional Designer</p>
+                            <p>{{role}} </p>
                         </div>
-                        <div>
-                            <img src="../../../assets/WalkInPortal-Icons-ListingtoSuccessflow/Instructional Designer.svg" alt="">
-                            <p>Instructional Designer</p>
-                        </div>
+
                     </div>
                 </div>
                 <div class="notification-tab">
@@ -34,7 +31,7 @@
                 </div>
             </div>
                 <div class="button-tab">
-                    <button (click)="expandData()">VIEW MORE DETAILS</button>
+                    <button (click)="expandData(item.srNo)">VIEW MORE DETAILS</button>
                 </div>
             </div>
         </div>  
