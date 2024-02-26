@@ -20,7 +20,7 @@ namespace DBCONNECTION.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
+    
     public class DBcontroller : ControllerBase
     {
         public readonly InternshipContext _internshipContext;
@@ -92,6 +92,7 @@ namespace DBCONNECTION.Controllers
 
         [HttpPost]
         [Route("hallTicket")]
+        [Authorize]
         public async Task<IActionResult> GetHallTicket(EmailCheck ec)
         {
             try
@@ -126,6 +127,7 @@ namespace DBCONNECTION.Controllers
 
         [HttpGet]
         [Route("jobData")]
+        [Authorize]
         public async Task<IActionResult> GetJobData()
         {
             try
@@ -189,6 +191,7 @@ namespace DBCONNECTION.Controllers
 
         [HttpGet]
         [Route("jobcardformData")]
+        [Authorize]
         public async Task<IActionResult> GetcardFormData()
         {
             try
@@ -231,6 +234,7 @@ namespace DBCONNECTION.Controllers
 
         [HttpPost]
         [Route("jobDetails")]
+        [Authorize]
         public async Task<IActionResult> GetJobDetails(JobDetailsData jd )
         {
             try
@@ -286,6 +290,9 @@ namespace DBCONNECTION.Controllers
                 return StatusCode(500, "An Error Occured: " + ex.Message);
             }
         }
+
+
+
         [HttpPost]
         [Route("isEmailPresent")]
         public async Task<IActionResult> EmailPresent(EmailCheck ec)
@@ -313,8 +320,12 @@ namespace DBCONNECTION.Controllers
                 return StatusCode(500, "An Error Ocuured: " + ex.Message);
             }
         }
+
+
+
         [HttpPost]
         [Route("UserDataStore")]
+        [Authorize]
         public async Task<IActionResult> UserDetails(UserDetailsData ud)
         {
             using (var transaction = _internshipContext.Database.BeginTransaction())

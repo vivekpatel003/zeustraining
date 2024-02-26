@@ -1,2 +1,18 @@
-<header><img src="../../../assets/WalkInPortal-Icons-ListingtoSuccessflow/logo used in header.svg" alt=""> <img *ngIf="display" class="dp" src="../../../assets/WalkInPortal-Icons-ListingtoSuccessflow/ramaDP.jpg" alt=""></header>
-
+<header>
+  <img
+    src="../../../assets/WalkInPortal-Icons-ListingtoSuccessflow/logo used in header.svg"
+    alt=""
+  />
+  <div>
+      <img
+      *ngIf="display"
+      class="dp"
+    src="../../../assets/WalkInPortal-Icons-ListingtoSuccessflow/ramaDP.jpg"
+    alt=""
+    (click) = "ShowLogOutTab()"
+    />
+    <div class="logout-tab" #Logout>
+        <p (click)="LogOut()">{{logOut | uppercase}}</p>
+    </div>
+</div>
+</header>

@@ -209,4 +209,7 @@ margin-top:8px ;
     @include flex(center,center,default);
     margin-top: 32px;
 }
+.edit{
+    cursor: pointer;
+}
 @include button(5px 16px);

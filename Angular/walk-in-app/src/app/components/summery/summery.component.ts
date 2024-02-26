@@ -18,7 +18,7 @@ export class SummeryComponent {
       phoneNumber:this.SharedServiceService.personalData.phoneNumber,
       uploadImage:this.SharedServiceService.personalData.uploadImage,
       portfolio:this.SharedServiceService.personalData.portfolio,
-      selectedJob:this.SharedServiceService.personalData.selectedJob,
+      selectedJob:this.SharedServiceService.personalData.selectedJobName,
       reffredPerson:this.SharedServiceService.personalData.reffredPerson,
       notification:this.SharedServiceService.personalData.notification.toString()
     };
@@ -37,9 +37,9 @@ export class SummeryComponent {
       yearOfExperience:this.SharedServiceService.experiencedData.yearOfExperience,
       cCTC:this.SharedServiceService.experiencedData.cCTC,
       eCTC:this.SharedServiceService.experiencedData.eCTC,
-      techExp:this.SharedServiceService.experiencedData.techExp,
+      techExp:this.SharedServiceService.experiencedData.techExpName,
       otherExp:this.SharedServiceService.experiencedData.otherExp,
-      techFam:this.SharedServiceService.experiencedData.techFam,
+      techFam:this.SharedServiceService.experiencedData.techFamName,
       otherFam:this.SharedServiceService.experiencedData.otherFam,
       onNotice:this.SharedServiceService.experiencedData.onNotice,
       endDate:this.SharedServiceService.experiencedData.endDate,
@@ -92,9 +92,16 @@ export class SummeryComponent {
 
     constructor(private SharedServiceService:SharedServiceService,private router:Router){
     }
-
-    navigateFunction():void{
-      this.router.navigate(['/education']);
+    redirect(id:number):void
+    {
+      if(id==1)
+      this.router.navigate(["/createAccount"]);
+    else
+    this.router.navigate(["/education"]);
+}
+navigateFunction():void{
+      console.log(this.Personaldata.selectedJob)
+      // this.router.navigate(['/education']);
     }
 
 }

@@ -20,9 +20,9 @@
 
     <div class="PersonalInfo-edit-tab">
         <p>Personal Information</p>
-        <div>
+        <div class="edit">
             <img src="../../../assets/WalkInPortal-Icons-ListingtoSuccessflow/pencile.svg" alt="exit-icon">
-            <p>Edit</p>
+            <p (click)="redirect(1)">Edit</p>
         </div>
     </div>
 
@@ -66,7 +66,7 @@
             <div>
                 <p>Preferred Job Roles</p>
                 <div>
-                    <p *ngFor="let item of personalData.selectedJob">{{item.name}}</p>
+                    <p *ngFor="let item of personalData.selectedJob">{{item}}</p>
                 </div>
             </div>
 
@@ -91,9 +91,9 @@
 
     <div class="PersonalInfo-edit-tab">
         <p>Qualifications</p>
-        <div>
+        <div class="edit">
             <img src="../../../assets/WalkInPortal-Icons-ListingtoSuccessflow/pencile.svg" alt="exit-icon">
-            <p>Edit</p>
+            <p (click)="redirect(2)">Edit</p>
         </div>
     </div>
 
@@ -175,7 +175,7 @@
 
             <div>
                 <label>Select All The Technologies You Expertise In</label>
-                <p *ngFor="let item of professionalQualificationData.techExp ">{{item.name}}</p>
+                <p *ngFor="let item of professionalQualificationData.techExp ">{{item}}</p>
                 <label>If others, please mention</label>
                 <ng-container *ngIf="professionalQualificationData.otherExp != ''; else elseBlock">
                     <p>{{professionalQualificationData.otherExp}}</p>
@@ -187,7 +187,7 @@
 
             <div>
                 <label>Select All The Technologies You are familiar In</label>
-                <p *ngFor="let item of professionalQualificationData.techFam">{{item.name}}</p>
+                <p *ngFor="let item of professionalQualificationData.techFam">{{item}}</p>
 
                 <label>If others, please mention</label>
                 <ng-container *ngIf="professionalQualificationData.otherFam != ''; else elseBlock">

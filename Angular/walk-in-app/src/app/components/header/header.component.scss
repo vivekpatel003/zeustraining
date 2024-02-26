@@ -12,5 +12,23 @@ header{
     width: 40px;
     border-radius: 50%;
     margin: 16px;
-    border: 2px solid #3FD28B;;
+    border: 2px solid #3FD28B;
+    cursor: pointer;
+}
+header >div{
+    position: relative;
+
+}
+.logout-tab{
+    background-color: #31B9E4;
+    display: none;
+    color: white;
+    width: auto;
+    padding: 10px;
+    position: absolute;
+    top:53px;
+    right: 40px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: display 1s;
 }

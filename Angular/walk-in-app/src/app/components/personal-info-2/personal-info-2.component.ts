@@ -32,8 +32,10 @@ export class PersonalInfo2Component implements OnInit{
     cCTC:this.SharedServiceService.experiencedData.cCTC,
     eCTC:this.SharedServiceService.experiencedData.eCTC,
     techExp:this.SharedServiceService.experiencedData.techExp,
+    techExpName:this.SharedServiceService.experiencedData.techFam,
     otherExp:this.SharedServiceService.experiencedData.otherExp,
     techFam:this.SharedServiceService.experiencedData.techFam,
+    techFamName:this.SharedServiceService.experiencedData.techFam,
     otherFam:this.SharedServiceService.experiencedData.otherFam,
     onNotice:this.SharedServiceService.experiencedData.onNotice,
     endDate:this.SharedServiceService.experiencedData.endDate,
@@ -93,11 +95,53 @@ subjectListFam:{name:string,selected:boolean,id:number}[]=[
       this.QualificationList = data;
       console.log(this.QualificationList);
     });
+    for(let i=0;i<this.subjectListExp.length;i++)
+    {
+      console.log(i)
+      if(this.experiencedData.techExp.includes(this.subjectListExp[i].id))
+      {
+        this.subjectListExp[i].selected = true;
+        console.log(this.subjectListExp[i])
+      }
+    }
 
+
+    for(let i=0;i<this.subjectListFam.length;i++)
+    {
+      console.log(i)
+      if(this.experiencedData.techFam.includes(this.subjectListFam[i].id))
+      {
+        this.subjectListFam[i].selected = true;
+        console.log(this.subjectListFam[i])
+      }
+    }
   }
 
   navigateFunction():void{
     this.router.navigate(['/createAccount']);
+  }
+
+  onCheckedExp(event:any,id:number)
+  {
+    for(let i=0;i < this.subjectListExp.length;i++)
+    {
+      if(this.subjectListExp[i].id==id)
+      {
+          this.subjectListExp[i].selected = !this.subjectListExp[i].selected
+          console.log(this.subjectListExp[i].id,this.subjectListExp[i].selected)
+      }
+    }
+  }
+  onCheckedFam(event:any,id:number)
+  {
+    for(let i=0;i < this.subjectListFam.length;i++)
+    {
+      if(this.subjectListFam[i].id==id)
+      {
+          this.subjectListFam[i].selected = !this.subjectListFam[i].selected
+          console.log(this.subjectListFam[i].id,this.subjectListFam[i].selected)
+      }
+    }
   }
   showeduFunc()
   {
@@ -139,6 +183,8 @@ subjectListFam:{name:string,selected:boolean,id:number}[]=[
     console.log("fresher:",this.experiencedData)
     this.SharedServiceService.updateEducationData(this.educationData);
     console.log(this.SharedServiceService.getEducationData());
+    this.experiencedData.techExpName = this.selectedExpDataName
+    this.experiencedData.techFamName = this.selectedFamDataName
     this.experiencedData.techFam = this.selectedFamData
     this.experiencedData.techExp = this.selectedExpData
     this.SharedServiceService.updateExperiencedData(this.experiencedData);
@@ -156,6 +202,30 @@ subjectListFam:{name:string,selected:boolean,id:number}[]=[
           }
       }
       return expData;
+  }
+  get selectedExpDataName()
+  {
+    var jobpreffered:string[]=[];
+    for(let item in this.subjectListExp)
+    {
+        if(this.subjectListExp[item].selected)
+        {
+          jobpreffered.push(this.subjectListExp[item].name);
+        }
+    }
+    return jobpreffered;
+  }
+  get selectedFamDataName()
+  {
+    var jobpreffered:string[]=[];
+    for(let item in this.subjectListFam)
+    {
+        if(this.subjectListFam[item].selected)
+        {
+          jobpreffered.push(this.subjectListFam[item].name);
+        }
+    }
+    return jobpreffered;
   }
   get selectedFamData()
   {

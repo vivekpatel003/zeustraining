@@ -9,8 +9,10 @@ export class SharedServiceService {
     cCTC:'0',
     eCTC:'0',
     techExp:[],
+    techExpName:[],
     otherExp:'',
     techFam:[],
+    techFamName:[],
     otherFam:'',
     onNotice:'',
     endDate:'',
@@ -37,6 +39,7 @@ export class SharedServiceService {
     uploadImage:'',
     portfolio:'',
     selectedJob:[],
+    selectedJobNames:['designer','developer'],
     reffredPerson:'',
     notification:false
   };

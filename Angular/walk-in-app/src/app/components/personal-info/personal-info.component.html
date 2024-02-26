@@ -1,98 +1,189 @@
 <app-header></app-header>
-<app-create-account [id]="createButton" [back]="backButton"></app-create-account>
+<app-create-account
+  [id]="createButton"
+  [back]="backButton"
+></app-create-account>
 
-<div class="main-tab">
-    <div class="status-tab">
-        <div  class="personal-button">
-            <span style="background-color: #3FD28B;">1</span>
-            <p>Personal Information</p>
-        </div>
-        <hr/>
-        <div class="qualification-button">
-            <span style="background-color: #757575;">2</span>
-            <p>Qualifications</p>
-        </div>
-        <hr/>
-        <div class="review-button">
-            <span>3</span>
-            <p>Review and Proceed</p>
-        </div>
+<div class="main-tab" *ngIf="done != undefined">
+  <div class="status-tab">
+    <div class="personal-button">
+      <span style="background-color: #3fd28b">1</span>
+      <p>Personal Information</p>
     </div>
+    <hr />
+    <div class="qualification-button">
+      <span style="background-color: #757575">2</span>
+      <p>Qualifications</p>
+    </div>
+    <hr />
+    <div class="review-button">
+      <span>3</span>
+      <p>Review and Proceed</p>
+    </div>
+  </div>
 
-
-<div class="personal-details-tab">
+  <div class="personal-details-tab">
     <form #createAccountForm="ngForm">
-        <div>
-            <label for="firstName" >First Name*</label>
-            <input type="text" required #firstName="ngModel" pattern="[a-zA-Z]+$" [(ngModel)]="personalData.firstName" name="firstName">
-            <p class="error-msg" *ngIf="firstName.invalid && firstName.touched">Enter FirstName*</p>
-        </div>
+      <div>
+        <label for="firstName">First Name*</label>
+        <input
+          type="text"
+          required
+          #firstName="ngModel"
+          pattern="[a-zA-Z]+$"
+          [(ngModel)]="personalData.firstName"
+          name="firstName"
+        />
+        <p class="error-msg" *ngIf="firstName.invalid && firstName.touched">
+          Enter FirstName*
+        </p>
+      </div>
 
-        <div>
-            <label for="lastName">Last Name*</label>
-            <input type="text" required #lastName="ngModel" pattern="[a-zA-Z]+$" [(ngModel)]="personalData.lastName" name="lastName">
-            <p class="error-msg" *ngIf="lastName.invalid && lastName.touched">Enter LastPassword*</p>
-        </div>
+      <div>
+        <label for="lastName">Last Name*</label>
+        <input
+          type="text"
+          required
+          #lastName="ngModel"
+          pattern="[a-zA-Z]+$"
+          [(ngModel)]="personalData.lastName"
+          name="lastName"
+        />
+        <p class="error-msg" *ngIf="lastName.invalid && lastName.touched">
+          Enter LastPassword*
+        </p>
+      </div>
 
-        <div>
-            <label for="email">Email*</label>
-            <input type="email" required #email="ngModel" email [(ngModel)]="personalData.Email" name="Email">
-            <p  class="error-msg"*ngIf="email.invalid && email.touched">Enter Email*</p>
-        </div>
+      <div>
+        <label for="email">Email*</label>
+        <input
+          type="email"
+          required
+          #email="ngModel"
+          email
+          [(ngModel)]="personalData.Email"
+          name="Email"
+        />
+        <p class="error-msg" *ngIf="email.invalid && email.touched">
+          Enter Email*
+        </p>
+      </div>
 
-        <div style="height: 51px;">
-            <label for="phoneNumber">Phone Number*</label>
-            <div class="phone-number-box">
-                <span>+</span><input type="text" #countrycode="ngModel" pattern="[0-9]+$"  required [(ngModel)]="personalData.countryCode" name="country-code">
-                <input type="text" #phoneNumber="ngModel" minlength="10" pattern="[0-9]+$" required [(ngModel)]="personalData.phoneNumber" name="phoneNumber">
-            </div>
-            <p class="error-msg" *ngIf="(countrycode.invalid || phoneNumber.invalid) && (countrycode.touched||phoneNumber.touched)">Enter MobileNumber*</p>
+      <div style="height: 51px">
+        <label for="phoneNumber">Phone Number*</label>
+        <div class="phone-number-box">
+          <span>+</span
+          ><input
+            type="text"
+            #countrycode="ngModel"
+            pattern="[0-9]+$"
+            required
+            [(ngModel)]="personalData.countryCode"
+            name="country-code"
+          />
+          <input
+            type="text"
+            #phoneNumber="ngModel"
+            minlength="10"
+            pattern="[0-9]+$"
+            required
+            [(ngModel)]="personalData.phoneNumber"
+            name="phoneNumber"
+          />
         </div>
+        <p
+          class="error-msg"
+          *ngIf="
+            (countrycode.invalid || phoneNumber.invalid) &&
+            (countrycode.touched || phoneNumber.touched)
+          "
+        >
+          Enter MobileNumber*
+        </p>
+      </div>
 
-        <div class="file-input-box">
-            <label for="uploadImage">  <img src="../../../assets/WalkInPortal-Icons-ListingtoSuccessflow/Upload_black_24dp.svg" alt="" > 
-            <input type="file" required #uploadImage="ngModel" accept=".pdf" id="uploadImage" [(ngModel)]="personalData.uploadImage" name="Image">
-            </label>
-           <label>upload resume</label>
-            <p class="error-msg" *ngIf="uploadImage.invalid  && uploadImage.touched">Add File*</p>
+      <div class="file-input-box">
+        <label for="uploadImage">
+          <img
+            src="../../../assets/WalkInPortal-Icons-ListingtoSuccessflow/Upload_black_24dp.svg"
+            alt=""
+          />
+          <input
+            type="file"
+            required
+            #uploadImage="ngModel"
+            [(ngModel)]="personalData.uploadImage"
+            accept=".pdf"
+            id="uploadImage"
+            name="Image"
+          />
+        </label>
+        <label>upload resume</label>
+        <p>{{ personalData.uploadImage }}</p>
+        <p class="error-msg" *ngIf="uploadImage.invalid && uploadImage.touched">
+          Add File*
+        </p>
+      </div>
+
+      <div>
+        <label for="portfolioUrl">Enter Portfolio URL (if any)</label>
+        <input
+          type="text"
+          [(ngModel)]="personalData.portfolio"
+          name="portfolio"
+        />
+      </div>
+
+      <div class="prefered-job-box">
+        <label for="">Preferred Job Roles*</label>
+        <div *ngFor="let item of jobs">
+          <input
+            type="checkbox"
+            [checked]="item.selected"
+            name="job"
+            (click)="onChecked($event, item.id)"
+          /><label>{{ item.name }}</label>
         </div>
+      </div>
 
-        <div>
-            <label for="portfolioUrl">Enter Portfolio URL (if any)</label>
-            <input type="text"  [(ngModel)]="personalData.portfolio" name="portfolio">
+      <div>
+        <label for="refferalPerson"
+          >If You Are Registering Via A Referral, Please Mention Full Name Of
+          The Employee Who Referred You</label
+        >
+        <input
+          type="text"
+          [(ngModel)]="personalData.reffredPerson"
+          name="reffredPerson"
+        />
+      </div>
 
-        </div>
-
-        <div class="prefered-job-box">
-            <label for="">Preferred Job Roles*</label>
-            <div *ngFor="let item of jobs">
-                <input type="checkbox" [checked]="item.selected"  name="job" [(ngModel)]="item.selected"><label >{{item.name}}</label>
-            </div>
-
-        </div>
-        
-        <div>
-            <label for="refferalPerson">If You Are Registering Via A Referral, Please Mention Full Name Of The Employee Who Referred You</label>
-            <input type="text" [(ngModel)]="personalData.reffredPerson" name="reffredPerson">
-        </div>
-
-        <div class="notification-box">
-            <input style="width: 18px;" name="notification" [(ngModel)]="personalData.notification" type="checkbox"><label for="notification">Send me job related updates via mail</label>
-        </div>
+      <div class="notification-box">
+        <input
+          style="width: 18px"
+          name="notification"
+          [(ngModel)]="personalData.notification"
+          type="checkbox"
+        /><label for="notification">Send me job related updates via mail</label>
+      </div>
     </form>
 
-
     <div class="profile-picture-tab">
-        <div>
-            <img src="../../../assets/WalkInPortal-Icons-ListingtoSuccessflow/persona-icon.svg" alt="profile-picture">
-            <div class="profile-picture-text">
-                <p>UPLOAD DISPLAY PICTURE</p>
-                <p>Max. image size: 5 MB</p>
-            </div>
+      <div>
+        <img
+          src="../../../assets/WalkInPortal-Icons-ListingtoSuccessflow/persona-icon.svg"
+          alt="profile-picture"
+        />
+        <div class="profile-picture-text">
+          <p>UPLOAD DISPLAY PICTURE</p>
+          <p>Max. image size: 5 MB</p>
         </div>
+      </div>
     </div>
-</div>
-<div class="next-btn">
-        <button (click)="getData()" [disabled]="createAccountForm.invalid">NEXT</button>
-</div>
+  </div>
+  <div class="next-btn">
+    <button (click)="getData()" [disabled]="createAccountForm.invalid">
+      NEXT
+    </button>
+  </div>
 </div>
