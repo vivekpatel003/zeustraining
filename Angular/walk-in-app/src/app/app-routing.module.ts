@@ -53,7 +53,7 @@ const routes: Routes = [
       canActivate:[authGuardGuard]
   },
   {
-      path:'hallTicket',
+      path:'hallTicket/:id',
       component:HallTicketPageComponent,
       title:'HallTicket',
       canActivate:[authGuardGuard]

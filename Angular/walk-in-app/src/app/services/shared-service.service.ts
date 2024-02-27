@@ -39,7 +39,7 @@ export class SharedServiceService {
     uploadImage:'',
     portfolio:'',
     selectedJob:[],
-    selectedJobNames:['designer','developer'],
+    selectedJobNames:[],
     reffredPerson:'',
     notification:false
   };

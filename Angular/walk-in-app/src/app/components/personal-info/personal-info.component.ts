@@ -74,7 +74,7 @@ export class PersonalInfoComponent implements OnInit {
           this.personalData.selectedJob = this.jobChoosen;
           this.SharedServiceService.updatePersonalInfoData(this.personalData);
           console.log(this.SharedServiceService.getPersonalInfoData());
-          this.router.navigate(['/review']);
+          this.router.navigate(['/education']);
         } else {
           alert('Email already Exist!');
         }

@@ -18,7 +18,8 @@ export class SummeryComponent {
       phoneNumber:this.SharedServiceService.personalData.phoneNumber,
       uploadImage:this.SharedServiceService.personalData.uploadImage,
       portfolio:this.SharedServiceService.personalData.portfolio,
-      selectedJob:this.SharedServiceService.personalData.selectedJobName,
+      selectedJobName:this.SharedServiceService.personalData.selectedJobName,
+      selectedJob:this.SharedServiceService.personalData.selectedJob,
       reffredPerson:this.SharedServiceService.personalData.reffredPerson,
       notification:this.SharedServiceService.personalData.notification.toString()
     };
@@ -45,7 +46,9 @@ export class SummeryComponent {
       endDate:this.SharedServiceService.experiencedData.endDate,
       duration:this.SharedServiceService.experiencedData.duration,
       appeared:this.SharedServiceService.experiencedData.appeared,
-      roleApplied:this.SharedServiceService.experiencedData.roleApplied
+      roleApplied:this.SharedServiceService.experiencedData.roleApplied,
+      techExpId:this.SharedServiceService.experiencedData.techExp,
+      techFamId:this.SharedServiceService.experiencedData.techFam
     };
    
     Personaldata:any = {
@@ -85,8 +88,8 @@ export class SummeryComponent {
       "duration":  this.professionalQualificationData.duration,
       "testAppeared": this.professionalQualificationData.appeared=="Yes" ? true : false ,
       "roleApplied":this.professionalQualificationData.roleApplied,
-      "techExpertise": this.professionalQualificationData.techExp,
-      "techFamiliar": this.professionalQualificationData.techFam
+      "techExpertise": this.professionalQualificationData.techExpId,
+      "techFamiliar": this.professionalQualificationData.techFamId
     }
   
 

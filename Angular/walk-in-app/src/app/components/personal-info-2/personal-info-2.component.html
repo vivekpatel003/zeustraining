@@ -430,7 +430,7 @@
               #noticeDuration
             >
               <option value="" disabled selected>Select Option</option>
-              <option *ngFor="let item of durationList" value="item">
+              <option *ngFor="let item of durationList" [value]="item">
                 {{ item }}
               </option>
             </select>

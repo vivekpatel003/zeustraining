@@ -9,12 +9,14 @@ import { Router } from "@angular/router";
 export class HeaderComponent {
   logOut:string="Logout";
   logoutDispaly:boolean=true;
+  UserName:string = sessionStorage.getItem('login')
   @ViewChild('Logout') logoutProp:ElementRef;
   @Input() display:boolean;
   constructor(private render:Renderer2,private router:Router){}
   ShowLogOutTab():void{
+
     if(this.logoutDispaly){
-      this.render.setStyle(this.logoutProp.nativeElement,'display','block');
+      this.render.setStyle(this.logoutProp.nativeElement,'display','flex');
     }
     else{
       this.render.setStyle(this.logoutProp.nativeElement,'display','none');

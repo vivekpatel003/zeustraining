@@ -3,16 +3,17 @@
     src="../../../assets/WalkInPortal-Icons-ListingtoSuccessflow/logo used in header.svg"
     alt=""
   />
-  <div>
+  <div *ngIf="display">
       <img
-      *ngIf="display"
+      
       class="dp"
     src="../../../assets/WalkInPortal-Icons-ListingtoSuccessflow/ramaDP.jpg"
     alt=""
     (click) = "ShowLogOutTab()"
     />
     <div class="logout-tab" #Logout>
-        <p (click)="LogOut()">{{logOut | uppercase}}</p>
+        <p class="UserName-tab">{{UserName}}</p>
+        <p class="UserName-button" (click)="LogOut()">{{logOut | uppercase}}</p>
     </div>
 </div>
 </header>

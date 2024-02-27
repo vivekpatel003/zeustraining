@@ -35,6 +35,10 @@ export class SpecJobPageService {
   }
   getHallTicketData(data:any)
   {
-    return this.http.post("https://localhost:7148/api/DB/hallTicket",data,{responseType:'text',headers:this.header});
+    return this.http.post("https://localhost:7148/api/DB/hallTicket",data,{headers:this.header});
+  }
+  getStatus(data:any)
+  {
+      return this.http.post("https://localhost:7148/api/DB/IsRequestMade",data,{responseType:'text',headers:this.header});
   }
 }

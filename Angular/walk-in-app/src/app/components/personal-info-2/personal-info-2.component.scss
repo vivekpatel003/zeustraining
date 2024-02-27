@@ -254,6 +254,7 @@ input{
 }
 .worked-option-box{
     @include flex(start,center,default);
+    margin-top: 13px;
     margin-bottom: 0;
 }
 .worked-option-box div{

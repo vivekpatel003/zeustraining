@@ -35,12 +35,19 @@ export class CreateAccountComponent {
       this.education.sendProfileData(this.fresherInfo).subscribe(
         data=>{
           console.log(data)
-        });
-      this.education.sendMail({
-          "email":this.fresherInfo.email
+          if("Done")
+          {
+            this.education.sendMail({
+              "email":this.fresherInfo.email
             }).subscribe((email)=>{
-      console.log("Email sent status: ",email)
-    })
+              console.log("Email sent status: ",email)
+            })
+          }
+          else{
+            alert("data not submitted!");
+          }
+        });
+     
      
     this.router.navigate(['/']);
        
