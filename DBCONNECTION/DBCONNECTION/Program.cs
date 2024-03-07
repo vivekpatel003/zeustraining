@@ -7,6 +7,7 @@ using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.EntityFrameworkCore.Storage;
+using DBCONNECTION;
 //using BrandContext;
 
 
@@ -24,17 +25,27 @@ var connectionS = builder.Configuration.GetConnectionString("InternShip");
 builder.Services.AddDbContext<InternshipContext>(item =>
     item.UseMySql(connectionS, ServerVersion.AutoDetect(connectionS)));
 
-
+//Add DI for log file
+builder.Services.AddLog4net();
 //controller DI
 builder.Services.AddControllers();
 
 //JWT DI
 builder.Services.AddScoped<IUserService, UserService>();
 
+
+//Caching Dependencies Injection
+builder.Services.AddScoped<ICacheService, CacheService>();
+
 //Email DI
 builder.Services.AddTransient<IEmailSender, EmailSender>();
+
+
+//Swagger Sevices injection
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+
 //Jwt Configuration starts
 var jwtIssuer = builder.Configuration.GetSection("Jwt:Issuer").Get<string>();
 var jwtKey = builder.Configuration.GetSection("Jwt:Key").Get<string>();
@@ -42,6 +53,7 @@ var jwtKey = builder.Configuration.GetSection("Jwt:Key").Get<string>();
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
  .AddJwtBearer(options =>
  {
+     
      options.TokenValidationParameters = new TokenValidationParameters
      {
          ValidateIssuer = true,

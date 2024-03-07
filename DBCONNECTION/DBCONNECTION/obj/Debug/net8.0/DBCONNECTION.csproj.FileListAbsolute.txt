@@ -113,3 +113,14 @@ D:\Internship\DOTNET\DBCONNECTION\DBCONNECTION\bin\Debug\net8.0\Microsoft.Identi
 D:\Internship\DOTNET\DBCONNECTION\DBCONNECTION\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 D:\Internship\DOTNET\DBCONNECTION\DBCONNECTION\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
 D:\Internship\DOTNET\DBCONNECTION\DBCONNECTION\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
+D:\Internship\DOTNET\DBCONNECTION\DBCONNECTION\bin\Debug\net8.0\Microsoft.Extensions.Caching.StackExchangeRedis.dll
+D:\Internship\DOTNET\DBCONNECTION\DBCONNECTION\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
+D:\Internship\DOTNET\DBCONNECTION\DBCONNECTION\bin\Debug\net8.0\Pipelines.Sockets.Unofficial.dll
+D:\Internship\DOTNET\DBCONNECTION\DBCONNECTION\bin\Debug\net8.0\StackExchange.Redis.dll
+D:\Internship\DOTNET\DBCONNECTION\DBCONNECTION\bin\Debug\net8.0\log4net.config
+D:\Internship\DOTNET\DBCONNECTION\DBCONNECTION\bin\Debug\net8.0\log4net.dll
+D:\Internship\DOTNET\DBCONNECTION\DBCONNECTION\bin\Debug\net8.0\log4net.Ext.Json.dll
+D:\Internship\DOTNET\DBCONNECTION\DBCONNECTION\bin\Debug\net8.0\System.Configuration.ConfigurationManager.dll
+D:\Internship\DOTNET\DBCONNECTION\DBCONNECTION\bin\Debug\net8.0\System.Security.Cryptography.ProtectedData.dll
+D:\Internship\DOTNET\DBCONNECTION\DBCONNECTION\bin\Debug\net8.0\System.Security.Permissions.dll
+D:\Internship\DOTNET\DBCONNECTION\DBCONNECTION\bin\Debug\net8.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll

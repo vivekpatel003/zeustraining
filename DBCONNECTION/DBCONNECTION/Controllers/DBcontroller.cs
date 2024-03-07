@@ -14,6 +14,11 @@ using DBCONNECTION.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.Text;
+using System.Security.Cryptography;
+using System.Runtime.Intrinsics.Arm;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using log4net;
 
 
 namespace DBCONNECTION.Controllers
@@ -26,46 +31,68 @@ namespace DBCONNECTION.Controllers
         public readonly InternshipContext _internshipContext;
         public readonly IUserService _userService;
         public readonly IEmailSender _emailSender;
-        public DBcontroller(InternshipContext internshipContext,IUserService userService, IEmailSender emailSender)
+        public readonly ICacheService _cachingService;
+        private readonly ILog _logger;
+        //this  act we perform here is called Dependency Injection
+        public DBcontroller( InternshipContext internshipContext,IUserService userService, IEmailSender emailSender, ICacheService cachingService, ILog logger)
         {
             _userService = userService;
             _internshipContext = internshipContext;
             _emailSender = emailSender;
+            _cachingService = cachingService;
+            _logger = logger;
         }
 
+
+        //Email Sending API
         [HttpPost]
         [Route("EmailSend")]
         public async  Task<IActionResult> getMail(EmailCheck ec)
         {
-            try
-            {
-                const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-                StringBuilder stringBuilder = new StringBuilder();
-                Random random = new Random();
-                
-                for (int i = 0; i < 10; i++)
+            //using the Hashing for data integrity
+            using (SHA256 sha = SHA256.Create()) {
+                try
                 {
-                    int index = random.Next(chars.Length);
-                    stringBuilder.Append(chars[index]);
+                    //the string of character is provided from which password/random string going to be generated
+                    const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+                    StringBuilder stringBuilder = new StringBuilder();
+                    Random random = new Random();
+
+                    for (int i = 0; i < 10; i++)
+                    {
+                        int index = random.Next(chars.Length);
+                        stringBuilder.Append(chars[index]);
+                    }
+                    //converted to byte stream for hashing purpose which will store it in 8 byte formate
+                    byte[] message = sha.ComputeHash(Encoding.UTF8.GetBytes(stringBuilder.ToString()));
+                    try { 
+                        Userdatum ud = new Userdatum()
+                        {
+                            Email = ec.Email,
+                            Password = Convert.ToBase64String(message),
+                            IsAdmin = false
+                        };
+                        _internshipContext.Userdata.Add(ud);
+                        _internshipContext.SaveChanges();
+                        await _emailSender.SendEmailAsync(ec.Email, "Your Password", stringBuilder.ToString());
+                        _logger.Info("Email Sent");
+                            return Ok("done");
+                    }
+                    catch(Exception ex){
+                        _logger.Info("Email not Sent");
+                        return BadRequest(ex.Message);
+                    }
                 }
-               string message = stringBuilder.ToString();
-                await _emailSender.SendEmailAsync(ec.Email,"Your Password", message);
-                Userdatum ud = new Userdatum()
+                catch (Exception ex)
                 {
-                    Email = ec.Email,
-                    Password = message,
-                    IsAdmin=false
-                };
-                _internshipContext.Userdata.Add(ud);
-                _internshipContext.SaveChanges();
-                return Ok("done");
-            }
-            catch(Exception ex)
-            {
-                return StatusCode(500,ex.Message);
+                    _logger.Error("Error in Email Operation");
+                    return StatusCode(500, ex.Message);
+                }
             }
         }
 
+
+        //Authentication API 
         [HttpPost]
         [Route("Login")]
         [AllowAnonymous]
@@ -80,51 +107,129 @@ namespace DBCONNECTION.Controllers
                 var token = _userService.Login(auth,resultData);
                 if (token == null || token == string.Empty)
                 {
+                    _logger.Error("Tocken does not exist");
                     return BadRequest("NotExist");
                 }
+                _logger.Info("Token generated and Sent to Client");
                 return Ok(token);
             }
             catch(Exception ex)
             {
+                _logger.Error("Error while authentication and tocken generation");
                   return StatusCode(500,ex.Message);
             }
         }
 
-        [HttpPost]
-        [Route("hallTicket")]
-        [Authorize]
-        public async Task<IActionResult> GetHallTicket(EmailCheck ec)
+        //Tocken Expiration checking API
+        [HttpGet]
+        [Route("isTokenExpired/{token}")]
+        public async Task<IActionResult> GetTokenStatus(string token)
         {
             try
             {
-                var query = from user in _internshipContext.UserJobDetails
-                            where user.Email == ec.Email
-                            select new
-                            {
-                                timing = user.TimeSlotId
-                                
-                            };
+                if(token==null)
+                {
+                    return Ok(false);
+                }
+                var tokenHandler = new JwtSecurityTokenHandler();
+                var JwtToken = tokenHandler.ReadToken(token) as JwtSecurityToken;
 
-                foreach(var item in query)
-                    {
+                if(JwtToken==null)
+                {
+                    return Ok(true);
+                }
 
+                var utcTime = DateTime.UtcNow;
+                Console.WriteLine(JwtToken.ValidTo);
+                Console.WriteLine(utcTime);
+                if(JwtToken.ValidTo < utcTime)
+                {
+                    return Ok(true);
+                }
+                return Ok(false);
+            }
+            catch(Exception ex)
+            {
+                 return StatusCode(500,ex.Message);
+            }
+        }
+
+
+        //API to check Whether the Applicant has already applied or not
+        [HttpPost]
+        [Route("IsRequestMade")]
+        [Authorize]
+        public async Task<IActionResult> GetRequestStatus(RequestStatus rs)
+        {
+            try
+            {
+            
+                 var query = from userData in _internshipContext.UserJobDetails
+                              where (rs.Email == userData.Email && rs.JobId == userData.JobId)
+                              select userData;
+                foreach(var i in query)
+                {
+                    return Ok("present");
+                }
+                _logger.Info("Hit to IsRequest Made EndPoint");
+                return Ok("Notpresent");
+            }
+            catch(Exception ex)
+            {
+                _logger.Error("Error occured while Hitting to IsRequest Made EndPoint");
+                return StatusCode(500,ex.Message);       
+            }
+        }
+
+
+
+        //Hall Ticket Time Generation API
+        [HttpGet]
+        [Route("hallTicket/{time}")]
+        [Authorize]
+        public async Task<IActionResult> GetHallTicket(int time)
+        {
+            try
+            {
+                
                     var query2 = from timeSlot in _internshipContext.TimeSlotTables
-                                 where timeSlot.TimeSlotId == item.timing
+                                 where timeSlot.TimeSlotId == time
                                  select new
                                  {
-                                     time = timeSlot.TimeSlot
-                                
+                                     timing = timeSlot.TimeSlot
                                  };
+                _logger.Info("Hitting the hallticket Generation Endpoint.");
                     return Ok(query2);
-                }
-                return Ok("done");
+                
             }
             catch (Exception ex)
             {
+                _logger.Error("Error occured while Hitting the hallticket Generation Endpoint.");
                 return StatusCode(500, ex.Message);
             }
         }
 
+        //Redis Caching API
+        [HttpGet]
+        [Route("CacheTest")]
+        public async Task<IActionResult> GetData()
+        {
+            var cacheData = _cachingService.GetData<IEnumerable<Userdatum>>("UserData");
+
+            if(cacheData != null && cacheData.Count() > 0)
+            {
+                Console.WriteLine("Cashed Data:");
+                return Ok(cacheData);
+            }
+
+            cacheData = await _internshipContext.Userdata.ToListAsync();
+
+            var expiryTime = DateTimeOffset.Now.AddSeconds(30);
+            _cachingService.setData<IEnumerable<Userdatum>>("UserData", cacheData, expiryTime);
+            return Ok(cacheData);
+        }
+
+        //JobData/DashBoard data API 
         [HttpGet]
         [Route("jobData")]
         [Authorize]
@@ -172,15 +277,18 @@ namespace DBCONNECTION.Controllers
                         Result2 = Jobroles
 
                     };
+                    _logger.Info("Hitting the JobData EndPoint");
                     return Ok(CombinedQueryResult);
                 }
                 catch(Exception ex)
                 {
+                    _logger.Error("Error Occured while Hitting the JobData EndPoint");
                     return StatusCode(500, "An Error Message:" + ex.Message);
                 }
             }
             catch (Exception ex)
             {
+                _logger.Error("Error Occured while Hitting the JobData EndPoint");
                 return StatusCode(500,"An Error Message:" + ex.Message);
             }
            
@@ -188,7 +296,7 @@ namespace DBCONNECTION.Controllers
 
 
 
-
+        //JobCard's form's data related Data API
         [HttpGet]
         [Route("jobcardformData")]
         [Authorize]
@@ -217,21 +325,24 @@ namespace DBCONNECTION.Controllers
                         result1 = query,
                         result2 = query2
                     };
+                    _logger.Info("Hitting the jobcardformData EndPoint");
                     return Ok(combinedResult);
                 }
                 catch (Exception ex)
                 {
+                    _logger.Error("Error Occured while Hitting the jobcardformData EndPoint");
                     return StatusCode(500, "An error occured: " + ex.Message);
                 }
-                return Ok();
-
+               
             }
             catch(Exception ex)
             {
+                _logger.Error("Error Occured while Hitting the jobcardformData EndPoint");
                 return StatusCode(500, "An error occured: " + ex.Message);
             }    
         }
 
+        //Jobcard's Data generation API
         [HttpPost]
         [Route("jobDetails")]
         [Authorize]
@@ -250,11 +361,13 @@ namespace DBCONNECTION.Controllers
                                 RoleDescription = jobRole.RoleDescription,
                                 Requirement = jobRole.Requirement
                             };
+                _logger.Info("Hitting the jobcardformData EndPoint");
                 return Ok(query);
             }
             catch(Exception ex)
             {
-                  return StatusCode(500,"An error Code:"+ ex.Message);
+                _logger.Error("Error occured while Hitting the jobcardformData EndPoint");
+                return StatusCode(500,"An error Code:"+ ex.Message);
             }
         }
 
@@ -262,7 +375,7 @@ namespace DBCONNECTION.Controllers
 
         
 
-
+        //Education page dropDown Data related API
         [HttpGet]
         [Route("getData")]
         public async Task<IActionResult> getCollegeData()
@@ -283,16 +396,18 @@ namespace DBCONNECTION.Controllers
                     stream = Streamquery,
                     qualification = Qualificationquery
                 };
+                _logger.Info("Hitting the getData EndPoint");
                 return Ok(result);
             }
             catch(Exception ex)
             {
+                _logger.Error("Error occured while Hitting the getData EndPoint");
                 return StatusCode(500, "An Error Occured: " + ex.Message);
             }
         }
 
 
-
+        //Email present or not checking API
         [HttpPost]
         [Route("isEmailPresent")]
         public async Task<IActionResult> EmailPresent(EmailCheck ec)
@@ -313,16 +428,18 @@ namespace DBCONNECTION.Controllers
                         break;
                     }
                 }
+                _logger.Info("Hitting the isEmailPresent EndPoint");
                 return Ok(present);
             }
             catch(Exception ex)
             {
+                _logger.Error("Error occured while Hitting the isEmailPresent EndPoint");
                 return StatusCode(500, "An Error Ocuured: " + ex.Message);
             }
         }
 
 
-
+        //USER JOBCARD FORM DETAILS SUBMISSION API
         [HttpPost]
         [Route("UserDataStore")]
         [Authorize]
@@ -352,17 +469,19 @@ namespace DBCONNECTION.Controllers
                     _internshipContext.SaveChanges();
                     transaction.Commit();
 
-
+                    _logger.Info("Hitting the UserDataStore EndPoint");
                     return Ok("Done");
                 }
                 catch (Exception ex)
                 {
                     transaction.Rollback();
+                    _logger.Error("Error occured while Hitting the UserDataStore EndPoint");
                     return StatusCode(500, ex.Message);
                 }
             }
         }
 
+        //Personal Data Submission API
         [HttpPost]
         [Route("check")]
         public async Task<IActionResult> transactionDone(PersonalDataFile pdf)
@@ -468,11 +587,13 @@ namespace DBCONNECTION.Controllers
                     }
                     _internshipContext.SaveChanges();
                     transaction.Commit();
+                    _logger.Info("Hitting the transactionDone EndPoint");
                     return Ok("Done");
                 }
                 catch(Exception ex)
                 {
-                transaction.Rollback();
+                    transaction.Rollback();
+                    _logger.Error("Error occured while Hitting the transactionDone EndPoint");
                     return StatusCode(500,"An Error Occured: "+ex.Message);
                 }
             }

@@ -3,6 +3,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using System.Security.Cryptography;
 
 namespace DBCONNECTION.Services
 {
@@ -17,40 +18,43 @@ namespace DBCONNECTION.Services
         }
         public string Login(Authentication auth,List<Userdatum> userdata)
         {
-            var LoginUser = userdata.SingleOrDefault(x => x.Email == auth.Email && x.Password == auth.password);
+            using (SHA256 sha = SHA256.Create()) {
+                byte[] pass = sha.ComputeHash(Encoding.UTF8.GetBytes(auth.password));
+                var LoginUser = userdata.SingleOrDefault(x => x.Email == auth.Email && x.Password == Convert.ToBase64String(pass));
 
-            if (LoginUser == null)
-            {
-                return string.Empty;
+                if (LoginUser == null)
+                {
+                    return string.Empty;
+                }
+
+
+                var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
+                var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
+
+                var Sectoken = new JwtSecurityToken(_configuration["Jwt:Issuer"],
+                  _configuration["Jwt:Issuer"],
+                  null,
+                  expires: DateTime.Now.AddMinutes(2),
+                  signingCredentials: credentials);
+
+                var token = new JwtSecurityTokenHandler().WriteToken(Sectoken);
+
+                //var tokenHandler = new JwtSecurityTokenHandler();
+                //var key = Encoding.ASCII.GetBytes(_configuration["Jwt:Key"]);
+                //var tokenDescriptor = new SecurityTokenDescriptor
+                //{
+                //    Subject = new ClaimsIdentity(new Claim[]
+                //    {
+                //        new Claim(ClaimTypes.Name, auth.Email)
+                //    }),
+                //    Expires = DateTime.UtcNow.AddMinutes(60),
+                //    SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+                //};
+                //var token = tokenHandler.CreateToken(tokenDescriptor);
+                //string userToken = tokenHandler.WriteToken(token);
+                return token;
+                throw new NotImplementedException();
             }
-
-
-            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
-            var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
-
-            var Sectoken = new JwtSecurityToken(_configuration["Jwt:Issuer"],
-              _configuration["Jwt:Issuer"],
-              null,
-              expires: DateTime.Now.AddMinutes(120),
-              signingCredentials: credentials);
-
-            var token = new JwtSecurityTokenHandler().WriteToken(Sectoken);
-
-            //var tokenHandler = new JwtSecurityTokenHandler();
-            //var key = Encoding.ASCII.GetBytes(_configuration["Jwt:Key"]);
-            //var tokenDescriptor = new SecurityTokenDescriptor
-            //{
-            //    Subject = new ClaimsIdentity(new Claim[]
-            //    {
-            //        new Claim(ClaimTypes.Name, auth.Email)
-            //    }),
-            //    Expires = DateTime.UtcNow.AddMinutes(60),
-            //    SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
-            //};
-            //var token = tokenHandler.CreateToken(tokenDescriptor);
-            //string userToken = tokenHandler.WriteToken(token);
-            return token;
-            throw new NotImplementedException();
         }
 
        

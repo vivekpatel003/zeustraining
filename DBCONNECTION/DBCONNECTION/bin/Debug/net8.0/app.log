@@ -1,0 +1,5 @@
+{"date":"2024-03-06T13:10:27.0193487+05:30","level":"ERROR","logger":"Program","thread":".NET TP Worker","ndc":"(null)","message":"Tocken does not exist"}
+{"date":"2024-03-06T13:11:57.4072557+05:30","level":"ERROR","logger":"Program","thread":".NET TP Worker","ndc":"(null)","message":"Tocken does not exist"}
+{"date":"2024-03-06T13:15:13.1148408+05:30","level":"ERROR","logger":"Program","thread":".NET TP Worker","ndc":"(null)","message":"Tocken does not exist"}
+{"date":"2024-03-06T13:18:23.2543830+05:30","level":"ERROR","logger":"Program","thread":".NET TP Worker","ndc":"(null)","message":"Tocken does not exist"}
+{"date":"2024-03-06T13:18:47.9679201+05:30","level":"INFO","logger":"Program","thread":".NET TP Worker","ndc":"(null)","message":"Token generated and Sent to Client"}
